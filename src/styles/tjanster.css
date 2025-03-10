@@ -1,0 +1,20 @@
+.bakgrundsbildTjanster{
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url('src/assets/bilder/tjanster.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.textbox {
+    width: 90%;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center; 
+}
+/* background: url(https://hedstrommaleri.se/wp-content/uploads/2018/09/Tjänster-hedströms.png) center bottom / cover no-repeat; */
