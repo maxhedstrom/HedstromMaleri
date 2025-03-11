@@ -15,6 +15,8 @@ const Hem = () => {
           En liten målerifirma belägen i centrala Örebro som drivs av mig Peter Hedström och min son Anton Hedström.<br />
           Vårt fokus ligger på kvalité och nöjda kunder sedan starten 2011.
         </p>
+        <h1 className="text-red-500 text-4xl font-bold">Funkar Tailwind?</h1>
+
         <a href="#" className="hero-btn">Besök oss för att veta mer</a>
       </div>
         
