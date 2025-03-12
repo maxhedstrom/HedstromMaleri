@@ -8,7 +8,7 @@ export default function Navbar() {
     <header className="absolute top-[30px] left-0 right-0 z-10 w-full py-[10px]">
       <nav className="flex items-center justify-between px-[6%] py-[2%] w-full">
         {/* Logotyp – fast positionerad i övre vänstra hörnet */}
-        <div className="fixed top-[10px] left-[30px] p-[5px] z-10">
+        <div className="absolute top-[10px] left-[30px] p-[5px] z-10">
           <a href="/">
             <img id="logo" src={logo} alt="Logotyp" className="w-[150px] h-auto" />
           </a>
