@@ -5,7 +5,7 @@ const Hem = () => {
     // Här börjar innehållet på startsidan
     <div>
       
-      {/* Första sektionen (Bakgrundsbild) */}
+      {/* Första sektionen med Bakgrundsbild - sektion: välkomstsida */}
       
       <section
         className="relative min-h-screen w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/hedstrombil.jpg')] bg-no-repeat bg-center bg-cover">
@@ -28,7 +28,7 @@ const Hem = () => {
         </a>
       </div>
 
-      {/* Tjänster */}
+      {/*Presentation med urval av tjänster i röda block - sektion: Tjänster */}
       <section className="w-4/5 mx-auto text-center pt-[100px]">
         <h1 className="text-4xl font-semibold">Tjänster vi erbjuder</h1>
         <p className="text-[#333] text-[14px] font-light leading-[22px] p-[10px]">
@@ -59,7 +59,7 @@ const Hem = () => {
         </div>
       </section>
 
-      {/* Geografisk plats */}
+      {/*Bild på Örebro slott med lite text om företagets geografi - sektion: Geografisk plats */}
       <section className="w-4/5 mx-auto text-center pt-[100px]">
         <h1 className="text-4xl font-semibold">Var vi finns</h1>
         <p className="text-[#333] text-[14px] font-light leading-[22px] p-[10px]">
@@ -82,48 +82,49 @@ const Hem = () => {
         </div>
       </section>
 
+      {/*Referenser med bilder på uppdragsgivare - sektion: Referenser */}
       <section className="w-4/5 mx-auto text-center pt-[100px]">
-  <div className="mb-8">
-    <h1 className="text-4xl font-semibold">Utvalda uppdragsgivare</h1>
-    <p className="text-[#333] text-[14px] font-light leading-[22px] p-[10px]">
-      Vi utför arbeten åt kunder, stora som små, och strävar alltid efter att leverera högsta kvalitet.
-      <br />
-      Vi har ett antal referenser!
-    </p>
-  </div>
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div className="rounded-[10px] text-center">
-      <a href="https://www.oru.se/">
-        <img
-          src="src/assets/bilder/kommun-logo.png"
-          alt="Örebro Kommun"
-          className="w-full h-[200px] object-contain rounded-[10px]"
-        />
-      </a>
-      <h3 className="mt-[10px] mb-[15px]">Örebro Kommun</h3>
-    </div>
-    <div className="rounded-[10px] text-center">
-      <a href="https://www.oru.se/">
-        <img
-          src="src/assets/bilder/sorby-logo.png"
-          alt="Sörbyskolan"
-          className="w-full h-[200px] object-contain rounded-[10px]"
-        />
-      </a>
-      <h3 className="mt-[10px] mb-[15px]">Sörbyskolan</h3>
-    </div>
-    <div className="rounded-[10px] text-center">
-      <a href="https://www.oru.se/">
-        <img
-          src="src/assets/bilder/universitetet-logo.png"
-          alt="Örebro Universitet"
-          className="w-full h-[200px] object-contain rounded-[10px]"
-        />
-      </a>
-      <h3 className="mt-[10px] mb-[15px]">Örebro Universitet</h3>
-    </div>
-  </div>
-</section>
+        <div className="mb-8">
+          <h1 className="text-4xl font-semibold">Utvalda uppdragsgivare</h1>
+          <p className="text-[#333] text-[14px] font-light leading-[22px] p-[10px]">
+            Vi utför arbeten åt kunder, stora som små, och strävar alltid efter att leverera högsta kvalitet.
+            <br />
+            Vi har ett antal referenser!
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="rounded-[10px] text-center">
+            <a href="https://www.oru.se/">
+              <img
+                src="src/assets/bilder/kommun-logo.png"
+                alt="Örebro Kommun"
+                className="w-full h-[200px] object-contain rounded-[10px]"
+              />
+            </a>
+            <h3 className="mt-[10px] mb-[15px]">Örebro Kommun</h3>
+          </div>
+          <div className="rounded-[10px] text-center">
+            <a href="https://www.oru.se/">
+              <img
+                src="src/assets/bilder/sorby-logo.png"
+                alt="Sörbyskolan"
+                className="w-full h-[200px] object-contain rounded-[10px]"
+              />
+            </a>
+            <h3 className="mt-[10px] mb-[15px]">Sörbyskolan</h3>
+          </div>
+          <div className="rounded-[10px] text-center">
+            <a href="https://www.oru.se/">
+              <img
+                src="src/assets/bilder/universitetet-logo.png"
+                alt="Örebro Universitet"
+                className="w-full h-[200px] object-contain rounded-[10px]"
+              />
+            </a>
+            <h3 className="mt-[10px] mb-[15px]">Örebro Universitet</h3>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
