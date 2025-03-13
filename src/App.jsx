@@ -5,6 +5,7 @@ import Kontakt from './pages/Kontakt';
 import Om from './pages/Om';
 import Projekt from './pages/Projekt';
 import Tjanster from './pages/Tjanster';
+import Rot from './pages/Rot';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Route path="kontakt" element={<Kontakt />} />
                 <Route path="om" element={<Om />} />
                 <Route path="projekt" element={<Projekt />} />
+                <Route path="rot" element={<Rot/>} />
                 <Route path="tjanster" element={<Tjanster />} />
             </Route>
         </Routes>

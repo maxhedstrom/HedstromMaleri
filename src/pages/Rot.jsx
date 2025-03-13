@@ -1,22 +1,78 @@
-<p>ged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+export default function Rot() {
+    return (
+      // Här börjar innehållet på startsidan
+      <div> 
 
-Why do we use it?
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+  <section className="relative min-h-[30vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/bakgrundsbil-tvamalare.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
+    <h1 className="text-white text-4xl font-semibold text-center">ROT-Avdrag</h1>
+  </section>
+
+  <section className="w-3/5 mx-auto text-center pt-[100px]">
+
+        {/*Presentation med urval av tjänster 3 i röda block - sektion: Tjänster */}
+        <h1 className="text-black text-4xl font-semibold text-center ">Vi erbjuder en rad olika tjänster som passar dina behov!</h1>
+
+          <p className="text-[#333] text-[14px] font-light leading-[22px] p-[10px]">
+            Vi erbjuder ett antal olika tjänster
+          </p>
 
 
-Where does it come from?
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
-The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
 
-Where can I get some?
-There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
 
-5
-	paragraphs
-	words
-	bytes
-	lists
-	Start with 'Lorem
-ipsum dolor sit amet...'
-</p>
+                  {/*DU ÄR HÄR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/}
+
+          <div className="mt-[5%] flex flex-col md:flex-row justify-between">
+            <div className="basis-[40%] h-[600px] bg-[url('src/assets/bilder/tjanster.webp')] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2) bg-no-repeat bg-center bg-cover flex items-center justify-center]">
+        
+            </div>
+            <div className="basis-[70%] h-[400px] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
+            <h3 className="text-center font-semibold my-[10px]">Spackling</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              </p>
+             </div>
+          </div>
+
+
+
+
+
+                        {/*Presentation med urval av tjänster 3 i röda block - sektion: Tjänster */}
+          <div className="mt-[5%] flex flex-col md:flex-row justify-between">
+            <div className="basis-[31%] bg-[#fff3f3] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
+              <h3 className="text-center font-semibold my-[10px]">Spackling</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              </p>
+            </div>
+
+            <div className="basis-[31%] bg-[#fff3f3] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
+              <h3 className="text-center font-semibold my-[10px]">Spackling</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              </p>
+            </div>
+
+            <div className="basis-[31%] bg-[#fff3f3] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
+              <h3 className="text-center font-semibold my-[10px]">Spackling</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              </p>
+            </div>
+
+          </div>
+
+          </section> 
+      
+
+        </div>
+      
+        
+    );
+  }
+   

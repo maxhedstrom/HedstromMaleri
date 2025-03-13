@@ -21,7 +21,7 @@ const Hem = () => {
           Vårt fokus ligger på kvalité och nöjda kunder sedan starten 2011.
         </p>
         <a
-          href="#"
+          href="/kontakt"
           className="inline-block no-underline text-white border border-white py-3 px-[34px] text-[13px] bg-transparent relative cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-1000"
         >
           Kontakta oss för en offert!
