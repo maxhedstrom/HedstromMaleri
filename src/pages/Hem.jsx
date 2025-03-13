@@ -24,7 +24,7 @@ const Hem = () => {
           href="#"
           className="inline-block no-underline text-white border border-white py-3 px-[34px] text-[13px] bg-transparent relative cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-1000"
         >
-          Besök oss för att veta mer
+          Kontakta oss för en offert!
         </a>
       </div>
 
@@ -83,6 +83,7 @@ const Hem = () => {
       </section>
 
       {/*Referenser med bilder på uppdragsgivare - sektion: Referenser */}
+
       <section className="w-4/5 mx-auto text-center pt-[100px]">
         <div className="mb-8">
           <h1 className="text-4xl font-semibold">Utvalda uppdragsgivare</h1>
