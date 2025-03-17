@@ -9,11 +9,11 @@ export default function Kontakt() {
 
  <section className="w-3/5 mx-auto text-center pt-[100px]">
 
-       {/*Presentation med urval av tjänster 3 i röda block - sektion: Tjänster */}
-       <h1 className="text-black text-4xl font-semibold text-center ">Vi erbjuder en rad olika tjänster som passar dina behov!</h1>
+       {/*EJ KLAR */}
+       <h1 className="text-white text-4xl font-semibold text-center bg-[url('src/assets/bilder/konstruktion.jpg')] ">DENNA SIDA ÄR UNDER KONSTRUKTION</h1>
 
          <p className="text-[#333] text-[14px] font-light leading-[22px] p-[10px]">
-           Vi erbjuder ett antal olika tjänster
+         DENNA SIDA ÄR UNDER KONSTRUKTION DENNA SIDA ÄR UNDER KONSTRUKTION DENNA SIDA ÄR UNDER KONSTRUKTION DENNA SIDA ÄR UNDER KONSTRUKTION DENNA SIDA ÄR UNDER KONSTRUKTION
          </p>
 
 
@@ -23,14 +23,13 @@ export default function Kontakt() {
                  {/*DU ÄR HÄR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/}
 
          <div className="mt-[5%] flex flex-col md:flex-row justify-between">
-           <div className="basis-[40%] h-[600px] bg-[url('src/assets/bilder/tjanster.webp')] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2) bg-no-repeat bg-center bg-cover flex items-center justify-center]">
+           <div className="basis-[40%] h-[600px] bg-[url('src/assets/bilder/konstruktion.jpg')] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2) bg-no-repeat bg-left-bottom bg-cover flex items-center justify-center]">
        
            </div>
            <div className="basis-[70%] h-[400px] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
-           <h3 className="text-center font-semibold my-[10px]">Spackling</h3>
+           <h3 className="text-center font-semibold my-[10px]">Snart kommer mer innehåll</h3>
              <p>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-               labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              Snart kommer mer innehåll Snart kommer mer innehåll Snart kommer mer innehållSnart kommer mer innehållSnart kommer mer innehållSnart kommer mer innehållSnart kommer mer innehåll
              </p>
             </div>
          </div>

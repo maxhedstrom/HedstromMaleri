@@ -38,25 +38,25 @@ export default function Navbar() {
         </div>
 
        {/* Desktop-nav */}
-      <div className="hidden md:flex flex-1 justify-end -mt-[30px] gap-[20px]">
-        <ul className="flex gap-[20px] list-none m-0 p-0">
+      <div className="hidden md:flex flex-1 justify-end -mt-[30px] -mr-[72px] gap-[10px]">
+        <ul className="flex gap-[0px] list-none m-0 pt-5">
           <li className="py-[8px] px-[12px]">
-            <a href="/" className=" text-white font-bold text-[22px]">Hem</a>
+          <a href="/" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2"> Hem</a>
           </li>
-          <li className="py-[8px] px-[12px] text-[24px]">
-            <a href="/om" className="text-white font-bold">Om oss</a>
-          </li>
-          <li className="py-[8px] px-[12px]">
-            <a href="/tjanster" className="text-white font-bold text-[22px]">Tjänster</a>
+          <li className="py-[8px] px-[12px] text-[16px]">
+            <a href="/om" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">Om oss</a>
           </li>
           <li className="py-[8px] px-[12px]">
-            <a href="/projekt" className="text-white font-bold text-[22px]">Våra projekt</a>
+            <a href="/tjanster" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">Tjänster</a>
           </li>
           <li className="py-[8px] px-[12px]">
-            <a href="/rot" className="text-white font-bold text-[22px]">ROT-Avdrag</a>
+            <a href="/projekt" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">Våra projekt</a>
           </li>
           <li className="py-[8px] px-[12px]">
-            <a href="/kontakt" className="text-white font-bold text-[22px]">Kontakta oss</a>
+            <a href="/rot" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">ROT-Avdrag</a>
+          </li>
+          <li className="py-[8px] px-[12px]">
+            <a href="/kontakt" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">Kontakta oss</a>
           </li>
         </ul>
       </div>
