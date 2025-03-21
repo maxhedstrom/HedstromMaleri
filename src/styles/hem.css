@@ -8,5 +8,11 @@
   font-style: normal;
 }
 
-
-  
+/* Example of defining the Tektur font */
+.tektur-unique {
+  font-family: "Tektur", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Or any weight you prefer */
+  font-style: normal;
+  font-variation-settings: "wdth" 100; /* Custom variation if needed */
+}
