@@ -47,7 +47,7 @@ export default function Navbar() {
       <nav className="relative flex items-center justify-between px-[6%] py-[2%] w-full">
         {/* Liten logotyp när navbaren är fast */}
         {isFixed && (
-          <div className="absolute top-[0px] left-[30px] p-[5px] z-20 hidden md:block">
+          <div className="absolute top-[0px] left-[30px] -m-1 z-20 hidden md:block">
             <a href="/">
               <img src={logo} alt="Logotyp" className="w-[100px] h-auto transition-all duration-500" />
             </a>
