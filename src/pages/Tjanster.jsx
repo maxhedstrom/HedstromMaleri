@@ -11,10 +11,11 @@ function Tjanster() {
 
       {/* Introduktion till sidan med tjänster */}
       <section className="w-3/4 md:w-5/5 lg:w-8/9 mx-auto text-center pt-[100px]">
-        <h1 className="text-black text-4xl font-semibold text-center">Vi erbjuder en rad olika tjänster som passar dina behov!</h1>
-        <p className="text-[#333] text-[14px] font-light leading-[22px] p-[10px]">
-          Vi erbjuder ett antal olika tjänster
-        </p>
+        <h1 className="text-black text-4xl font-semibold text-center">Vi arbetar både åt byggföretag, bostadsrättföreningar och privatpersoner. <br /> <br />
+        </h1>
+        <h2 className="text-black text-2xl font-extralight text-center">
+          Nedan kan du läsa mer om vilka tjänster vi erbjuder och hur vi kan hjälpa dig.
+        </h2>
 
         {/* 1 Bild på höger sida */}
 

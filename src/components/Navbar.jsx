@@ -7,20 +7,22 @@ import { FaBars, FaTimes } from "react-icons/fa";
 export default function Navbar() {
   const [isFixed, setIsFixed] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > window.innerHeight * 0.5) {
+      if (window.scrollY > window.innerHeight * 0.5 && window.scrollY < lastScrollY) {
         setIsFixed(true);
       } else {
         setIsFixed(false);
       }
+      setLastScrollY(window.scrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   let headerClass = "top-0 left-0 right-0 z-10 w-full py-[10px] transition-all duration-500 ";
   if (isFixed) {
@@ -110,7 +112,7 @@ export default function Navbar() {
 
 
       {/* Hamburgermeny för mobila enheter */}
-      <div className="md:hidden absolute right-10 top-6 z-20">
+      <div className="md:hidden absolute right-12 top-6 z-20">
         <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? (
             <FaTimes className="text-white text-3xl" />
