@@ -3,7 +3,7 @@ export default function Kontakt() {
  // Här börjar innehållet på startsidan
  <div> 
 
- <section className="relative min-h-[30vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/bakgrundsbil-tvamalare.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
+ <section className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/bakgrundsbil-tvamalare.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
    <h1 className="text-white text-4xl font-semibold text-center">Kontakta oss</h1>
  </section>
 

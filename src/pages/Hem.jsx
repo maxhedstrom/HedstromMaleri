@@ -18,7 +18,7 @@ const Hem = () => {
         <p className="mt-[10px] mb-[40px] text-[18px] md:text-[30px]">
           Vi har stor yrkesmässig kunskap inom både invänding och utvändigt måleri.
           <br />
-          <br />
+          <br />  
         </p>
         <a
           href="/kontakt"
