@@ -8,26 +8,23 @@ const Hem = () => {
       {/* Första sektionen med Bakgrundsbild - sektion: välkomstsida */}
       
       <section
-        className="relative min-h-screen w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/hedstrombil.jpg')] bg-no-repeat bg-center bg-cover">
-      </section>
-      
-      <div className="w-[90%] text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-        <h1 className="text-[32px] md:text-[52px]">
+        className="relative min-h-screen w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/hedstrombil.jpg')] bg-no-repeat bg-top md:bg-center bg-cover"
+      ></section>
+
+      <div className="w-[90%] lg:w-3/5 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+        <h1 className="text-[32px] md:text-[42px] lg:text-[42px]">
           Ett litet familjeföretag med fokus på kvalité och nöjda kunder.
         </h1>
-        <p className="mt-[10px] mb-[40px] text-[18px] md:text-[30px]">
-          Vi har stor yrkesmässig kunskap inom både invänding och utvändigt måleri.
-          <br />
-          <br />  
+        <p className="mt-[10px] mb-[40px] text-[18px] md:text-[24px] lg:text-[20px]">
+          Vi har stor yrkesmässig kunskap inom både invändigt och utvändigt måleri.
         </p>
         <a
           href="/kontakt"
-          className="inline-block no-underline text-white border border-white py-3 px-[34px] text-[19px] md:text-[30px] bg-transparent relative cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-1000"
+          className="inline-block no-underline text-white border border-white py-3 px-6 md:px-8 text-[19px] md:text-[24px] lg:text-[20px] bg-transparent cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-1000"
         >
           Kontakta oss för en offert!
         </a>
       </div>
-
       {/*Presentation med urval av tjänster i röda block - sektion: Tjänster */}
       <section className="w-4/5 mx-auto text-center pt-[100px]">
         <h1 className="text-4xl font-semibold">Tjänster vi erbjuder</h1>
