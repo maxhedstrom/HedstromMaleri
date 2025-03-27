@@ -1,71 +1,70 @@
-  import React, { useState } from "react";
+import React, { useState } from "react";
   import "../styles/hem.css";
   import { FaSortAmountUpAlt } from "react-icons/fa";
 
   const TeamMember = ({ person }) => {
     const [expanded, setExpanded] = useState(false);
-
+  
     let buttonClasses =
-    "absolute right-4 bottom-0 transform -translate-x-1/2 duration-[1200ms] ease-in-out text-3xl text-white";
+      "absolute right-4 bottom-0 transform -translate-x-1/2 duration-[1200ms] ease-in-out text-3xl text-white transition-all";
   
-  let buttonIcon = (
-    <div className="relative duration-[1200ms] ease-in-out">
-      <FaSortAmountUpAlt
-        className={`transition-all duration-[1200ms] ${
-          expanded ? "rotate-180 translate-y-[-6px] ease-in-out" : "translate-y-0"
-        }`}
-      />
-    </div>
-  );
-  
-  if (expanded) {
-    buttonClasses +=
-      " -translate-y-1/2 transition-transform top-[68%] md:top-[77%]";
-  } else {
-    buttonClasses += " translate-y-0 top-[97%]";
-  }
-  
-  return (
-    <div className="bg-gray-500 shadow-lg rounded-lg overflow-hidden flex flex-col relative h-[600px] md:h-[700px] w-[350px] md:w-[500px]">
-      {/* Bild och expanderbar overlay */}
+    let buttonIcon = (
       <div
-        className="relative h-[85%] bg-cover bg-center"
-        style={{ backgroundImage: `url(${person.image})` }}
+        className={`relative transition-transform duration-[1200ms] ease-in-out ${
+          expanded ? "delay-300 rotate-180 translate-y-2" : "translate-y-0"
+        }`}
       >
-        {/* Expanderad overlay – visar namn, roll och e‑post */}
-        <div
-          className={`absolute bottom-0 left-0 w-full bg-gray-500 bg-opacity-90 text-white flex flex-col justify-center items-center p-4 transition-all duration-[1200ms] ease-in-out ${
-            expanded ? "h-1/3 md:h-1/4 translate-y-0" : "md:h-[20%] translate-y-full"
-          }`}
-        >
-          {/* div för namn, roll och mail */}
-          <div className="mb-4">
-            <h3 className="text-1xl md:text-3xl font-bold">{person.name}</h3>
-            <p className="text-1xl font-semibold">{person.role}</p>
-            <p>{person.email}</p>
-          </div>
+        <FaSortAmountUpAlt />
+      </div>
+    );
   
-          {/* Informationsruta med röd bakgrund – längst ner i overlayn */}
+    if (expanded) {
+      buttonClasses += " top-[66%] md:top-[74%] -translate-y-1/2";
+    } else {
+      buttonClasses += " top-[97%] translate-y-0";
+    }
+  
+    return (
+      <div className="bg-gray-500 shadow-lg rounded-lg overflow-hidden flex flex-col relative h-[600px] md:h-[700px] w-[350px] md:w-[500px]">
+        {/* Bild och expanderbar overlay */}
+        <div
+          className="relative h-[85%] bg-cover bg-center"
+          style={{ backgroundImage: `url(${person.image})` }}
+        >
+          {/* Expanderad overlay */}
           <div
-            className={`bg-[#f44336] text-white mb-[-90px] w-full text-center transition-opacity duration-[1200ms] ease-in-out ${
-              expanded ? "opacity-100" : "opacity-0 hidden"
+            className={`absolute bottom-0 left-0 w-full bg-gray-500 bg-opacity-90 text-white flex flex-col justify-center items-center p-4 transition-all duration-[1200ms] ease-in-out ${
+              expanded ? "h-1/3 md:h-1/4 translate-y-0" : "md:h-[20%] translate-y-full"
             }`}
           >
-            <p className="text-sm">{person.description}</p>
-          </div>
-        </div>
+            {/* div för namn, roll och mail */}
+            <div className="mb-4">
+              <h3 className="text-1xl md:text-3xl font-bold">{person.name}</h3>
+              <p className="text-1xl font-semibold">{person.role}</p>
+              <p>{person.email}</p>
+            </div>
   
-        {/* Knapp med if/else-logik */}
-        <button onClick={() => setExpanded(!expanded)} className={buttonClasses}>
-          {buttonIcon}
-        </button>
+            {/* Informationsruta */}
+            <div
+              className={`bg-[#f44336] text-white mb-[-90px] w-full text-center transition-opacity duration-[1200ms] ease-in-out ${
+                expanded ? "opacity-100" : "opacity-0 hidden"
+              }`}
+            >
+              <p className="text-sm">{person.description}</p>
+            </div>
+          </div>
+  
+          {/* Knapp */}
+          <button onClick={() => setExpanded(!expanded)} className={buttonClasses}>
+            {buttonIcon}
+          </button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
   
 
-    
-  };  
+
 
   const Om = () => {
     const teamMembers = [
@@ -164,7 +163,7 @@
         {/* Personalpresentation */}
         <section className="w-11/12 md:w-4/5 mx-auto text-center py-16 px-4">
           <h2 className="text-gray-600 text-3xl md:text-4xl font-semibold mb-8">
-            Vårt Team
+            Det är vi som är Hedström Måleri!
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
             {teamMembers.map((person, index) => (
