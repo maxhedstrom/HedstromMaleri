@@ -118,6 +118,51 @@ import React, { useState } from "react";
             </p>
           </div>
         </section>
+'2x1':
+        {/* DU ÄR HÄR */}
+        <div className="mt-[5%] flex flex-col md:flex-row px-4 md:px-40 justify-between items-stretch">
+          {/* Bildcontainer */}
+          <div className="basis-full md:basis-[40%] min-h-[400px] h-full bg-[url('src/assets/bilder/spackling.webp')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-center bg-cover flex items-center justify-center">
+          </div>
+          {/* <div className="basis-full md:basis-[40%] min-h-[400px] md:min-h-[auto] aspect-[3/4] md:aspect-[4/3] lg:h-[500px] xl:h-[600px] bg-[url('src/assets/bilder/hedstrombil2.jpg')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-left bg-cover flex items-center justify-center"></div>
+
+            '2x1': */}
+
+          {/* Textcontainer */}
+          <div className="basis-full md:basis-[55%] min-h-[400px] h-full rounded-[10px] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] text-center md:text-left flex flex-col justify-center">
+            <h3 className="text-3xl md:text-4xl font-semibold my-3">Fasadmålning</h3>
+            <p className="text-gray-500 text-sm md:text-[11px] '2x1':text-base leading-relaxed">
+              Hedström Måleri AB är ett familjeföretag med gedigen erfarenhet och ett starkt
+              fokus på kundnöjdhet. Företaget grundades 2011 av Peter Hedström, som har över
+              35 års erfarenhet i branschen. Efter att ha arbetat på flera olika firmor valde han
+              att starta sin egen verksamhet, med visionen att skapa ett företag där kvalitet,
+              service och nära kundsamarbeten står i centrum.
+              <br /> <br />
+              Idag drivs företaget av Peter Hedström tillsammans med Anton Hedström. Tillsammans
+              kombinerar vi traditionellt hantverk med moderna metoder för att kunna erbjuda ett brett
+              utbud av måleritjänster. Vi tar oss an allt från invändig och utvändig målning till
+              tapetsering och specialanpassade uppdrag. På Hedström Måleri har vi ställning/liftutbildning
+              och ID06.
+              <br /> <br />
+              För oss är en bra kundrelation lika viktig som ett väl utfört arbete. Vi värdesätter tydlig
+              kommunikation, trevlig service och respekt i varje projekt. Oavsett uppdrag strävar vi efter att
+              leverera ett resultat vi och våra kunder kan vara stolta över.
+              <br /> <br />
+              Genom åren har Hedström Måleri AB byggt upp ett starkt varumärke och ett gott rykte. Vi är
+              stolta över att ha många återkommande kunder – både privatpersoner och företag – vilket vi ser
+              som ett kvitto på vår höga standard och pålitlighet. Vill du läsa mer våra projekt genom åren
+              kan du klicka på knappen nedan.
+            </p>
+            <div className="mt-5">
+              <a
+                href="/kontakt"
+                className="inline-block text-black border border-black py-3 px-[34px] text-[13px] bg-transparent cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-500">
+                Kontakta oss för en offert!
+              </a>  
+            </div>
+          </div>
+        </div>
+
 
         {/* 1 Bild på vänster sida */}
         <div className="mt-[5%] flex flex-col md:flex-row px-4 md:px-40 justify-between items-stretch">
@@ -127,7 +172,7 @@ import React, { useState } from "react";
             <h3 className="text-gray-600 text-3xl md:text-4xl font-semibold my-3">
               En väletablerad målerifirma
             </h3>
-            <p className="text-gray-500 text-sm md:text-base leading-relaxed">
+            <p className="text-gray-500 text-sm md:text-[40px] '2x1':text-base leading-relaxed">
               Hedström Måleri AB är ett familjeföretag med gedigen erfarenhet och ett starkt
               fokus på kundnöjdhet. Företaget grundades 2011 av Peter Hedström, som har över
               35 års erfarenhet i branschen. Efter att ha arbetat på flera olika firmor valde han
@@ -161,15 +206,23 @@ import React, { useState } from "react";
         </div>
 
         {/* Personalpresentation */}
-        <section className="w-11/12 md:w-4/5 mx-auto text-center py-16 px-4">
+        <section className="w-11/12 md:w-4/5 '2x1':4/5 mx-auto text-center py-16 px-4">
           <h2 className="text-gray-600 text-3xl md:text-4xl font-semibold mb-8">
             Det är vi som är Hedström Måleri!
           </h2>
+          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
             {teamMembers.map((person, index) => (
               <TeamMember key={index} person={person} />
             ))}
           </div>
+
+          {/* EXEMPEL PÅ HUR BREDDEN KAN ÄNDRAS NEDAN! */}
+          <div className="w-full md:w-3/4 lg:w-1/2 grid grid-cols-2 md:grid-cols-3 gap-20">
+          <div className="bg-blue-500 col-span-2 p-4">Tar upp 2 kolumner</div>
+          <div className="bg-red-500 p-4">Normal kolumn</div>
+          <div className="bg-green-500 p-4">Normal kolumn</div>
+        </div>
         </section>
       </>
     );
