@@ -25,7 +25,8 @@ import React, { useState } from "react";
     }
   
     return (
-      <div className="bg-gray-500 shadow-lg rounded-lg overflow-hidden flex flex-col relative h-[600px] md:h-[540px] 2xl:h-[700px] w-[350px] md:w-[300px] 2xl:w-[540px]">
+<div className="bg-gray-500 shadow-lg rounded-lg overflow-hidden flex flex-col relative h-[600px] md:h-[540px] 2xl:h-[700px] max-w-xs md:max-w-sm 2xl:max-w-lg">
+
         {/* Bild och expanderbar overlay */}
         <div
           className="relative h-[85%] bg-cover bg-center"
@@ -39,14 +40,14 @@ import React, { useState } from "react";
           >
             {/* div för namn, roll och mail */}
             <div className="mb-4">
-              <h3 className="text-1xl md:text-3xl font-bold">{person.name}</h3>
-              <p className="text-1xl font-semibold">{person.role}</p>
+            <h3 className="2xl:text-3xl font-bold">{person.name}</h3>
+            <p className="text-xl font-semibold">{person.role}</p>
               <p>{person.email}</p>
             </div>
   
             {/* Informationsruta */}
             <div
-              className={`bg-[#f44336] text-white mb-[-90px] w-full text-center transition-opacity duration-[1200ms] ease-in-out ${
+              className={`bg-gray-500 text-white mb-[-90px] w-full text-center transition-opacity duration-[1200ms] ease-in-out ${
                 expanded ? "opacity-100" : "opacity-0 hidden"
               }`}
             >
@@ -82,7 +83,7 @@ import React, { useState } from "react";
         email: "anton@hedstrommaleri.se",
         image: "src/assets/bilder/anton.jpg",
         description:
-          "Anton kombinerar moderna metoder med traditionellt hantverk. Han ansvarar för projektledning och ser till att kvalitetsstandarder hålls.",
+          "Anton kombinerar moderna metoder med traditionellt hantverk. Han ansvarar för projektledning och ser till att kvalitetsstandarder hålls. kvalitetsstandarder hålls.kvalitetsstandarder hålls. ",
       },
       {
         name: "Ulrika Hedström",
@@ -161,7 +162,7 @@ import React, { useState } from "react";
         </div>
 
         {/* Personalpresentation */}
-        <section className="w-11/12 md:w-11/12 2xl:w-5/5 mx-auto text-center py-16 px-4 gap-7">
+        <section className="w-11/12 md:w-11/12 2xl:w-5/5 mx-auto text-center py-16 px-4 gap-7 overflow-hidden max-w-full">
         <h2 className="text-gray-600 text-3xl md:text-4xl font-semibold mb-8">
             Det är vi som är Hedström Måleri!
           </h2>
