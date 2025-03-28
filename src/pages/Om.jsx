@@ -25,7 +25,7 @@ import React, { useState } from "react";
     }
   
     return (
-      <div className="bg-gray-500 shadow-lg rounded-lg overflow-hidden flex flex-col relative h-[600px] md:h-[700px] w-[350px] md:w-[500px]">
+      <div className="bg-gray-500 shadow-lg rounded-lg overflow-hidden flex flex-col relative h-[600px] md:h-[700px] w-[350px] md:w-[540px]">
         {/* Bild och expanderbar overlay */}
         <div
           className="relative h-[85%] bg-cover bg-center"
@@ -121,13 +121,13 @@ import React, { useState } from "react";
 
         {/* 1 Bild på vänster sida */}
         <div className="mt-[5%] flex flex-col md:flex-row px-4 md:px-40 justify-between items-stretch">
-          <div className="basis-full md:basis-[40%] min-h-[400px] md:min-h-[auto] aspect-[3/4] md:aspect-[4/3] lg:h-[500px] xl:h-[600px] bg-[url('src/assets/bilder/hedstrombil2.jpg')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-left bg-cover flex items-center justify-center"></div>
-
+        <div className="basis-full md:basis-[40%] min-h-[400px] sm:h-auto aspect-[3/4] md:aspect-[2/3] lg:aspect-[4/3] bg-[url('src/assets/bilder/hedstrombil2.jpg')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-left bg-cover flex items-center justify-center"></div>
+      
           <div className="basis-full md:basis-[55%] min-h-[400px] h-full rounded-[10px] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] text-center md:text-left flex flex-col justify-center">
-            <h3 className="text-gray-600 text-3xl md:text-4xl font-semibold my-3">
-              En väletablerad målerifirma
+            <h3 className="text-gray-600 text-3xl md:text-3xl  2xl:text-4xl font-semibold my-3">
+              {"En väletablerad målerifirma"}
             </h3>
-            <p className="text-gray-500 text-sm md:text-base leading-relaxed">
+            <p className="text-gray-500 text-sm md:text-[14px]  2xl:text-base leading-relaxed">
               Hedström Måleri AB är ett familjeföretag med gedigen erfarenhet och ett starkt
               fokus på kundnöjdhet. Företaget grundades 2011 av Peter Hedström, som har över
               35 års erfarenhet i branschen. Efter att ha arbetat på flera olika firmor valde han
@@ -138,7 +138,7 @@ import React, { useState } from "react";
               kombinerar vi traditionellt hantverk med moderna metoder för att kunna erbjuda ett brett
               utbud av måleritjänster. Vi tar oss an allt från invändig och utvändig målning till
               tapetsering och specialanpassade uppdrag. På Hedström Måleri har vi ställning/liftutbildning
-              och ID06.
+              och ID06. 
               <br /> <br />
               För oss är en bra kundrelation lika viktig som ett väl utfört arbete. Vi värdesätter tydlig
               kommunikation, trevlig service och respekt i varje projekt. Oavsett uppdrag strävar vi efter att
