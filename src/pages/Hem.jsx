@@ -35,22 +35,22 @@ const Hem = () => {
           <div className="basis-[31%] bg-[#fff3f3] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
             <h3 className="text-center font-semibold my-[10px]">Spackling</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå 
+            alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.
             </p>
           </div>
           <div className="basis-[31%] bg-[#fff3f3] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
             <h3 className="text-center font-semibold my-[10px]">Fasadmålning</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå 
+            alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.
             </p>
           </div>
           <div className="basis-[31%] bg-[#fff3f3] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
             <h3 className="text-center font-semibold my-[10px]">Våtrum</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            Behöver ditt badrum eller liknande målas om krävs specialverktyg och kompetens kring hållbarhet. Våra våtrumstjänster garanterar hållbara, stilrena och fuktsäkra lösningar för ditt badrum eller tvättstuga. 
+            Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö 
             </p>
           </div>
         </div>
@@ -60,8 +60,9 @@ const Hem = () => {
       <section className="w-4/5 mx-auto text-center pt-[100px]">
         <h1 className="text-4xl font-semibold">Var vi finns</h1>
         <p className="text-[#333] text-[14px] font-light leading-[22px] p-[10px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        Hedström Måleri AB är baserat i Örebro, ett penseldrag från slottet. Vi utför arbeten i hela Närke med omnejd. 
+       
+        Vi erbjuder våra tjänster i både större städer och mindre orter i regionen.
         </p>
         <div className="flex flex-col md:flex-row justify-between">
           <div className="basis-[200%] rounded-[10px] mb-[30px] relative overflow-hidden">

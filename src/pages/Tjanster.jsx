@@ -58,7 +58,7 @@ function Tjanster() {
           <div className="basis-full md:basis-[55%] min-h-[400px] h-full rounded-[10px] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] text-center md:text-left flex flex-col justify-center md:order-1 order-2">
             <h3 className="text-3xl md:text-4xl font-semibold my-3">Våtrum</h3>
             <p className="text-sm md:text-base leading-relaxed">Behöver ditt badrum eller liknande målas om krävs specialverktyg och kompetens kring hållbarhet. Våra våtrumstjänster garanterar hållbara, stilrena och fuktsäkra lösningar för ditt badrum eller tvättstuga. 
-              Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö              <br /><br />
+              Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö<br /><br />
             </p>
             <div className="mt-5">
               <a
