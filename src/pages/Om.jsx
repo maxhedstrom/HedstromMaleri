@@ -25,7 +25,7 @@ import React, { useState } from "react";
     }
   
     return (
-      <div className="bg-gray-500 shadow-lg rounded-lg overflow-hidden flex flex-col relative h-[600px] md:h-[700px] w-[350px] md:w-[540px]">
+      <div className="bg-gray-500 shadow-lg rounded-lg overflow-hidden flex flex-col relative h-[600px] md:h-[540px] 2xl:h-[700px] w-[350px] md:w-[300px] 2xl:w-[540px]">
         {/* Bild och expanderbar overlay */}
         <div
           className="relative h-[85%] bg-cover bg-center"
@@ -161,11 +161,11 @@ import React, { useState } from "react";
         </div>
 
         {/* Personalpresentation */}
-        <section className="w-11/12 md:w-4/5 mx-auto text-center py-16 px-4">
-          <h2 className="text-gray-600 text-3xl md:text-4xl font-semibold mb-8">
+        <section className="w-11/12 md:w-11/12 2xl:w-5/5 mx-auto text-center py-16 px-4 gap-7">
+        <h2 className="text-gray-600 text-3xl md:text-4xl font-semibold mb-8">
             Det är vi som är Hedström Måleri!
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-16 px-4  justify-center items-center">
             {teamMembers.map((person, index) => (
               <TeamMember key={index} person={person} />
             ))}
@@ -176,3 +176,4 @@ import React, { useState } from "react";
   };
 
   export default Om;
+  // <section className="w-11/12 md:w-11/12 2xl:w-5/5 mx-auto text-center py-16 px-4 gap-7 flex justify-center items-center">
