@@ -1,6 +1,4 @@
 import { useState, useRef } from 'react';
-import Particles from 'react-tsparticles';
-import { loadFull } from 'tsparticles';
 
 export default function Rot() {
   const [cost, setCost] = useState('');
@@ -69,9 +67,9 @@ export default function Rot() {
   };
 
   // Simulera konfetti-effekt, ta bort?
-  const handleConfetti = () => {
-    alert('🎉 Konfetti! ROT-avdraget firas med stil! 🎉');
-  };
+  // const handleConfetti = () => {
+  //   alert('🎉 Konfetti! ROT-avdraget firas med stil! 🎉');
+  // };
 
   // ROT-beräknare: ROT-avdraget ger 50% rabatt på arbetskostnaden.
   let savings;
@@ -103,21 +101,21 @@ export default function Rot() {
   return (
     <div className="relative font-sans text-gray-800 overflow-hidden">
       {/* Header med video-bakgrund och dynamiska animationer */}
-      <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/fasad.jpg')] flex items-center justify-center overflow-hidden">
-        <h1 className="text-white text-3xl md:text-4xl font-semibold max-w-2xl">
-          Utnyttja ROT-Avdraget!
-        </h1>
+      <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/ROTBILD.jpg')] flex items-center justify-center overflow-hidden">
+      <div className=" bg-[url('src/assets/bilder/ROTBILD.jpg')] "></div>
+      <h1 className="text-white text-4xl font-semibold text-center bg-[url('src/assets/bilder/.jpg')] ">ROT-Avdrag</h1>
+
       </header>
 
       {/* Huvudinnehåll med statisk information */}
-      <main className="relative z-10 py-16 px-4 bg-gradient-to-r from-gray-50 to-gray-200">
+      <main className="relative py-16 px-4 bg-gradient-to-r from-gray-50 to-gray-200">
         <section className="max-w-5xl mx-auto bg-white p-12 rounded-2xl shadow-2xl animate-slideInUp">
           <h2 className="text-4xl font-bold text-gray-600 text-center mb-8">
             På denna sida har vi sammanställt en guide om ROT-avdraget som kan vara bra att veta.
           </h2>
 
               {/* ROT-beräknare */}
-              <div className="mt-12 p-6 bg-red-50 rounded-xl shadow-md">
+          <div className="mt-12 p-6 bg-red-50 rounded-xl shadow-md">
             <h3 className="text-2xl font-semibold text-red-500 text-center mb-4">
               ROT-Beräknare
             </h3>
@@ -147,6 +145,8 @@ export default function Rot() {
               {message && <p className="text-red-500">{message}</p>}
             </div>
           </div>
+
+              {/*  Inforuta om regeringen */}
           <p className="text-xl leading-relaxed mb-10 text-center pt-9">
             Från Maj 2025 till December 2025 har regeringen beslutat om en tillfällig höjning av ROT-avdraget till 50% av arbetskostnaden. Det innebär att du kan spara mer när du anlitar oss för dina måleriarbeten! <br />
             <a
@@ -159,7 +159,7 @@ export default function Rot() {
               </a>
           </p> 
           
-
+              {/*  Inforuta vänster sida */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="space-y-6">
               <h3 className="text-2xl font-semibold text-red-500">
@@ -172,12 +172,14 @@ export default function Rot() {
               href="https://www.skatteverket.se/privat/fastigheterochbostad/rotarbeteochrutarbete.4.2e56d4ba1202f95012080002966.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-10 py-5 bg-red-600 text-white text-xl rounded-full shadow-2xl transition-transform hover:scale-110"
-            >
+              className="inline-block text-[14px] px-10 py-5 ml-[-18px] bg-red-600 text-white lg:text-2xl rounded-full shadow-2xl transition-transform hover:scale-110 whitespace-nowrap mx-auto "
+              >
               Läs mer på Skatteverkets hemsida
             </a>
+           </div>
+
            
-            </div>
+              {/*  Inforuta höger sida */}
             <div className="space-y-6">
               <h3 className="text-2xl font-semibold text-red-500">
                 Så fungerar det hos Hedström Måleri
@@ -196,6 +198,7 @@ export default function Rot() {
             </div>
           </div>
 
+            {/*  Exempel på besparing*/}
           <div className="mt-12">
             <h3 className="text-2xl font-semibold text-red-500 text-center mb-4">
               Exempel på besparing
@@ -204,9 +207,8 @@ export default function Rot() {
               Tänk dig att arbetskostnaden för ett projekt är <strong>30 000 kr</strong>. Med ROT-avdraget dras <strong>15 000 kr</strong> direkt av – du betalar alltså bara <strong>15 000 kr</strong>!
             </p>
           </div>
-
       
-
+          {/*  Viktiga punkter att tänka på */}
           <div className="mt-12">
             <h3 className="text-2xl font-semibold text-red-500 text-center mb-4">
               Viktiga punkter att tänka på
@@ -223,7 +225,7 @@ export default function Rot() {
               href="https://www7.skatteverket.se/portal/mina-avdrag/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-10 py-5 bg-red-600 text-white text-xl rounded-full shadow-2xl transition-transform hover:scale-110"
+              className="inline-block px-10 py-5 bg-red-600 text-white text-[14px] lg:text-2xl rounded-full shadow-2xl transition-transform hover:scale-110"
             >
               Har du använt ROT-Avdrag i år? Kolla ditt ROT-utrymme hos Skatteverket här!
             </a>

@@ -124,18 +124,26 @@ export default function Navbar() {
 
       {/* Mobil meny som visas vid klick */}
       <div
-        className={`absolute top-0 left-0 w-full h-screen bg-[#505050] flex flex-col items-center justify-center transform transition-transform duration-300 
-        ${isMenuOpen ? "translate-x-0" : "-translate-x-full"} md:hidden z-10`}
-      >
-        <ul className="text-white text-lg space-y-6">
-          <li><a href="/" onClick={() => setIsMenuOpen(false)}>Hem</a></li>
-          <li><a href="/om" onClick={() => setIsMenuOpen(false)}>Om oss</a></li>
-          <li><a href="/tjanster" onClick={() => setIsMenuOpen(false)}>Tjänster</a></li>
-          <li><a href="/projekt" onClick={() => setIsMenuOpen(false)}>Våra projekt</a></li>
-          <li><a href="/rot" onClick={() => setIsMenuOpen(false)}>ROT-Avdrag</a></li>
-          <li><a href="/kontakt" onClick={() => setIsMenuOpen(false)}>Kontakta oss</a></li>
-        </ul>
-      </div>
+  className={`absolute top-0 left-0 w-full h-screen bg-[#505050] flex flex-col items-center justify-center transform transition-transform duration-300 
+  ${isMenuOpen ? "translate-x-0" : "-translate-x-full"} md:hidden z-10`}
+>
+  {/* Bild högst upp */}
+  <img 
+    src={logo} 
+    alt="Hedström Måleri AB" 
+    className="w-32 h-auto -mt-20 mb-20 mr-4  "
+  />
+
+  <ul className="text-white text-[20px] font-bold space-y-6">
+    <li><a href="/" onClick={() => setIsMenuOpen(false)}>Hem</a></li>
+    <li><a href="/om" onClick={() => setIsMenuOpen(false)}>Om oss</a></li>
+    <li><a href="/tjanster" onClick={() => setIsMenuOpen(false)}>Tjänster</a></li>
+    <li><a href="/projekt" onClick={() => setIsMenuOpen(false)}>Våra projekt</a></li>
+    <li><a href="/rot" onClick={() => setIsMenuOpen(false)}>ROT-Avdrag</a></li>
+    <li><a href="/kontakt" onClick={() => setIsMenuOpen(false)}>Kontakta oss</a></li>
+  </ul>
+</div>
+
       </nav>
     </header>
   );

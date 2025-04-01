@@ -23,22 +23,21 @@ const Timeline = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (timelineRef.current) {
-        const { top, height } = timelineRef.current.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        // Beräkna hur långt du har scrollat
         const scrolled = window.scrollY;
-        const totalHeight = document.documentElement.scrollHeight - windowHeight;
-
-        // Beräkna procentuell scrollning och multiplicera med en faktor för att sakta ner
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrollPercentage = Math.min(Math.max(0, (scrolled / totalHeight) * 100), 100);
-        const slowScrollPercentage = scrollPercentage * 0.5; // Minska hastigheten till hälften
-
-        // Förskjut linjen lite före skrollningen
-        const offsetPercentage = 5; // Förskjut linjen med 5% mer än scrollningen
+    
+        const delayFactor = 0.5; // Alltid långsammare scroll
+        const slowScrollPercentage = scrollPercentage * delayFactor;
+    
+        // Endast lägg till offset om enheten är responsiv (< 768px)
+        const isResponsive = window.innerWidth < 768;
+        const offsetPercentage = isResponsive ? 5 : 0; 
+    
         setScrollHeight(Math.min(slowScrollPercentage + offsetPercentage, 100));
       }
     };
+    
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
