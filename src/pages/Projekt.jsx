@@ -44,19 +44,35 @@ const Timeline = () => {
   }, []);
 
   return (
+
+    
     <div>
       <section className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/hedstrombil.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
         <h1 className="text-white text-4xl font-semibold text-center">Projekt </h1>
       </section>
 
       <section className="w-3/4 md:w-5/5 lg:w-8/9 mx-auto text-center pt-[100px]">
-        <h1 className="text-black text-4xl font-semibold text-center">Vi har stor erfarenhet av alla typer av projekt och du kan se ett utplock av dessa här</h1>
+      <h1 className="text-black text-4xl font-semibold text-center">Vi har stor erfarenhet av alla typer av projekt och du kan se ett utplock av dessa här</h1>
+
+       {/*Två bilder bredvid varandra */}
+       <div className="mt-[5%] flex flex-col md:flex-row px-4 md:px-40  justify-between items-stretch">
+          {/* Bildcontainer */}
+          <div className="basis-full md:basis-[40%] min-h-[400px] h-full bg-[url('src/assets/bilder/spackling.webp')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-center bg-cover flex items-center justify-center">
+          </div>
+
+          {/* Bildcontainer */}
+          <div className="basis-full md:basis-[40%] min-h-[400px] h-full bg-[url('src/assets/bilder/spackling.webp')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-center bg-cover flex items-center justify-center">
+          </div>
+        </div>
+        <p>Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle </p>
+
+
         <p className="text-[#333] text-[14px] font-light leading-[22px] p-[10px]">
           Företaget ägs och drivs av Peter Hedström som har över 26 års erfarenhet i branschen. 
         </p>
 
         <div className="relative flex flex-col items-center py-10">
-          <h2 className="text-3xl font-bold mb-8">Utplock av projekt genom åren</h2>
+
           <div ref={timelineRef} className="relative w-full max-w-4xl">
             <div className="absolute left-1/2 top-0 h-full w-1 bg-gray-300 transform -translate-x-1/2">
               <div
@@ -75,8 +91,10 @@ const Timeline = () => {
             ))}
           </div>
         </div>
+        
       </section>
     </div>
+    
   );
 };
 
