@@ -6,6 +6,10 @@
   font-family: "Catamaran", serif;
   font-weight: 400;
   font-style: normal;
+  --rubrik-color: #4B5563;   /* Grå */
+  --text-color: #6B7280; /* Ljusgrå */
+  --rutor-color: #fff3f3;    /* Rosa */
+  --detalj-color: #F87171;/* Ljusröd */
 }
 
 /* Example of defining the Tektur font */
