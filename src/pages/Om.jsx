@@ -152,7 +152,7 @@ import React, { useState } from "react";
             </p>
             <div className="mt-5">
               <a
-                href="/projekt"
+                href="/projekt#target-section"
                 className="inline-block text-black border border-black py-3 px-[34px] text-[13px] bg-transparent cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-500"
               >
                 Läs mer om våra projekt genom åren!

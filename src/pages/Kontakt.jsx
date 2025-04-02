@@ -1,77 +1,70 @@
-export default function Kontakt() {
-    return (
- // Här börjar innehållet på startsidan
- <div> 
+import { useState } from "react";
+import { Button } from "/src/components/ui/button";
+import { Input } from "/src/components/ui/input";
+import { Textarea } from "/src/components/ui/textarea";
+import { Card, CardContent } from "@/components/ui/card";
 
- <section className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/bakgrundsbil-tvamalare.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
-   <h1 className="text-white text-4xl font-semibold text-center">Kontakta oss</h1>
- </section>
+export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
- <section className="w-3/5 mx-auto text-center pt-[100px]">
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-       {/*EJ KLAR */}
-       <h1 className="text-white text-4xl font-semibold text-center bg-[url('src/assets/bilder/konstruktion.jpg')] ">DENNA SIDA ÄR UNDER KONSTRUKTION</h1>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+  };
 
-         <p className="text-[#333] text-[14px] font-light leading-[22px] p-[10px]">
-         DENNA SIDA ÄR UNDER KONSTRUKTION DENNA SIDA ÄR UNDER KONSTRUKTION DENNA SIDA ÄR UNDER KONSTRUKTION DENNA SIDA ÄR UNDER KONSTRUKTION DENNA SIDA ÄR UNDER KONSTRUKTION
-         </p>
-
-
-
-
-
-                 {/*DU ÄR HÄR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/}
-
-         <div className="mt-[5%] flex flex-col md:flex-row justify-between">
-           <div className="basis-[40%] h-[600px] bg-[url('src/assets/bilder/konstruktion.jpg')] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2) bg-no-repeat bg-left-bottom bg-cover flex items-center justify-center]">
-       
-           </div>
-           <div className="basis-[70%] h-[400px] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
-           <h3 className="text-center font-semibold my-[10px]">Snart kommer mer innehåll</h3>
-             <p>
-              Snart kommer mer innehåll Snart kommer mer innehåll Snart kommer mer innehållSnart kommer mer innehållSnart kommer mer innehållSnart kommer mer innehållSnart kommer mer innehåll
-             </p>
+  return (
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+      <Card className="w-full max-w-lg shadow-lg rounded-2xl p-6 bg-white">
+        <CardContent>
+          <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Kontakta oss</h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-gray-700 font-medium">Namn</label>
+              <Input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Ditt namn"
+                required
+              />
             </div>
-         </div>
-
-
-
-
-
-                       {/*Presentation med urval av tjänster 3 i röda block - sektion: Tjänster */}
-         <div className="mt-[5%] flex flex-col md:flex-row justify-between">
-           <div className="basis-[31%] bg-[#fff3f3] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
-             <h3 className="text-center font-semibold my-[10px]">Spackling</h3>
-             <p>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-               labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-             </p>
-           </div>
-
-           <div className="basis-[31%] bg-[#fff3f3] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
-             <h3 className="text-center font-semibold my-[10px]">Spackling</h3>
-             <p>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-               labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-             </p>
-           </div>
-
-           <div className="basis-[31%] bg-[#fff3f3] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
-             <h3 className="text-center font-semibold my-[10px]">Spackling</h3>
-             <p>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-               labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-             </p>
-           </div>
-
-         </div>
-
-         </section> 
-     
-
-       </div>
-     
-       
-   );
-  }
-  
+            <div>
+              <label className="block text-gray-700 font-medium">E-post</label>
+              <Input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Din e-post"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 font-medium">Meddelande</label>
+              <Textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Skriv ditt meddelande här..."
+                rows="4"
+                required
+              />
+            </div>
+            <Button type="submit" className="w-full bg-blue-600 text-white hover:bg-blue-700">
+              Skicka
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
