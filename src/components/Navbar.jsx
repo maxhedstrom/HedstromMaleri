@@ -26,7 +26,7 @@ export default function Navbar() {
 
   let headerClass = "top-0 left-0 right-0 z-10 w-full py-[10px] transition-all duration-500 ";
   if (isFixed) {
-    headerClass += "fixed bg-[rgba(80,80,80,0.7)] shadow-lg backdrop-blur-md";
+    headerClass += "fixed bg-[rgba(0,0,0,0.2)] shadow-lg backdrop-blur-md";
   } else {
     headerClass += "absolute bg-transparent";
   }

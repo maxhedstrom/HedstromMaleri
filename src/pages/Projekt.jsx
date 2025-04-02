@@ -71,7 +71,7 @@ const Timeline = () => {
           Företaget ägs och drivs av Peter Hedström som har över 26 års erfarenhet i branschen. 
         </p>
 
-        <div className="relative flex flex-col items-center py-10">
+        <div id="target-section" className="relative flex flex-col items-center py-10">
 
           <div ref={timelineRef} className="relative w-full max-w-4xl">
             <div className="absolute left-1/2 top-0 h-full w-1 bg-gray-300 transform -translate-x-1/2">

@@ -73,7 +73,7 @@ import React, { useState } from "react";
         name: "Peter Hedström",
         role: "VD & Målare",
         email: "peter@hedstrommaleri.se || 073-600 20 47",
-        image: "src/assets/bilder/anton.jpg",
+        image: "src/assets/bilder/peter.jpg",
         description:
           "Peter har över 35 års erfarenhet av måleri och grundade företaget 2011. Precis som en god vin är han bara bättre med åren och arbetar stenhårt för att se till att alla kunder är nöjda.",
       },
@@ -89,7 +89,7 @@ import React, { useState } from "react";
         name: "Ulrika Hedström",
         role: "Administratör",
         email: "ulrika@hedstrommaleri.se",
-        image: "src/assets/bilder/anton.jpg",
+        image: "src/assets/bilder/ulrika.jpg",
         description:
           "Ulrika stöttar upp den  adminsastriva delen och är den som ser till att allt flyter på. Hon är den som ser till att alla papper är i ordning och att alla kunder får korrekta fakturor.",
       },
@@ -98,11 +98,11 @@ import React, { useState } from "react";
     return (
       <>
         {/* Hero-section */}
-        <section className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/fasad.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center">
+        <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/slottet.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center">
           <h1 className="text-white text-3xl md:text-4xl font-semibold max-w-2xl">
             Kul att du vill veta mer om oss!
           </h1>
-        </section>
+        </header>
 
         {/* Presentation */}
         <section className="w-11/12 md:w-4/5 mx-auto text-center py-16 px-4">
