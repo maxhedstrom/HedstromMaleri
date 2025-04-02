@@ -97,8 +97,8 @@ import React, { useState } from "react";
 
     return (
       <>
-        {/* Hero-section */}
-        <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/slottet.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center">
+        {/* Navbar-section */}
+        <header  className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/slottet.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center">
           <h1 className="text-white text-3xl md:text-4xl font-semibold max-w-2xl">
             Kul att du vill veta mer om oss!
           </h1>
@@ -106,7 +106,7 @@ import React, { useState } from "react";
 
         {/* Presentation */}
         <section className="w-11/12 md:w-4/5 mx-auto text-center py-16 px-4">
-          <div className="max-w-2xl mx-auto">
+          <div  id="top" className="max-w-2xl mx-auto">
             <h1 className="text-gray-600 text-2xl md:text-5xl font-semibold leading-tight">
               DITT MÅLERI MED FOKUS PÅ KVALITÉ OCH NÖJDA KUNDER
             </h1>

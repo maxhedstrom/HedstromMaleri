@@ -1,5 +1,13 @@
 import React from "react";
 import "../styles/hem.css";
+import { Button } from "/src/components/ui/button";
+import { Link } from "react-router-dom";
+
+<Link to="/tjanster">
+  <Button className="w-full">
+    Kontakta oss för en offert!
+  </Button>
+</Link>
 
 function Tjanster() {
   return (
@@ -35,13 +43,15 @@ function Tjanster() {
               {/* En välspacklad vägg ger inte bara en snyggare finish, utan gör också att målningen håller längre och ser professionell ut. 
               Oavsett om det handlar om en renovering eller ett nybygge är spackling en investering i kvalitet, hållbarhet och ett vackert hem. */}
             </p>
+
             <div className="mt-5">
-              <a
-                href="/kontakt"
-                className="inline-block text-black border border-black py-3 px-[34px] text-[13px] bg-transparent cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-500">
+              <Link to="/kontakt">
+               <Button className="w-auto">
                 Kontakta oss för en offert!
-              </a>  
+                </Button>
+              </Link> 
             </div>
+       
           </div>
         </div>
 
@@ -60,12 +70,12 @@ function Tjanster() {
             <p className="text-sm md:text-base leading-relaxed">Behöver ditt badrum eller liknande målas om krävs specialverktyg och kompetens kring hållbarhet. Våra våtrumstjänster garanterar hållbara, stilrena och fuktsäkra lösningar för ditt badrum eller tvättstuga. 
               Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö<br /><br />
             </p>
-            <div className="mt-5">
-              <a
-                href="/kontakt"
-                className="inline-block text-black border border-black py-3 px-[34px] text-[13px] bg-transparent cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-500">
+               <div className="mt-5">
+              <Link to="/kontakt">
+               <Button className="w-auto">
                 Kontakta oss för en offert!
-              </a>  
+                </Button>
+              </Link> 
             </div>
           </div>
         </div>
@@ -91,11 +101,11 @@ function Tjanster() {
               Oavsett om det handlar om en renovering eller ett nybygge är spackling en investering i kvalitet, hållbarhet och ett vackert hem.
             </p>
             <div className="mt-5">
-              <a
-                href="/kontakt"
-                className="inline-block text-black border border-black py-3 px-[34px] text-[13px] bg-transparent cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-500">
+              <Link to="/kontakt">
+               <Button className="w-auto">
                 Kontakta oss för en offert!
-              </a>  
+                </Button>
+              </Link> 
             </div>
           </div>
           
@@ -118,11 +128,11 @@ function Tjanster() {
               <br /><br />
             </p>
             <div className="mt-5">
-              <a
-                href="/kontakt"
-                className="inline-block text-black border border-black py-3 px-[34px] text-[13px] bg-transparent cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-500">
+              <Link to="/kontakt">
+               <Button className="w-auto">
                 Kontakta oss för en offert!
-              </a>  
+                </Button>
+              </Link> 
             </div>
           </div>
         </div>
@@ -143,12 +153,12 @@ function Tjanster() {
               En välspacklad vägg ger inte bara en snyggare finish, utan gör också att målningen håller längre och ser professionell ut. 
               Oavsett om det handlar om en renovering eller ett nybygge är spackling en investering i kvalitet, hållbarhet och ett vackert hem.
             </p>
-            <div className="mt-5">
-              <a
-                href="/kontakt"
-                className="inline-block text-black border border-black py-3 px-[34px] text-[13px] bg-transparent cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-500">
+                <div className="mt-5">
+              <Link to="/kontakt">
+               <Button className="w-auto">
                 Kontakta oss för en offert!
-              </a>  
+                </Button>
+              </Link> 
             </div>
           </div>
           

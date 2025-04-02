@@ -1,11 +1,21 @@
-export function Button({ children, className, ...props }) {
-    return (
-      <button
-        className={`px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition ${className}`}
-        {...props}
-      >
-        {children}
-      </button>
-    );
-  }
-  
+export function Button({ children, className, onClick, ...props }) {
+  const handleClick = (event) => {
+    // Scrolla till toppen när knappen trycks
+    window.scrollTo(0, 0);
+
+    // Om det finns ett `onClick`-event från föräldern, anropas det också
+    if (onClick) {
+      onClick(event);
+    }
+  };
+
+  return (
+    <button
+      className={`inline-block text-black border border-black py-3 px-[34px] text-[13px] bg-transparent cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-500 ${className}`}
+      onClick={handleClick}  // Lägg till onClick här
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
