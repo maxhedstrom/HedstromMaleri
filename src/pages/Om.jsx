@@ -121,7 +121,7 @@ import { Card, CardContent } from "/src/components/ui/card";
           </div>
         </section>
 
-            <Card
+            <infoCard
       image="src/assets/bilder/hedstrombil2.jpg"
       title="En väletablerad målerifirma"
       description="Hedström Måleri AB är ett familjeföretag med gedigen erfarenhet och ett starkt fokus på kundnöjdhet. Företaget grundades 2011 av Peter Hedström, som har över 35 års erfarenhet i branschen. Efter att ha arbetat på flera olika firmor valde han att starta sin egen verksamhet, med visionen att skapa ett företag där kvalitet, service och nära kundsamarbeten står i centrum.
@@ -132,7 +132,7 @@ import { Card, CardContent } from "/src/components/ui/card";
 
       Genom åren har Hedström Måleri AB byggt upp ett starkt varumärke och ett gott rykte. Vi är stolta över att ha många återkommande kunder – både privatpersoner och företag – vilket vi ser som ett kvitto på vår höga standard och pålitlighet. Vill du läsa mer om våra projekt genom åren kan du klicka på knappen nedan."
             />
-            
+
         {/* 1 Bild på vänster sida */}
       <div className="mt-[5%] flex flex-col md:flex-row px-4 md:px-40 justify-between items-stretch">
         <div className="basis-full md:basis-[40%] min-h-[400px] sm:h-auto aspect-[3/4] md:aspect-[2/3] lg:aspect-[4/3] bg-[url('src/assets/bilder/hedstrombil2.jpg')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-left bg-cover flex items-center justify-center"></div>
