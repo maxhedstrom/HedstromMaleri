@@ -46,28 +46,32 @@ const Timeline = () => {
   return (
 
     
-    <div>
+  <div>
       <section className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/hedstrombil.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
         <h1 className="text-white text-4xl font-semibold text-center">Projekt </h1>
       </section>
 
-      <section className="w-3/4 md:w-5/5 lg:w-8/9 mx-auto text-center pt-[100px]">
-      <h1 className="text-black text-4xl font-semibold text-center">Vi har stor erfarenhet av alla typer av projekt och du kan se ett utplock av dessa här</h1>
+    <section className="w-3/4 md:w-5/5 lg:w-8/9 mx-auto text-center pt-[100px]">
+      <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold text-center">Vi har stor erfarenhet av alla typer av projekt och du kan se ett utplock av dessa här</h1>
 
        {/*Två bilder bredvid varandra */}
        <div className="mt-[5%] flex flex-col md:flex-row px-4 md:px-40  justify-between items-stretch">
           {/* Bildcontainer */}
-          <div className="basis-full md:basis-[40%] min-h-[400px] h-full bg-[url('src/assets/bilder/spackling.webp')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-center bg-cover flex items-center justify-center">
+          <div 
+            className="basis-full md:basis-[40%] min-h-[400px] h-full bg-[url('src/assets/bilder/spackling.webp')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-center bg-cover flex items-center justify-center">
           </div>
 
           {/* Bildcontainer */}
-          <div className="basis-full md:basis-[40%] min-h-[400px] h-full bg-[url('src/assets/bilder/spackling.webp')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-center bg-cover flex items-center justify-center">
+          <div 
+            className="basis-full md:basis-[40%] min-h-[400px] h-full bg-[url('src/assets/bilder/spackling.webp')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-center bg-cover flex items-center justify-center">
           </div>
         </div>
-        <p>Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle </p>
+        <p className="text-[var(--text-color)]">
+          Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle
+        </p>
 
 
-        <p className="text-[#333] text-[14px] font-light leading-[22px] p-[10px]">
+        <p className="text-[var(--text-color)] text-[14px] font-light leading-[22px] p-[10px]">
           Företaget ägs och drivs av Peter Hedström som har över 26 års erfarenhet i branschen. 
         </p>
 
@@ -83,8 +87,8 @@ const Timeline = () => {
             {events.map((event, index) => (
               <div key={index} className={`relative flex items-center w-full mb-10 ${index % 2 === 0 ? "justify-start" : "justify-end"}`}>
                 <div className="w-1/2 p-4">
-                  <h3 className="text-lg font-semibold text-gray-700">{event.year}</h3>
-                  <p className="text-gray-600 text-sm md:text-base">{event.text}</p>
+                  <h3 className="text-lg font-semibold text-[var(--rubrik-color)]">{event.year}</h3>
+                  <p className="text-[var(--text-color)] text-sm md:text-base">{event.text}</p>
                 </div>
                 <div className="w-8 h-8 bg-red-500 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
               </div>
@@ -92,8 +96,8 @@ const Timeline = () => {
           </div>
         </div>
         
-      </section>
-    </div>
+    </section>
+  </div>
     
   );
 };

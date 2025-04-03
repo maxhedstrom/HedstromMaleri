@@ -99,8 +99,14 @@ export default function Rot() {
   const newTotal = cost - savings;
 
   return (
-    <div className="relative font-sans text-gray-800 overflow-hidden">
-      {/* Header med video-bakgrund och dynamiska animationer */}
+          // text-[var(--rubrik-color)]
+    // text-[var(--text-color)]
+    // text-[var(--detalj-color)]
+    // --rubrik-color: #4B5563;   /* Grå (tailwind: gray-600) */
+    // --text-color: #6B7280; /* Ljusgrå (tailwind: gray-500) */
+    
+
+    <div className="text-[var(--text-color)]">
       <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/fasad.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center">
       <div className=" bg-[url('src/assets/bilder/ROTBILD.jpg')] "></div>
       <h1 className="text-white text-4xl font-semibold text-center">ROT-Avdrag</h1>
@@ -110,13 +116,13 @@ export default function Rot() {
       {/* Huvudinnehåll med statisk information */}
       <main className="relative py-16 px-4 bg-gradient-to-r from-gray-50 to-gray-200">
         <section className="max-w-5xl mx-auto bg-white p-12 rounded-2xl shadow-2xl animate-slideInUp">
-          <h2 className="text-4xl font-bold text-gray-600 text-center mb-8">
+          <h2 className="text-[var(--rubrik-color)] text-4xl font-bold text-center mb-8">
             På denna sida har vi sammanställt en guide om ROT-avdraget som kan vara bra att veta.
           </h2>
 
               {/* ROT-beräknare */}
           <div className="mt-12 p-6 bg-red-50 rounded-xl shadow-md">
-            <h3 className="text-2xl font-semibold text-red-500 text-center mb-4">
+            <h3 className="text-[var(--detalj-color)] text-2xl font-semibold  text-center mb-4">
               ROT-Beräknare
             </h3>
             <div className="flex flex-col items-center">
@@ -133,7 +139,7 @@ export default function Rot() {
                 placeholder="t.ex. 30 000 kr"
                 pattern="\d*"
                 inputMode="numeric"
-                className="w-64 p-2 border border-red-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-red-400"
+                className="w-64 p-2 border border-red-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-[var(--detalj-color)]"
               />
 
               <p className="text-center text-[13px] md:text-[18px] md:text-lg">
@@ -153,7 +159,7 @@ export default function Rot() {
                 href="https://www.regeringen.se/rattsliga-dokument/departementsserien-och-promemorior/2025/03/tillfalligt-hojd-subventionsgrad-for-rotavdraget/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-red-600 underline text-lg hover:text-red-800 transition-colors"
+                className="text-[var(--detalj-color)] underline text-lg hover:text-red-800 transition-colors"
               >
                 Läs mer om det tillfälliga ROT-avdraget på regeringens hemsida
               </a>
@@ -162,26 +168,26 @@ export default function Rot() {
               {/*  Inforuta vänster sida */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-red-500">
+              <h3 className="text-2xl font-semibold text-[var(--detalj-color)]">
                 Vad är ROT-avdraget?
               </h3>
               <p className="text-lg">
                 ROT-avdraget är en skattereduktion som gör det mer ekonomiskt att anlita professionella hantverkare. Med den höjda subventionsgraden på 50% får du direkt halva arbetskostnaden avdragen!
               </p>
               <a
-              href="https://www.skatteverket.se/privat/fastigheterochbostad/rotarbeteochrutarbete.4.2e56d4ba1202f95012080002966.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block text-[14px] px-10 py-5 ml-[-18px] bg-red-600 text-white lg:text-2xl rounded-full shadow-2xl transition-transform hover:scale-110 whitespace-nowrap mx-auto "
-              >
-              Läs mer på Skatteverkets hemsida
-            </a>
-           </div>
+                href="https://www.skatteverket.se/privat/fastigheterochbostad/rotarbeteochrutarbete.4.2e56d4ba1202f95012080002966.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-[14px] px-10 py-5 ml-[-18px] bg-[var(--detalj-color)] text-white lg:text-2xl rounded-full shadow-2xl transition-transform hover:scale-110 hover:bg-red-600 whitespace-nowrap mx-auto "
+                >
+                Läs mer på Skatteverkets hemsida
+              </a>
+            </div>
 
            
               {/*  Inforuta höger sida */}
             <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-red-500">
+              <h3 className="text-2xl font-semibold text-[var(--detalj-color)]">
                 Så fungerar det hos Hedström Måleri
               </h3>
               <ul className="list-disc list-inside text-lg space-y-3">
@@ -200,7 +206,7 @@ export default function Rot() {
 
             {/*  Exempel på besparing*/}
           <div className="mt-12">
-            <h3 className="text-2xl font-semibold text-red-500 text-center mb-4">
+            <h3 className="text-2xl font-semibold text-[var(--detalj-color)] text-center mb-4">
               Exempel på besparing
             </h3>
             <p className="text-lg text-center">
@@ -210,7 +216,7 @@ export default function Rot() {
       
           {/*  Viktiga punkter att tänka på */}
           <div className="mt-12">
-            <h3 className="text-2xl font-semibold text-red-500 text-center mb-4">
+            <h3 className="text-2xl font-semibold text-[var(--detalj-color)] text-center mb-4">
               Viktiga punkter att tänka på
             </h3>
             <ul className="list-disc list-inside text-lg space-y-3">
@@ -225,7 +231,7 @@ export default function Rot() {
               href="https://www7.skatteverket.se/portal/mina-avdrag/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-10 py-5 bg-red-600 text-white text-[14px] lg:text-2xl rounded-full shadow-2xl transition-transform hover:scale-110"
+              className="inline-block px-10 py-5 bg-[var(--detalj-color)] hover:bg-red-600 text-white text-[14px] lg:text-2xl rounded-full shadow-2xl transition-transform hover:scale-110"
             >
               Har du använt ROT-Avdrag i år? Kolla ditt ROT-utrymme hos Skatteverket här!
             </a>

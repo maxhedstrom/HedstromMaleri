@@ -3,14 +3,15 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Finger+Paint&family=Playwrite+IT+Moderna:wght@100..400&display=swap'); */
 /* === Grundläggande inställningar === */
 :root {
-  font-family: "Catamaran", serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-style: normal;
-  --rubrik-color: #4B5563;   /* Grå */
-  --text-color: #6B7280; /* Ljusgrå */
-  --rutor-color: #fff3f3;    /* Rosa */
-  --detalj-color: #F87171;/* Ljusröd */
+  --rubrik-color: #4B5563;   /* Grå (tailwind: gray-600) */
+  --text-color: #6B7280; /* Ljusgrå (tailwind: gray-500) */
+  --rutor-color: #fff3f3;    /* Rosa (närmast tailwind: rose-100) */
+  --detalj-color: #F20C0C; /* Ljusröd (tailwind: red-400) */
 }
+
 
 /* Example of defining the Tektur font */
 .tektur-unique {
