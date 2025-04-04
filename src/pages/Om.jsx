@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "../styles/hem.css";
 import { FaSortAmountUpAlt } from "react-icons/fa";
-import { Card, CardContent } from "/src/components/ui/card"; 
+// import { Card, CardContent } from "/src/components/ui/Infocard"; 
+import InfoCard from "/src/components/ui/InfoCard";
+
+
 
 
   const TeamMember = ({ person }) => {
@@ -28,6 +31,8 @@ import { Card, CardContent } from "/src/components/ui/card";
     return (
     <div className="bg-[var(--text-color)] shadow-lg rounded-lg overflow-hidden flex flex-col relative h-[600px] md:h-[540px] 2xl:h-[700px] max-w-xs md:max-w-sm 2xl:max-w-lg">
 
+       
+       
         {/* Bild och expanderbar overlay */}
         <div
           className="relative h-[85%] bg-cover bg-center"
@@ -106,7 +111,9 @@ import { Card, CardContent } from "/src/components/ui/card";
         </header>
 
         {/* Presentation */}
+        
         <section className="w-11/12 md:w-4/5 mx-auto text-center py-16 px-4">
+
           <div  id="top" className="max-w-2xl mx-auto">
             <h1 className="text-[var(--rubrik-color)] text-2xl md:text-5xl font-semibold leading-tight">
               DITT MÅLERI MED FOKUS PÅ KVALITÉ OCH NÖJDA KUNDER
@@ -120,8 +127,8 @@ import { Card, CardContent } from "/src/components/ui/card";
             </p>
           </div>
         </section>
-
-            <infoCard
+        
+    <InfoCard  
       image="src/assets/bilder/hedstrombil2.jpg"
       title="En väletablerad målerifirma"
       description="Hedström Måleri AB är ett familjeföretag med gedigen erfarenhet och ett starkt fokus på kundnöjdhet. Företaget grundades 2011 av Peter Hedström, som har över 35 års erfarenhet i branschen. Efter att ha arbetat på flera olika firmor valde han att starta sin egen verksamhet, med visionen att skapa ett företag där kvalitet, service och nära kundsamarbeten står i centrum.
@@ -131,49 +138,12 @@ import { Card, CardContent } from "/src/components/ui/card";
       För oss är en bra kundrelation lika viktig som ett väl utfört arbete. Vi värdesätter tydlig kommunikation, trevlig service och respekt i varje projekt. Oavsett uppdrag strävar vi efter att leverera ett resultat vi och våra kunder kan vara stolta över.
 
       Genom åren har Hedström Måleri AB byggt upp ett starkt varumärke och ett gott rykte. Vi är stolta över att ha många återkommande kunder – både privatpersoner och företag – vilket vi ser som ett kvitto på vår höga standard och pålitlighet. Vill du läsa mer om våra projekt genom åren kan du klicka på knappen nedan."
-            />
-
-        {/* 1 Bild på vänster sida */}
-      <div className="mt-[5%] flex flex-col md:flex-row px-4 md:px-40 justify-between items-stretch">
-        <div className="basis-full md:basis-[40%] min-h-[400px] sm:h-auto aspect-[3/4] md:aspect-[2/3] lg:aspect-[4/3] bg-[url('src/assets/bilder/hedstrombil2.jpg')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-left bg-cover flex items-center justify-center"></div>
-      
-          <div className="basis-full md:basis-[55%] min-h-[400px] h-full rounded-[10px] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] text-center md:text-left flex flex-col justify-center">
-            <h3 className="text-[var(--rubrik-color)] text-3xl md:text-3xl  2xl:text-4xl font-semibold my-3">
-              {"En väletablerad målerifirma"}
-            </h3>
-            <p className="text-[var(--text-color)] text-sm md:text-[14px]  2xl:text-base leading-relaxed">
-              Hedström Måleri AB är ett familjeföretag med gedigen erfarenhet och ett starkt
-              fokus på kundnöjdhet. Företaget grundades 2011 av Peter Hedström, som har över
-              35 års erfarenhet i branschen. Efter att ha arbetat på flera olika firmor valde han
-              att starta sin egen verksamhet, med visionen att skapa ett företag där kvalitet,
-              service och nära kundsamarbeten står i centrum.
-              <br /> <br />
-              Idag drivs företaget av Peter Hedström tillsammans med Anton Hedström. Tillsammans
-              kombinerar vi traditionellt hantverk med moderna metoder för att kunna erbjuda ett brett
-              utbud av måleritjänster. Vi tar oss an allt från invändig och utvändig målning till
-              tapetsering och specialanpassade uppdrag. På Hedström Måleri har vi ställning/liftutbildning
-              och ID06. 
-              <br /> <br />
-              För oss är en bra kundrelation lika viktig som ett väl utfört arbete. Vi värdesätter tydlig
-              kommunikation, trevlig service och respekt i varje projekt. Oavsett uppdrag strävar vi efter att
-              leverera ett resultat vi och våra kunder kan vara stolta över.
-              <br /> <br />
-              Genom åren har Hedström Måleri AB byggt upp ett starkt varumärke och ett gott rykte. Vi är
-              stolta över att ha många återkommande kunder – både privatpersoner och företag – vilket vi ser
-              som ett kvitto på vår höga standard och pålitlighet. Vill du läsa mer våra projekt genom åren
-              kan du klicka på knappen nedan.
-            </p>
-            <div className="mt-5">
-              <a
-                href="/projekt#target-section"
-                className="inline-block text-black border border-black py-3 px-[34px] text-[13px] bg-transparent cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-500"
-              >
-                Läs mer om våra projekt genom åren!
-              </a>
-            </div>
-        </div>
-      </div>
-
+      link="/projekt"      
+      linkText="Läs mer om våra projekt genom åren!"
+      className="basis-full md:basis-[55%] min-h-[400px] h-full rounded-[10px] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] text-center md:text-left flex flex-col justify-center gap-8"
+      largeImage={true}
+    />
+    
         {/* Personalpresentation */}
         <section className="w-11/12 md:w-11/12 2xl:w-5/5 mx-auto text-center py-16 px-4 gap-7 overflow-hidden max-w-full">
           <h2 className="text-[var(--rubrik-color)] text-3xl md:text-4xl font-semibold mb-8">
