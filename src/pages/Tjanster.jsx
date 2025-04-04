@@ -64,7 +64,7 @@ function Tjanster() {
                 
       <InfoCard
         image="src/assets/bilder/spackling.webp"
-        title="Fasadmålning"
+        image="Fasadmålning"
         description="Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå  alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende. Kontakta oss idag för en kostnadsfri offert!"  
         linkText="Kontakta oss för en offert!"
         className="border"

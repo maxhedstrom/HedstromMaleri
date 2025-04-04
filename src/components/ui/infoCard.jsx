@@ -36,7 +36,7 @@ const InfoCard = ({ image, title, description, link, linkText, largeImage, rever
       buttonText = linkText;
     }
     linkElement = (
-      <div className="mt-5">
+      <div className="mt-5 text-center">
         <a
           href={link}
           className="inline-block text-black border border-black py-3 px-[34px] text-[13px] bg-transparent cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-500"
@@ -54,10 +54,10 @@ const InfoCard = ({ image, title, description, link, linkText, largeImage, rever
 
       {/* Textsektionen */}
       <div className={textBoxClasses}>
-        <h3 className="text-[var(--rubrik-color)] text-3xl md:text-4xl 2xl:text-4xl font-semibold my-3">
+        <h3 className="text-[var(--rubrik-color)] text-center text-3xl md:text-4xl 2xl:text-4xl font-semibold my-3">
           {title}
         </h3>
-        <p className="whitespace-pre-line text-[var(--text-color)] text-sm md:text-base 2xl:text-base leading-relaxed">
+        <p className="whitespace-pre-line text-center text-[var(--text-color)] text-sm md:text-base 2xl:text-base leading-relaxed">
           {description}
         </p>
 

@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import InfoCard from "/src/components/ui/InfoCard";
 
 const Timeline = () => {
   const events = [
@@ -47,13 +48,22 @@ const Timeline = () => {
 
     
   <div>
-      <section className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/hedstrombil.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
-        <h1 className="text-white text-4xl font-semibold text-center">Projekt </h1>
-      </section>
+      <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/antonOpeter.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
+        <h1 className="text-white text-4xl font-semibold text-center">Våra projekt </h1>
+      </header>
 
     <section className="w-3/4 md:w-5/5 lg:w-8/9 mx-auto text-center pt-[100px]">
       <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold text-center">Vi har stor erfarenhet av alla typer av projekt och du kan se ett utplock av dessa här</h1>
 
+            <InfoCard
+              image="src/assets/bilder/spackling.webp"
+              title="src/assets/bilder/spackling.webp"
+              linkText="Kontakta oss för en offert!"
+              className="border"
+              link="/projekt"      
+              reverse={true}
+            />
+      
        {/*Två bilder bredvid varandra */}
        <div className="mt-[5%] flex flex-col md:flex-row px-4 md:px-40  justify-between items-stretch">
           {/* Bildcontainer */}

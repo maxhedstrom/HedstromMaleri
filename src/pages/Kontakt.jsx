@@ -21,52 +21,59 @@ export default function ContactForm() {
   };
 
   return (
-    
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+    <div className="bg-gray-100 min-h-screen">
       
-      <Card className="w-full max-w-lg shadow-lg rounded-2xl p-6 ">
-        <CardContent>
-          <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Kontakta oss</h2>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-gray-700 font-medium">Namn</label>
-              <Input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Ditt namn"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 font-medium">E-post</label>
-              <Input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Din e-post"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 font-medium">Meddelande</label>
-              <Textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Skriv ditt meddelande här..."
-                rows="4"
-                required
-              />
-            </div>
-            <Button type="submit" className="w-full">
-              Skicka
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+      {/* Header */}
+      <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/grabakgrund.webp')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
+        <h1 className="text-white text-4xl font-semibold text-center">Kontakta oss</h1>
+      </header>
+
+      {/* Kontaktformulär */}
+      <div className="flex justify-center items-center p-4">
+        <Card className="w-full max-w-lg shadow-lg rounded-2xl p-6 bg-white">
+          <CardContent>
+            <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Fyll i kontaktformuläret så hör vi av oss inom 24 timmar.</h2>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-gray-700 font-medium">Namn</label>
+                <Input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Ditt namn"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-medium">E-post</label>
+                <Input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Din e-post"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-medium">Meddelande</label>
+                <Textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Skriv ditt meddelande här..."
+                  rows="4"
+                  required
+                />
+              </div>
+              <Button type="submit" className="w-full">
+                Skicka
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
