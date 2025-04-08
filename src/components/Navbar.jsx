@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import logo from "../assets/bilder/logo-med-farg.png";
+// import logo from "./public/logo-med-farg.png";
 import "../styles/hem.css"; 
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -38,7 +38,7 @@ export default function Navbar() {
   <div className="absolute top-[10px] left-[30px] p-[5px] z-20 hidden md:block">
     <a href="/">
       <img
-        src={logo}
+        src="/logo-med-farg.png"
         alt="Logotyp"
         className="w-[150px] h-auto transition-all duration-500"
       />
@@ -51,7 +51,7 @@ export default function Navbar() {
         {isFixed && (
           <div className="absolute top-[0px] left-[30px] -m-1 z-20 hidden md:block">
             <a href="/">
-              <img src={logo} alt="Logotyp" className="w-[100px] h-auto transition-all duration-500" />
+              <img src="/logo-med-farg.png" alt="Logotyp" className="w-[100px] h-auto transition-all duration-500" />
             </a>
           </div>
         )}
@@ -96,7 +96,7 @@ export default function Navbar() {
         <div className="text-white text-2xl font-bold  left-6 top-4 md:hidden">
       <a href="/">
               <img         
-              src={logo}
+              src="/logo-med-farg.png"
               alt="Logotyp" 
               className="w-[60px] h-auto transition-all duration-500" />
             </a>
@@ -129,7 +129,7 @@ export default function Navbar() {
 >
   {/* Bild högst upp */}
   <img 
-    src={logo} 
+    src="/logo-med-farg.png"
     alt="Hedström Måleri AB" 
     className="w-32 h-auto -mt-20 mb-20 mr-4  "
   />
