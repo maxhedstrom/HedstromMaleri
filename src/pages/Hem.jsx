@@ -1,28 +1,28 @@
 import React from "react";
 import "../styles/hem.css";
 // import { Button } from "/src/components/ui/button";
-import ServiceCard from "/src/components/ui/ServiceCard";
+// import ServiceCard from "/src/components/ui/ServiceCard.jsx";
 // import ServiceCard from "@/src/components/ui/ServiceCard";
 
 
 const Hem = () => {
-  const services = [
-    {
-      title: "Spackling",
-      description:
-        "Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.",
-    },
-    {
-      title: "Fasadmålning",
-      description:
-        "Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.",
-    },
-    {
-      title: "Våtrum",
-      description:
-        "Behöver ditt badrum eller liknande målas om krävs specialverktyg och kompetens kring hållbarhet. Våra våtrumstjänster garanterar hållbara, stilrena och fuktsäkra lösningar för ditt badrum eller tvättstuga. Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö.",
-    },
-  ];
+  // const services = [
+  //   {
+  //     title: "Spackling",
+  //     description:
+  //       "Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.",
+  //   },
+  //   {
+  //     title: "Fasadmålning",
+  //     description:
+  //       "Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.",
+  //   },
+  //   {
+  //     title: "Våtrum",
+  //     description:
+  //       "Behöver ditt badrum eller liknande målas om krävs specialverktyg och kompetens kring hållbarhet. Våra våtrumstjänster garanterar hållbara, stilrena och fuktsäkra lösningar för ditt badrum eller tvättstuga. Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö.",
+  //   },
+  // ];
   
   return (
     <div>      
@@ -89,7 +89,7 @@ const Hem = () => {
         </div>
       </section>
       
-<section className="w-4/5 mx-auto text-center pt-[100px]">
+{/* <section className="w-4/5 mx-auto text-center pt-[100px]">
   <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">
     Tjänster vi erbjuder
   </h1>
@@ -106,7 +106,7 @@ const Hem = () => {
     ))}
   </div>
 </section>
-
+ */}
       {/*Bild på Örebro slott med lite text om företagets geografi - sektion: Geografisk plats */}
       <section className="w-4/5 mx-auto text-center pt-[100px]">
         <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">Var vi finns</h1>
