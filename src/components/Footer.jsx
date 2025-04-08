@@ -4,7 +4,7 @@ import { FaLinkedin } from "react-icons/fa";
 
 function Footer() {
   
-    //JavaScript för att ändra färg på footer när den är i viewport, default är vit och när den är i viewport 40% blir den svart
+  //JavaScript för att ändra färg på footer när den är i viewport, default är vit och när den är i viewport 40% blir den svart
   const footerRef = useRef(null);
   const [inView, setInView] = useState(false);
 
@@ -38,7 +38,9 @@ function Footer() {
       }
     >
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center md:items-start md:text-left">
-        <h3 className="text-[40px] md:text-[50px] font-semibold mb-2">KONTAKTA OSS</h3>
+        <h3 className="text-[40px] md:text-[50px] font-semibold mb-2">
+          KONTAKTA OSS
+        </h3>
         <ul className="text-[17px] p-3.5 space-y-2 md:text-[20px] space-y-1.4 mb-6">
           <li>
             <a
@@ -74,7 +76,9 @@ function Footer() {
           </li>
         </ul>
 
-        <h3 className="text-[40px] md:text-[50px] font-semibold mb-2">TJÄNSTER</h3>
+        <h3 className="text-[40px] md:text-[50px] font-semibold mb-2">
+          TJÄNSTER
+        </h3>
         <ul className="text-[17px] p-3.5 space-y-2 md:text-[20px] space-y-1.4 mb-6">
           <li>
             <a

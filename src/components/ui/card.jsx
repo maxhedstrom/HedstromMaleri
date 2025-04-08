@@ -1,5 +1,5 @@
 import React from "react";
-
+// OBS! Demo komponent för kort till kontaktformulär!
 export const Card = ({ children, className }) => {
   return (
     <div

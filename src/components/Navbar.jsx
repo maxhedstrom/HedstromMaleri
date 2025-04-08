@@ -5,11 +5,14 @@ import { FaBars, FaTimes } from "react-icons/fa";
 
 
 export default function Navbar() {
+
+  //JavaScript-kod för att skapa en responsiv navigeringsmeny med en fast position när användaren scrollar ner på sidan.
+  // Denna kod använder Reacts useState och useEffect hooks för att hantera tillståndet för menyn och dess position.
   const [isFixed, setIsFixed] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-
+ 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > window.innerHeight * 0.5 && window.scrollY < lastScrollY) {
@@ -46,81 +49,62 @@ export default function Navbar() {
   </div>
 )}
 
-      <nav className="relative flex items-center justify-between px-[6%] py-[2%] w-full">
-        {/* Liten logotyp när navbaren är fast */}
-        {isFixed && (
-          <div className="absolute top-[0px] left-[30px] -m-1 z-20 hidden md:block">
-            <a href="/">
-              <img src="/logo-med-farg.png" alt="Logotyp" className="w-[100px] h-auto transition-all duration-500" />
-            </a>
-          </div>
-        )}
-
-
-        {/* Desktop-nav */}
-        <div className="hidden md:flex flex-1 justify-end">
-          <ul className="flex gap-[0px] list-none">
-            <li className="py-[8px] px-[12px]">
-              <a href="/" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">Hem</a>
-            </li>
-            <li className="py-[8px] px-[12px] text-[16px]">
-              <a href="/om" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">Om oss</a>
-            </li>
-            <li className="py-[8px] px-[12px]">
-              <a href="/tjanster" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">Tjänster</a>
-            </li>
-            <li className="py-[8px] px-[12px]">
-              <a href="/projekt" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">Våra projekt</a>
-            </li>
-            <li className="py-[8px] px-[12px]">
-              <a href="/rot" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">ROT-Avdrag</a>
-            </li>
-            <li className="py-[8px] px-[0px]">
-              <a href="/kontakt" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">Kontakta oss</a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Mobil-nav */}
-
-        {/* Alternaitv 1 - kapad logga */}
-      {/* <div className="text-white text-2xl font-bold  left-6 top-4 md:hidden">
+<nav className="relative flex items-center justify-between px-[6%] py-[2%] w-full">
+  {/* Liten logotyp när navbaren är fast */}
+  {isFixed && (
+    <div className="absolute top-[0px] left-[30px] -m-1 z-20 hidden md:block">
       <a href="/">
-              <img src="src/assets/bilder/responsive-logo.png" 
-               alt="Logotyp" 
-               className="w-[100px] h-auto transition-all duration-500" />
-            </a>
-      </div> */}
-
-      {/* Alternativ 2 - full logga */}
-        <div className="text-white text-2xl font-bold  left-6 top-4 md:hidden">
-      <a href="/">
-              <img         
-              src="/logo-med-farg.png"
-              alt="Logotyp" 
-              className="w-[60px] h-auto transition-all duration-500" />
-            </a>
-      </div>
-
-        {/* alternativ 3 - text */}
-      {/* <div className="text-white text-2xl font-bold md:hidden">
-      <a href="/">
-        Hedström Måleri AB
-        </a>
-
-        </div> */}
+        <img src="/logo-med-farg.png" alt="Logotyp" className="w-[100px] h-auto transition-all duration-500" />
+      </a>
+    </div>
+  )}
 
 
-      {/* Hamburgermeny för mobila enheter */}
-      <div className="md:hidden absolute right-12 top-6 z-20">
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? (
-            <FaTimes className="text-white text-3xl" />
-          ) : (
-            <FaBars className="text-white text-3xl" />
-          )}
-        </button>
-      </div>
+  {/* Desktop-nav */}
+  <div className="hidden md:flex flex-1 justify-end">
+    <ul className="flex gap-[0px] list-none">
+      <li className="py-[8px] px-[12px]">
+        <a href="/" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">Hem</a>
+      </li>
+      <li className="py-[8px] px-[12px] text-[16px]">
+        <a href="/om" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">Om oss</a>
+      </li>
+      <li className="py-[8px] px-[12px]">
+        <a href="/tjanster" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">Tjänster</a>
+      </li>
+      <li className="py-[8px] px-[12px]">
+        <a href="/projekt" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">Våra projekt</a>
+      </li>
+      <li className="py-[8px] px-[12px]">
+        <a href="/rot" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">ROT-Avdrag</a>
+      </li>
+      <li className="py-[8px] px-[0px]">
+        <a href="/kontakt" className="border-2 border-transparent hover:border-white focus:ring-2 focus:ring-white text-white font-bold text-[16px] rounded-md px-4 py-2">Kontakta oss</a>
+      </li>
+    </ul>
+  </div>
+
+  {/* Mobil-nav */}
+
+  <div className="text-white text-2xl font-bold  left-6 top-4 md:hidden">
+<a href="/">
+        <img         
+        src="/logo-med-farg.png"
+        alt="Logotyp" 
+        className="w-[60px] h-auto transition-all duration-500" />
+      </a>
+</div>
+
+{/* Hamburgermeny för mobila enheter */}
+<div className="md:hidden absolute right-12 top-6 z-20">
+  <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+    {isMenuOpen ? (
+      <FaTimes className="text-white text-3xl" />
+    ) : (
+      <FaBars className="text-white text-3xl" />
+    )}
+  </button>
+</div>
 
       {/* Mobil meny som visas vid klick */}
       <div

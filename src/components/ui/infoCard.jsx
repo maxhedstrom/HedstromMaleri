@@ -1,8 +1,10 @@
 import React from "react";
+//Kompontent för att visa en bild och text i en kortlayout. Denna komponent används i "Om oss" och "Tjänser".
 
 const InfoCard = ({ image, title, description, link, linkText, largeImage, reverse }) => {
-  // Container-klass med flex layout
+
   let containerClasses = "mt-[5%] flex flex-col px-4 md:px-40 justify-between items-stretch ";
+
   // Om reverse är true, använd md:flex-row-reverse - lägger bilden på höger istället för vänster som är default, annars md:flex-row
   if (reverse) {
     containerClasses += "md:flex-row-reverse";
@@ -21,9 +23,7 @@ const InfoCard = ({ image, title, description, link, linkText, largeImage, rever
   } else {
     imageClasses = baseImageClasses + " basis-full md:basis-[40%] min-h-[400px] mb-5 md:mb-0";
   }
-  // <div className="basis-full md:basis-[40%] min-h-[400px] sm:h-auto aspect-[3/4] md:aspect-[2/3] lg:aspect-[4/3] bg-[url('src/assets/bilder/hedstrombil2.jpg')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-left bg-cover flex items-center justify-center"></div>
-  // <div className="basis-full md:basis-[55%] min-h-[400px] h-full rounded-[10px] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] text-center md:text-left flex flex-col justify-center">
-
+  
   // Klasser för text-delen - rundade hörn, padding och hover-effekt och flexbox för att centrera texten
   const textBoxClasses =
     "basis-full md:basis-[55%] min-h-[400px] h-full rounded-[10px] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] text-center md:text-left flex flex-col justify-center";

@@ -1,6 +1,8 @@
 export function Button({ children, className, onClick, ...props }) {
+  // OBS demo funktionalitet för knapp till kontaktformulär!
+  
   const handleClick = (event) => {
-    // Scrolla till toppen när knappen trycks
+    // Scrolla till toppen av sidan vid knapptryckning
     window.scrollTo(0, 0);
 
     // Om det finns ett `onClick`-event från föräldern, anropas det också
