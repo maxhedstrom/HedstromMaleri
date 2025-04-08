@@ -1,7 +1,9 @@
 import React from "react";
 import "../styles/hem.css";
 // import { Button } from "/src/components/ui/button";
-import ServiceCard from "/src/components/ServiceCard"; // justera sökvägen
+import ServiceCard from "/src/components/ui/ServiceCard";
+// import ServiceCard from "@/src/components/ui/ServiceCard";
+
 
 const Hem = () => {
   const services = [

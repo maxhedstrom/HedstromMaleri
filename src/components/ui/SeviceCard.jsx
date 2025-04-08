@@ -1,14 +1,13 @@
-// komponent för att visa tjänster som erbjuds av Hedström Måleri AB på pages/Hem.jsx
-const ServiceCard = ({ title, description }) => {
-    return (
-      <div className="basis-[31%] bg-[var(--rutor-color)] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
-        <h3 className="text-[var(--rubrik-color)] text-center font-semibold my-[10px]">
-          {title}
-        </h3>
-        <p className="text-[var(--text-color)]">{description}</p>
-      </div>
-    );
-  };
-  
-  export default ServiceCard;
-  
+import React from "react";
+
+const ServiceCard = ({ title, description, icon }) => {
+  return (
+    <div className="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition">
+      <div className="mb-4 text-4xl text-primary">{icon}</div>
+      <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <p className="text-gray-600">{description}</p>
+    </div>
+  );
+};
+
+export default ServiceCard;
