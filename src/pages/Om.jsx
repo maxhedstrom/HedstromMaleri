@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../styles/hem.css";
 import { FaSortAmountUpAlt } from "react-icons/fa";
-// import { Card, CardContent } from "/src/components/ui/Infocard"; 
 import InfoCard from "/src/components/ui/InfoCard";
 
 

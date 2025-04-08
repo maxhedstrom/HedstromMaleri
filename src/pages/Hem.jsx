@@ -1,60 +1,109 @@
 import React from "react";
 import "../styles/hem.css";
+// import { Button } from "/src/components/ui/button";
+import ServiceCard from "/src/components/ServiceCard"; // justera sökvägen
+
 const Hem = () => {
+  const services = [
+    {
+      title: "Spackling",
+      description:
+        "Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.",
+    },
+    {
+      title: "Fasadmålning",
+      description:
+        "Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.",
+    },
+    {
+      title: "Våtrum",
+      description:
+        "Behöver ditt badrum eller liknande målas om krävs specialverktyg och kompetens kring hållbarhet. Våra våtrumstjänster garanterar hållbara, stilrena och fuktsäkra lösningar för ditt badrum eller tvättstuga. Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö.",
+    },
+  ];
+  
   return (
-    // Här börjar innehållet på startsidan
-    <div>
+    <div>      
       
-      {/* Första sektionen med Bakgrundsbild - sektion: välkomstsida */}
-      
-      <section
+      <header
         className="relative min-h-screen w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/hedstrombil.jpg')] bg-no-repeat bg-top  md:bg-center bg-cover"
-      ></section>
+      ></header>
 
       <div className="w-[90%] lg:w-3/5 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-        <h1 className=" text-[var(--first-color)] text-[32px] md:text-[42px] lg:text-[42px]">
+        {/* ALTERNATIV 1 (UTKOMMENTERAT) */}
+        {/* <h1 className=" text-[var(--first-color)] text-[32px] md:text-[42px] lg:text-[42px]">
           Ett litet familjeföretag med fokus på kvalité och nöjda kunder.
         </h1>
         <p className="mt-[10px] mb-[40px] text-[18px] md:text-[24px] lg:text-[20px]">
+          
           Vi har stor yrkesmässig kunskap inom både invändigt och utvändigt måleri.
+        </p> */}
+
+        {/* ALTERNATIV 2 */}
+        <h1 className=" text-[var(--first-color)] text-[32px] md:text-[42px] lg:text-[42px]">
+          Välkommen till Hedström Måleri
+        </h1>
+        <p className="mt-[10px] mb-[40px] text-[18px] md:text-[24px] lg:text-[20px]">
+        Ett litet familjeföretag med fokus på kvalité och nöjda kunder.
         </p>
         <a
           href="/kontakt"
           className="inline-block no-underline text-white border border-white py-3 px-6 md:px-8 text-[19px] md:text-[24px] lg:text-[20px] bg-transparent cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-1000"
         >
           Kontakta oss för en offert!
-        </a>
+        </a>      
       </div>
+
       {/*Presentation med urval av tjänster i röda block - sektion: Tjänster */}
       <section className="w-4/5 mx-auto text-center pt-[100px]">
-        <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">Tjänster vi erbjuder</h1>
+        <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">
+          Tjänster vi erbjuder
+        </h1>
         <p className="text-[var(--text-color)] text-[14px] font-light leading-[22px] p-[10px]">
           Vi erbjuder ett antal olika tjänster
         </p>
-        <div className="mt-[5%] flex flex-col md:flex-row justify-between">
-          <div className="basis-[31%] bg-[#fff3f3] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
-            <h3 className="text-[var(--rubrik-color)] text-center font-semibold my-[10px]">Spackling</h3>
-            <p className="text-[var(--text-color)]">
-            Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå 
-            alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.
-            </p>
-          </div>
-          <div className="basis-[31%] bg-[#fff3f3] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
-            <h3 className="text-[var(--rubrik-color)] text-center font-semibold my-[10px]">Fasadmålning</h3>
-            <p className="text-[var(--text-color)]">
-            Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå 
-            alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.
-            </p>
-          </div>
-          <div className="basis-[31%] bg-[#fff3f3] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
-            <h3 className="text-[var(--rubrik-color)] text-center font-semibold my-[10px]">Våtrum</h3>
-            <p className="text-[var(--text-color)]">
-            Behöver ditt badrum eller liknande målas om krävs specialverktyg och kompetens kring hållbarhet. Våra våtrumstjänster garanterar hållbara, stilrena och fuktsäkra lösningar för ditt badrum eller tvättstuga. 
-            Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö 
-            </p>
-          </div>
+          <div className="mt-[5%] flex flex-col md:flex-row justify-between">
+            <div className="basis-[31%] bg-[var(--rutor-color)] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
+              <h3 className="text-[var(--rubrik-color)] text-center font-semibold my-[10px]">Spackling</h3>
+              <p className="text-[var(--text-color)]">
+              Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå 
+              alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.
+              </p>
+            </div>
+            <div className="basis-[31%] bg-[var(--rutor-color)] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
+              <h3 className="text-[var(--rubrik-color)] text-center font-semibold my-[10px]">Fasadmålning</h3>
+              <p className="text-[var(--text-color)]">
+              Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå 
+              alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.
+              </p>
+            </div>
+            <div className="basis-[31%] bg-[var(--rutor-color)] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
+              <h3 className="text-[var(--rubrik-color)] text-center font-semibold my-[10px]">Våtrum</h3>
+              <p className="text-[var(--text-color)]">
+              Behöver ditt badrum eller liknande målas om krävs specialverktyg och kompetens kring hållbarhet. Våra våtrumstjänster garanterar hållbara, stilrena och fuktsäkra lösningar för ditt badrum eller tvättstuga. 
+              Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö 
+              </p>
+            </div>
         </div>
       </section>
+      
+<section className="w-4/5 mx-auto text-center pt-[100px]">
+  <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">
+    Tjänster vi erbjuder
+  </h1>
+  <p className="text-[var(--text-color)] text-[14px] font-light leading-[22px] p-[10px]">
+    Vi erbjuder ett antal olika tjänster
+  </p>
+  <div className="mt-[5%] flex flex-col md:flex-row justify-between">
+    {services.map((service, index) => (
+      <ServiceCard
+        key={index}
+        title={service.title}
+        description={service.description}
+      />
+    ))}
+  </div>
+</section>
 
       {/*Bild på Örebro slott med lite text om företagets geografi - sektion: Geografisk plats */}
       <section className="w-4/5 mx-auto text-center pt-[100px]">
