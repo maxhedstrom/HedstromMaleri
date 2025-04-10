@@ -1,8 +1,9 @@
 import React from "react";
 import "../styles/hem.css";
 // import { Button } from "/src/components/ui/button";
-// import ServiceCard from "/src/components/ui/ServiceCard.jsx";
+import ServiceCard from "/src/components/ui/ServiceCard.jsx";
 // import ServiceCard from "@/src/components/ui/ServiceCard";
+// import ServiceCard from "@/components/ui/ServiceCard";
 
 
 const Hem = () => {
@@ -23,6 +24,25 @@ const Hem = () => {
   //       "Behöver ditt badrum eller liknande målas om krävs specialverktyg och kompetens kring hållbarhet. Våra våtrumstjänster garanterar hållbara, stilrena och fuktsäkra lösningar för ditt badrum eller tvättstuga. Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö.",
   //   },
   // ];
+  const services = [
+    {
+      title: "Spackling",
+      description:
+        "Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.",
+    },
+    {
+      title: "Fasadmålning",
+      description:
+        "Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.",
+    },
+    {
+      title: "Våtrum",
+      description:
+        "Behöver ditt badrum eller liknande målas om krävs specialverktyg och kompetens kring hållbarhet. Våra våtrumstjänster garanterar hållbara, stilrena och fuktsäkra lösningar för ditt badrum eller tvättstuga. Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö.",
+    },
+  ];
+
+  
   
   return (
     <div>      
@@ -30,6 +50,29 @@ const Hem = () => {
       <header
         className="relative min-h-screen w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/hedstrombil.jpg')] bg-no-repeat bg-top  md:bg-center bg-cover"
       ></header>
+      
+      <ServiceCard 
+        title="Målning inomhus" 
+        description="Vi erbjuder professionell målning av väggar, tak och snickerier inomhus."
+      />
+
+    <section className="w-4/5 mx-auto text-center pt-[100px]">
+      <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">
+        Tjänster vi erbjuder
+      </h1>
+      <p className="text-[var(--text-color)] text-[14px] font-light leading-[22px] p-[10px]">
+        Vi erbjuder ett antal olika tjänster
+      </p>
+      <div className="mt-[5%] flex flex-col md:flex-row justify-between">
+        {services.map((service, index) => (
+          <ServiceCard
+            key={index}
+            title={service.title}
+            description={service.description}
+          />
+        ))}
+      </div>
+    </section>
 
       <div className="w-[90%] lg:w-3/5 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
         {/* ALTERNATIV 1 (UTKOMMENTERAT) */}
