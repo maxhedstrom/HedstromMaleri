@@ -4,6 +4,8 @@ import { Input } from "/src/components/ui/input";
 import { Textarea } from "/src/components/ui/textarea";
 import { Card, CardContent } from "/src/components/ui/card"; 
 
+//KONTAKT FORMULÄR - ej i användning i nuläget endast demonstration av komponenter
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
@@ -25,7 +27,9 @@ export default function ContactForm() {
       
       {/* Header */}
       <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/grabakgrund.webp')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
-        <h1 className="text-white text-4xl font-semibold text-center">Kontakta oss</h1>
+        <h1 className="text-white text-4xl font-semibold text-center">
+          Kontakta oss
+        </h1>
       </header>
 
       {/* Kontaktformulär */}

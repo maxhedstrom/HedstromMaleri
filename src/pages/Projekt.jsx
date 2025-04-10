@@ -1,26 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import InfoCard from "/src/components/ui/InfoCard";
+import timeline from "../data/timeline";
 
 const Timeline = () => {
-  const events = [
-    { year: "2011", text: "Hedström Måleri grundas i Örebro." },
-    { year: "2012", text: "Företaget expanderar i personal och tar sig an fler projekt." },
-    { year: "2013", text: "Ett samarbete med Skanska inleds." },
-    { year: "2015", text: "Fortsätter att växa och får återkommande kunder samt stora kontrakt." },
-    { year: "2016", text: "Måleri av 70 nyproducerade lägenheter på Åkilsbacken i Lindesberg." },
-    { year: "2017", text: "Myresjö beställer ut och invändig målning av 10 nyproducerade villor i Kumla." },
-    { year: "2018", text: "Sörbyskolan och Ekeskolan målas om invädningt och utvändigt." },
-    { year: "2019", text: "Almbyskolan målas i flera etapper." },
-    { year: "2020", text: "Flera arbeten åt privatkunder." },
-    { year: "2022", text: "Anton anställs som målare. " },
-    { year: "2023", text: "BRF Mårans fönster målas om samt cykelskjul på innergården." },
-    { year: "2024", text: "BRF Björkhagas cykelsjul och staket målas om." },
-    { year: "2025 - pågående", text: "Inlett samarbete med HMB, målning av fjärrkylecentral i Universitetsjukhuset Örebro." },
-  ];
-
+ 
   const [scrollHeight, setScrollHeight] = useState(0);
   const timelineRef = useRef(null);
 
+  // För att få scrollhöjd att fungera korrekt, använd useRef för att referera till elementet och useEffect används för att lyssna på scrollhändelsen.
   useEffect(() => {
     const handleScroll = () => {
       if (timelineRef.current) {
@@ -38,23 +25,25 @@ const Timeline = () => {
         setScrollHeight(Math.min(slowScrollPercentage + offsetPercentage, 100));
       }
     };
-    
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-
-    
-  <div>
+  <>
       <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/antonOpeter.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
-        <h1 className="text-white text-4xl font-semibold text-center">Våra projekt </h1>
+        <h1 className="text-white text-4xl font-semibold text-center">
+          Våra projekt
+        </h1>
       </header>
 
     <section className="w-3/4 md:w-5/5 lg:w-8/9 mx-auto text-center pt-[100px]">
-      <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold text-center">Vi har stor erfarenhet av alla typer av projekt och du kan se ett utplock av dessa här</h1>
+      <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold text-center">
+        Vi har stor erfarenhet av alla typer av projekt och du kan se ett utplock av dessa här
+      </h1>
 
+          {/* Lägg in mer projekt här, kanske med en bild och en kort beskrivning av projektet? */}
             <InfoCard
               image="src/assets/bilder/spackling.webp"
               title="src/assets/bilder/spackling.webp"
@@ -64,7 +53,7 @@ const Timeline = () => {
               reverse={true}
             />
       
-       {/*Två bilder bredvid varandra */}
+       {/*Två bilder bredvid varandra,visa bilder på olika projekt hur det var före och efter? */}
        <div className="mt-[5%] flex flex-col md:flex-row px-4 md:px-40  justify-between items-stretch">
           {/* Bildcontainer */}
           <div 
@@ -76,17 +65,17 @@ const Timeline = () => {
             className="basis-full md:basis-[40%] min-h-[400px] h-full bg-[url('src/assets/bilder/spackling.webp')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-center bg-cover flex items-center justify-center">
           </div>
         </div>
+
         <p className="text-[var(--text-color)]">
           Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle
         </p>
 
-
+        {/* Sektion: Tidsline */}
         <p className="text-[var(--text-color)] text-[14px] font-light leading-[22px] p-[10px]">
           Företaget ägs och drivs av Peter Hedström som har över 26 års erfarenhet i branschen. 
         </p>
 
         <div id="target-section" className="relative flex flex-col items-center py-10">
-
           <div ref={timelineRef} className="relative w-full max-w-4xl">
             <div className="absolute left-1/2 top-0 h-full w-1 bg-gray-300 transform -translate-x-1/2">
               <div
@@ -94,7 +83,7 @@ const Timeline = () => {
                 style={{ height: `${scrollHeight}%` }}
               ></div>
             </div>
-            {events.map((event, index) => (
+            {timeline.map((event, index) => (
               <div key={index} className={`relative flex items-center w-full mb-10 ${index % 2 === 0 ? "justify-start" : "justify-end"}`}>
                 <div className="w-1/2 p-4">
                   <h3 className="text-lg font-semibold text-[var(--rubrik-color)]">{event.year}</h3>
@@ -107,7 +96,7 @@ const Timeline = () => {
         </div>
         
     </section>
-  </div>
+  </>
     
   );
 };

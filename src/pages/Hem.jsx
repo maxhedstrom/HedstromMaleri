@@ -1,63 +1,16 @@
 import React from "react";
 import "../styles/hem.css";
-// import { Button } from "/src/components/ui/button";
-import ServiceCard from "/src/components/ui/ServiceCard.jsx";
-// import ServiceCard from "@/src/components/ui/ServiceCard";
-// import ServiceCard from "@/components/ui/ServiceCard";
+import ServiceCard from "/src/components/ui/ServiceCard";
 import services from "../data/services";
 
 
-const Hem = () => {
-  // const services = [
-  //   {
-  //     title: "Spackling",
-  //     description:
-  //       "Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.",
-  //   },
-  //   {
-  //     title: "Fasadmålning",
-  //     description:
-  //       "Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.",
-  //   },
-  //   {
-  //     title: "Våtrum",
-  //     description:
-  //       "Behöver ditt badrum eller liknande målas om krävs specialverktyg och kompetens kring hållbarhet. Våra våtrumstjänster garanterar hållbara, stilrena och fuktsäkra lösningar för ditt badrum eller tvättstuga. Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö.",
-  //   },
-  // ];
-
-
-  
-  
+const Hem = () => {  
   return (
-    <div>      
-      
+   <>      
       <header
         className="relative min-h-screen w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/hedstrombil.jpg')] bg-no-repeat bg-top  md:bg-center bg-cover"
-      ></header>
-      
-      <ServiceCard 
-        title="Målning inomhus" 
-        description="Vi erbjuder professionell målning av väggar, tak och snickerier inomhus."
-      />
-
-    <section className="w-4/5 mx-auto text-center pt-[100px]">
-      <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">
-        Tjänster vi erbjuder
-      </h1>
-      <p className="text-[var(--text-color)] text-[14px] font-light leading-[22px] p-[10px]">
-        Vi erbjuder ett antal olika tjänster
-      </p>
-      <div className="mt-[5%] flex flex-col md:flex-row justify-between">
-        {services.map((service, index) => (
-          <ServiceCard
-            key={index}
-            title={service.title}
-            description={service.description}
-          />
-        ))}
-      </div>
-    </section>
+      >
+      </header>
 
       <div className="w-[90%] lg:w-3/5 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
         {/* ALTERNATIV 1 (UTKOMMENTERAT) */}
@@ -84,65 +37,32 @@ const Hem = () => {
         </a>      
       </div>
 
-      {/*Presentation med urval av tjänster i röda block - sektion: Tjänster */}
+      {/*Presentation med urval av tjänster i röda block - sektion: Tjänster */}   
       <section className="w-4/5 mx-auto text-center pt-[100px]">
-        <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">
+          <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">
           Tjänster vi erbjuder
-        </h1>
-        <p className="text-[var(--text-color)] text-[14px] font-light leading-[22px] p-[10px]">
+          </h1>
+          <p className="text-[var(--text-color)] text-[14px] font-light p-[10px]">
           Vi erbjuder ett antal olika tjänster
-        </p>
-          <div className="mt-[5%] flex flex-col md:flex-row justify-between">
-            <div className="basis-[31%] bg-[var(--rutor-color)] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
-              <h3 className="text-[var(--rubrik-color)] text-center font-semibold my-[10px]">Spackling</h3>
-              <p className="text-[var(--text-color)]">
-              Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå 
-              alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.
-              </p>
-            </div>
-            <div className="basis-[31%] bg-[var(--rutor-color)] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
-              <h3 className="text-[var(--rubrik-color)] text-center font-semibold my-[10px]">Fasadmålning</h3>
-              <p className="text-[var(--text-color)]">
-              Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå 
-              alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.
-              </p>
-            </div>
-            <div className="basis-[31%] bg-[var(--rutor-color)] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">
-              <h3 className="text-[var(--rubrik-color)] text-center font-semibold my-[10px]">Våtrum</h3>
-              <p className="text-[var(--text-color)]">
-              Behöver ditt badrum eller liknande målas om krävs specialverktyg och kompetens kring hållbarhet. Våra våtrumstjänster garanterar hållbara, stilrena och fuktsäkra lösningar för ditt badrum eller tvättstuga. 
-              Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö 
-              </p>
-            </div>
+          </p>
+        <div className="mt-[5%] flex flex-col md:flex-row justify-between">
+          {services.map((service, index) => (
+          <ServiceCard
+          key={index}
+          title={service.title}
+          description={service.description}
+          />
+          ))}
         </div>
       </section>
       
-{/* <section className="w-4/5 mx-auto text-center pt-[100px]">
-  <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">
-    Tjänster vi erbjuder
-  </h1>
-  <p className="text-[var(--text-color)] text-[14px] font-light leading-[22px] p-[10px]">
-    Vi erbjuder ett antal olika tjänster
-  </p>
-  <div className="mt-[5%] flex flex-col md:flex-row justify-between">
-    {services.map((service, index) => (
-      <ServiceCard
-        key={index}
-        title={service.title}
-        description={service.description}
-      />
-    ))}
-  </div>
-</section>
- */}
       {/*Bild på Örebro slott med lite text om företagets geografi - sektion: Geografisk plats */}
       <section className="w-4/5 mx-auto text-center pt-[100px]">
-        <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">Var vi finns</h1>
-        <p className="text-[var(--text-color)] text-[14px] font-light leading-[22px] p-[10px]">
-        Hedström Måleri AB är baserat i Örebro, ett penseldrag från slottet. Vi utför arbeten i hela Närke med omnejd. 
-       
-        Vi erbjuder våra tjänster i både större städer och mindre orter i regionen.
-        </p>
+          <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">Var vi finns</h1>
+          <p className="text-[var(--text-color)] text-[14px] font-light leading-[22px] p-[10px]">
+            Hedström Måleri AB är baserat i Örebro, ett penseldrag från slottet. Vi utför arbeten i hela Närke med omnejd. 
+            Vi erbjuder våra tjänster i både större städer och mindre orter i regionen.
+          </p>
         <div className="flex flex-col md:flex-row justify-between">
           <div className="basis-[200%] rounded-[10px] mb-[30px] relative overflow-hidden">
             <img
@@ -151,7 +71,7 @@ const Hem = () => {
               className="w-full h-[60vh] object-center md:h-auto md:object-right object-cover"
             />
             <div className="bg-[rgba(166,170,184,0.7)] h-full w-full absolute top-0 group">
-              <h3 className="w-full text-white font-bold text-[30px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:bottom-[49%]">
+              <h3 className="w-full text-white font-bold text-[30px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 transition-all duration-500 group-hover:opacity-100">
                 ÖREBRO
               </h3>
             </div>
@@ -160,10 +80,11 @@ const Hem = () => {
       </section>
 
       {/*Referenser med bilder på uppdragsgivare - sektion: Referenser */}
-
-      <section className="w-4/5 mx-auto text-center pt-[100px]">
+      <section className="w-4/5 mx-auto text-center pt-[100px] mb-8">
         <div className="mb-8">
-          <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">Utvalda uppdragsgivare</h1>
+          <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">
+            Utvalda uppdragsgivare
+          </h1>
           <p className="text-[var(--text-color)] text-[14px] font-light leading-[22px] p-[10px]">
             Vi utför arbeten åt kunder, stora som små, och strävar alltid efter att leverera högsta kvalitet.
             <br />
@@ -179,7 +100,9 @@ const Hem = () => {
                 className="w-full h-[200px] object-contain rounded-[10px]"
               />
             </a>
-            <h3 className="text-[var(--text-color)] mt-[10px] mb-[15px]">Örebro Kommun</h3>
+            <h3 className="text-[var(--text-color)] mt-[10px] mb-[15px]">
+              Örebro Kommun
+            </h3>
           </div>
           <div className="rounded-[10px] text-center">
             <a href="https://www.oru.se/">
@@ -189,7 +112,9 @@ const Hem = () => {
                 className="w-full h-[200px] object-contain rounded-[10px]"
               />
             </a>
-            <h3 className="text-[var(--text-color)] mt-[10px] mb-[15px]">Sörbyskolan</h3>
+            <h3 className="text-[var(--text-color)] mt-[10px] mb-[15px]">
+              Sörbyskolan
+            </h3>
           </div>
           <div className="rounded-[10px] text-center">
             <a href="https://www.oru.se/">
@@ -203,7 +128,7 @@ const Hem = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

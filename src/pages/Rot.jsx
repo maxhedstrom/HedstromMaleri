@@ -99,19 +99,13 @@ export default function Rot() {
   const newTotal = cost - savings;
 
   return (
-          // text-[var(--rubrik-color)]
-    // text-[var(--text-color)]
-    // text-[var(--detalj-color)]
-    // --rubrik-color: #4B5563;   /* Grå (tailwind: gray-600) */
-    // --text-color: #6B7280; /* Ljusgrå (tailwind: gray-500) */
-    
-
-    <div className="text-[var(--text-color)]">
-      <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/fasad.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center">
-      <div className=" bg-[url('src/assets/bilder/ROTBILD.jpg')] "></div>
-      <h1 className="text-white text-4xl font-semibold text-center">ROT-Avdrag</h1>
-
-      </header>
+    <>
+     <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/fasad.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center">
+      <div className="bg-[url('src/assets/bilder/ROTBILD.jpg')] "></div>
+      <h1 className="text-white text-4xl font-semibold text-center">
+        ROT-Avdrag
+      </h1>
+     </header>
 
       {/* Huvudinnehåll med statisk information */}
       <main className="relative py-16 px-4 bg-gradient-to-r from-gray-50 to-gray-200">
@@ -154,7 +148,8 @@ export default function Rot() {
 
               {/*  Inforuta om regeringen */}
           <p className="text-xl leading-relaxed mb-10 text-center pt-9">
-            Från Maj 2025 till December 2025 har regeringen beslutat om en tillfällig höjning av ROT-avdraget till 50% av arbetskostnaden. Det innebär att du kan spara mer när du anlitar oss för dina måleriarbeten! <br />
+            Från Maj 2025 till December 2025 har regeringen beslutat om en tillfällig höjning av ROT-avdraget till 50% av arbetskostnaden. 
+            Det innebär att du kan spara mer när du anlitar oss för dina måleriarbeten! <br />
             <a
                 href="https://www.regeringen.se/rattsliga-dokument/departementsserien-och-promemorior/2025/03/tillfalligt-hojd-subventionsgrad-for-rotavdraget/"
                 target="_blank"
@@ -210,7 +205,8 @@ export default function Rot() {
               Exempel på besparing
             </h3>
             <p className="text-lg text-center">
-              Tänk dig att arbetskostnaden för ett projekt är <strong>30 000 kr</strong>. Med ROT-avdraget dras <strong>15 000 kr</strong> direkt av – du betalar alltså bara <strong>15 000 kr</strong>!
+              Tänk dig att arbetskostnaden för ett projekt är <strong>30 000 kr</strong>.Med ROT-avdraget dras <strong>15 000 kr</strong>
+               direkt av – du betalar alltså bara <strong>15 000 kr</strong>!
             </p>
           </div>
       
@@ -220,9 +216,15 @@ export default function Rot() {
               Viktiga punkter att tänka på
             </h3>
             <ul className="list-disc list-inside text-lg space-y-3">
-              <li><strong>Maximalt avdrag:</strong> Upp till 50 000 kr per år.</li>
-              <li><strong>Endast arbetskostnad:</strong> Material och utrustning ingår ej.</li>
-              <li><strong>Elektronisk betalning:</strong> Digital betalning krävs för att kvalificera.</li>
+              <li>
+                <strong>Maximalt avdrag:</strong> Upp till 50 000 kr per år.
+              </li>
+              <li>
+                <strong>Endast arbetskostnad:</strong> Material och utrustning ingår ej.
+              </li>
+              <li>
+                <strong>Elektronisk betalning:</strong> Digital betalning krävs för att kvalificera.
+              </li>
             </ul>
           </div>
 
@@ -236,7 +238,9 @@ export default function Rot() {
               Har du använt ROT-Avdrag i år? Kolla ditt ROT-utrymme hos Skatteverket här!
             </a>
           </div>
+          
 
+          {/*  Konfetti-knapp (utkommenterad) Ta bort?*/}
           {/* <div className="mt-12 text-center">
             <button
               onClick={handleConfetti}
@@ -245,8 +249,9 @@ export default function Rot() {
               Fira ROT-Avdraget!
             </button>
           </div> */}
+          
         </section>
       </main>
-    </div>
+    </>
   );
 }
