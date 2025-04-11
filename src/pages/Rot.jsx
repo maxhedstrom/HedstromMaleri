@@ -101,10 +101,10 @@ export default function Rot() {
   return (
     <>
      <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/fasad.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center">
-      <div className="bg-[url('src/assets/bilder/ROTBILD.jpg')] "></div>
-      <h1 className="text-white text-4xl font-semibold text-center">
-        ROT-Avdrag
-      </h1>
+        <div className="bg-[url('src/assets/bilder/ROTBILD.jpg')] "></div>
+        <h1 className="text-white text-4xl font-semibold text-center">
+          ROT-Avdrag
+        </h1>
      </header>
 
       {/* Huvudinnehåll med statisk information */}

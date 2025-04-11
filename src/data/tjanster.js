@@ -1,12 +1,12 @@
 //Används i Tjanster.jsx
 const tjanster = [
     {
-      image: "src/assets/bilder/spackling.webp",
-      title: "Fasadmålning",
+      image: "src/assets/bilder/tapetsering.png",
+      title: "Målning och tapetsering",
       description:
-        "Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende. Kontakta oss idag för en kostnadsfri offert!",
+      "Ge ditt hem ett lyft med vår professionella målning och tapetsering! Vi förvandlar trista väggar till inspirerande ytor med precision, känsla för färg och stil. Oavsett om du drömmer om en modern look eller en klassisk känsla, levererar vi ett resultat som håller – både i kvalitet och uttryck. Låt oss göra din vision till verklighet!",
       linkText: "Kontakta oss för en offert!",
-      link: "/projekt",
+      link: "/kontakt",
       reverse: false,
     },
     {
@@ -15,17 +15,26 @@ const tjanster = [
       description:
         "Behöver ditt badrum eller liknande målas om krävs specialverktyg och kompetens kring hållbarhet. Våra våtrumstjänster garanterar hållbara, stilrena och fuktsäkra lösningar för ditt badrum eller tvättstuga. Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö",
       linkText: "Kontakta oss för en offert!",
-      link: "/projekt",
+      link: "/kontakt",
       reverse: true,
     },
     {
-      image: "src/assets/bilder/spackling.jpg",
-      title: "Spackling",
+      image: "src/assets/bilder/spackling.webp",
+      title: "Fasadmålning",
       description:
-        "Spackling är en avgörande del av varje måleriprojekt och grunden till ett perfekt slutresultat. Genom att fylla i sprickor, hål och ojämnheter skapas en slät och jämn yta som ger färg och tapet bästa möjliga fäste. En välspacklad vägg ger inte bara en snyggare finish, utan gör också att målningen håller längre och ser professionell ut.",
+        "Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende. Kontakta oss idag för en kostnadsfri offert!",
       linkText: "Kontakta oss för en offert!",
-      link: "/projekt",
+      link: "/kontakt",
       reverse: false,
+    },
+    {
+      image: "src/assets/bilder/inOutvandig.png",
+      title: "In och utvändig målning vid ny- och ombyggnationer",
+      description:
+        "Ge ditt hem eller projekt en nystart med professionell in- och utvändig målning! Vi levererar noggrant hantverk med fokus på hållbarhet och estetik – perfekt för både nybyggnationer och ombyggnationer. Med vår erfarenhet och noggrannhet får du ett resultat som håller över tid. Kontakta oss för ett lyft som märks!",
+      linkText: "Kontakta oss för en offert!",
+      link: "/kontakt",
+      reverse: true,
     },
     {
         image: "src/assets/bilder/vatrum.webp",
@@ -33,8 +42,8 @@ const tjanster = [
         description:
           "Behöver ditt badrum eller liknande målas om krävs specialverktyg och kompetens kring hållbarhet. Våra våtrumstjänster garanterar hållbara, stilrena och fuktsäkra lösningar för ditt badrum eller tvättstuga. Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö",
         linkText: "Kontakta oss för en offert!",
-        link: "/projekt",
-        reverse: true,
+        link: "/kontakt",
+        reverse: false,
       },
   ];
   

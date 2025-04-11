@@ -15,7 +15,7 @@ const Timeline = () => {
         const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrollPercentage = Math.min(Math.max(0, (scrolled / totalHeight) * 100), 100);
     
-        const delayFactor = 0.5; // Alltid långsammare scroll
+        const delayFactor = 0.2; // Alltid långsammare scroll
         const slowScrollPercentage = scrollPercentage * delayFactor;
     
         // Endast lägg till offset om enheten är responsiv (< 768px)
