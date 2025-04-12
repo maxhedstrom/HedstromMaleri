@@ -3,7 +3,7 @@ export function Button({ children, className, onClick, ...props }) {
   
   const handleClick = (event) => {
     // Scrolla till toppen av sidan vid knapptryckning
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
 
     // Om det finns ett `onClick`-event från föräldern, anropas det också
     if (onClick) {
