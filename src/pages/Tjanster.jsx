@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "../styles/hem.css";
-import InfoCard from "/src/components/ui/InfoCard";
+import InfoCard from "/src/components/ui/infoCard";
 import tjanster from "../data/tjanster";
 
 function Tjanster() {

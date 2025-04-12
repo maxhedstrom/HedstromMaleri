@@ -1,4 +1,4 @@
-// gör länkar i navbaren till knappar och ger hover effekten
+// gör länkar i navbaren och footern till knappar och ger hover effekten
 export default function NavLink({ href, children }) {
       
     return (

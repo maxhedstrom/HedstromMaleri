@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
 import "../styles/hem.css"; 
 import { FaBars, FaTimes } from "react-icons/fa";
-import NavLink from "../components/ui/NavLink";
-
-
-
-
+import NavLink from "../components/ui/Navlink";
 export default function Navbar() {
 
   //JavaScript-kod för att skapa en responsiv navigeringsmeny med en fast position när användaren scrollar ner på sidan.

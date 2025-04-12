@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/hem.css";
 import { FaSortAmountUpAlt } from "react-icons/fa";
-import InfoCard from "/src/components/ui/InfoCard";
+import InfoCard from "/src/components/ui/infoCard";
 import personal from "../data/personal";
 
   const Personal = ({ person }) => {

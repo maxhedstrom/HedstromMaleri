@@ -1,5 +1,5 @@
 import React from "react";
-//Kompontent för att visa en bild och text i en kortlayout. Denna komponent används i "Om oss" och "Tjänser".
+//Kompontent för att visa en bild och text i en kortlayout. Denna komponent används i "Om" och "Tjanster".
 
 const InfoCard = ({ image, title, description, link, linkText, largeImage, reverse }) => {
 
