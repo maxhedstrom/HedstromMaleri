@@ -37,27 +37,8 @@ const Hem = () => {
         </a>      
       </div>
 
-      {/*Presentation med urval av tjänster i röda block - sektion: Tjänster */}   
-      <section className="w-4/5 mx-auto text-center pt-[100px]">
-          <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">
-          Tjänster vi erbjuder
-          </h1>
-          <p className="text-[var(--text-color)] text-[14px] font-light p-[10px]">
-          Vi erbjuder ett antal olika tjänster
-          </p>
-        <div className="mt-[5%] flex flex-col md:flex-row justify-between">
-          {services.map((service, index) => (
-          <ServiceCard
-          key={index}
-          title={service.title}
-          description={service.description}
-          />
-          ))}
-        </div>
-      </section>
-      
-      {/*Bild på Örebro slott med lite text om företagets geografi - sektion: Geografisk plats */}
-      <section className="w-4/5 mx-auto text-center pt-[100px]">
+       {/*Bild på Örebro slott med lite text om företagets geografi - sektion: Geografisk plats */}
+       <section className="w-4/5 mx-auto text-center pt-[100px]">
           <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">Var vi finns</h1>
           <p className="text-[var(--text-color)] text-[14px] font-light leading-[22px] p-[10px]">
             Hedström Måleri AB är baserat i Örebro, ett penseldrag från slottet. Vi utför arbeten i hela Närke med omnejd. 
@@ -79,6 +60,26 @@ const Hem = () => {
         </div>
       </section>
 
+      {/*Presentation med urval av tjänster i röda block - sektion: Tjänster */}   
+      <section className="w-4/5 mx-auto text-center pt-[100px]">
+          <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold">
+          Tjänster vi erbjuder
+          </h1>
+          <p className="text-[var(--text-color)] text-[14px] font-light p-[10px]">
+          Vi erbjuder ett antal olika tjänster
+          </p>
+        <div className="mt-[5%] flex flex-col md:flex-row justify-between">
+          {services.map((service, index) => (
+          <ServiceCard
+          key={index}
+          title={service.title}
+          description={service.description}
+          />
+          ))}
+        </div>
+      </section>
+      
+     
       {/*Referenser med bilder på uppdragsgivare - sektion: Referenser */}
       <section className="w-4/5 mx-auto text-center pt-[100px] mb-8">
         <div className="mb-8">

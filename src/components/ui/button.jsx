@@ -13,7 +13,7 @@ export function Button({ children, className, onClick, ...props }) {
 
   return (
     <button
-      className={`inline-block text-black border border-black py-3 px-[34px] text-[13px] bg-transparent cursor-pointer hover:border-[#f44336] hover:bg-[#f44336] transition duration-500 ${className}`}
+      className={`inline-block text-black border border-black py-3 px-[34px] text-[13px] bg-transparent cursor-pointer hover:border-[var(--rutor-color)] hover:bg-[var(--detalj-color)] transition duration-500 ${className}`}
       onClick={handleClick}  // Lägg till onClick här
       {...props}
     >

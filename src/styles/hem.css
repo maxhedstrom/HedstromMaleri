@@ -10,8 +10,10 @@
   --text-color: #6B7280; /* Ljusgrå (tailwind: gray-500) */
   --rutor-color: #fff3f3;    /* Rosa (närmast tailwind: rose-100) */
   --detalj-color: #F20C0C; /* Ljusröd (tailwind: red-400) */
-}
 
+  /* implentera färger i program:  text-[var(--rubrik-color)]  */
+
+}
 
 /* Example of defining the Tektur font */
 .tektur-unique {
