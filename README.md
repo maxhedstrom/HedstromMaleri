@@ -1,8 +1,24 @@
-# React + Vite
+# Hedström Måleri AB – Hemsida
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Detta är en hemsida byggd med React och Vite för måleriföretaget Hedström Måleri AB. Projektet är under utveckling och syftar till att visa företagets tjänster, kontaktinformation samt möjliggöra att skicka arbetsförfrågningar.
 
-Currently, two official plugins are available:
+## Teknisk info
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Byggd med:** React + Vite  
+- **CSS:** Tailwind + vanlig CSS  
+- **Backend:** JSON-filer (ingen databas i nuläget)  
+- **Syfte:** Skapa en enkel och underhållsvänlig webbplats för en mindre verksamhet  
+
+## Plugins
+
+Projektet använder följande Vite-plugins och paket:
+
+1. [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react) – för HMR (Hot Module Replacement)
+
+2. **Tailwind CSS** – används för styling.  
+   Om Tailwind inte är förinstallerat, kör (rekommenderat):
+   npm install -D tailwindcss postcss autoprefixer
+   npx tailwindcss init -p
+
+3. **React Icons** – används för ikoner (t.ex. hamburgermeny):
+   npm install react-icons

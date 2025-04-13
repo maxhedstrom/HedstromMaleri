@@ -1,4 +1,4 @@
-// src/components/ui/ServiceCard.jsx
+//används i Hem.jsx presenterar serviceCard i en grid layout
 import React from "react";
 
 const ServiceCard = ({ title, description }) => {

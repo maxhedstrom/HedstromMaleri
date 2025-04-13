@@ -1,6 +1,8 @@
 import { useState, useRef } from 'react';
 
 export default function Rot() {
+  //Logik för att hantera inmatning av kostnad och formatering till rotberäknaren, bryta upp i en egen komponent?
+  
   const [cost, setCost] = useState('');
   // rawCost kommer alltid att innehålla den formaterade strängen, t.ex. "30 000 kr"
   const [rawCost, setRawCost] = useState('');

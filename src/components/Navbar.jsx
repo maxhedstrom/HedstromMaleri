@@ -4,7 +4,6 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import NavLink from "../components/ui/Navlink";
 export default function Navbar() {
 
-  //JavaScript-kod för att skapa en responsiv navigeringsmeny med en fast position när användaren scrollar ner på sidan.
   // Denna kod använder Reacts useState och useEffect hooks för att hantera tillståndet för menyn och dess position.
   const [isFixed, setIsFixed] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -84,50 +83,49 @@ return (
     </ul>
    </div>
 
-  {/* Mobil-nav */}
-  <div className="text-white text-2xl font-bold  left-6 top-4 md:hidden">
-      <a href="/">
-        <img         
+    {/* Mobil-nav */}
+    <div className="text-white text-2xl font-bold  left-6 top-4 md:hidden">
+        <a href="/">
+          <img         
+          src="/logo-med-farg.png"
+          alt="Logotyp" 
+          className="w-[60px] h-auto transition-all duration-500" />
+        </a>
+    </div>
+
+    {/* Hamburgermeny för mobila enheter */}
+    <div className="md:hidden absolute right-12 top-6 z-20">
+      <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        {isMenuOpen ? (
+          <FaTimes className="text-white text-3xl" />
+        ) : (
+          <FaBars className="text-white text-3xl" />
+        )}
+      </button>
+    </div>
+
+        {/* Mobil meny som visas vid klick */}
+    <div
+      className={`absolute top-0 left-0 w-full h-screen bg-[#505050] flex flex-col items-center justify-center transform transition-transform duration-300 
+      ${isMenuOpen ? "translate-x-0" : "-translate-x-full"} md:hidden z-10`}
+    >
+      {/* Bild högst upp */}
+      <img 
         src="/logo-med-farg.png"
-        alt="Logotyp" 
-        className="w-[60px] h-auto transition-all duration-500" />
-      </a>
-  </div>
-
-  {/* Hamburgermeny för mobila enheter */}
-  <div className="md:hidden absolute right-12 top-6 z-20">
-    <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-      {isMenuOpen ? (
-        <FaTimes className="text-white text-3xl" />
-      ) : (
-        <FaBars className="text-white text-3xl" />
-      )}
-    </button>
-  </div>
-
-      {/* Mobil meny som visas vid klick */}
-  <div
-    className={`absolute top-0 left-0 w-full h-screen bg-[#505050] flex flex-col items-center justify-center transform transition-transform duration-300 
-    ${isMenuOpen ? "translate-x-0" : "-translate-x-full"} md:hidden z-10`}
-  >
-    {/* Bild högst upp */}
-    <img 
-      src="/logo-med-farg.png"
-      alt="Hedström Måleri AB" 
-      className="w-32 h-auto -mt-20 mb-20 mr-4  "
-    />
-    {/* Länkar i mobilmenyn */}
-    <ul className="text-white text-[20px] font-bold space-y-6">
-      {navLinks.map((link, index) => (
-        <li key={index}>
-          <a href={link.href} onClick={() => setIsMenuOpen(false)}>
-            {link.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
- 
+        alt="Hedström Måleri AB" 
+        className="w-32 h-auto -mt-20 mb-20 mr-4  "
+      />
+      {/* Länkar i mobilmenyn */}
+      <ul className="text-white text-[20px] font-bold space-y-6">
+        {navLinks.map((link, index) => (
+          <li key={index}>
+            <a href={link.href} onClick={() => setIsMenuOpen(false)}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
  </nav>
 </header>
   );

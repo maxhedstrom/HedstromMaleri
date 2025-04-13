@@ -4,11 +4,11 @@ import { FaSortAmountUpAlt } from "react-icons/fa";
 import InfoCard from "/src/components/ui/infoCard";
 import personal from "../data/personal";
 
+  //Visar personalen i en kort presentation i ett kort, med en bild och en expanderbar overlay med mer information.
   const Personal = ({ person }) => {
   const [expanded, setExpanded] = useState(false);
   
     let buttonClasses = "absolute right-4 bottom-0 transform -translate-x-1/2 duration-[1200ms] ease-in-out text-3xl text-white transition-all";
-  
     let buttonIcon = (
       <div
         className={`relative transition-transform duration-[1200ms] ease-in-out ${

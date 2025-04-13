@@ -1,4 +1,4 @@
-  //Används i Projekt.jsx
+  //Används i tidslinjen i Projekt.jsx
  const timeline = [
     { year: "2011", text: "Hedström Måleri grundas i Örebro." },
     { year: "2012", text: "Företaget expanderar i personal och tar sig an fler projekt." },

@@ -43,33 +43,33 @@ const Timeline = () => {
         Vi har stor erfarenhet av alla typer av projekt och du kan se ett utplock av dessa här
       </h1>
 
+      {/* UTKOMMENTERAT SÅ LÄNGE... */}
           {/* Lägg in mer projekt här, kanske med en bild och en kort beskrivning av projektet? */}
-            <InfoCard
-              image="src/assets/bilder/spackling.webp"
-              title="src/assets/bilder/spackling.webp"
-              linkText="Kontakta oss för en offert!"
-              className="border"
-              link="/projekt"      
-              reverse={true}
-            />
-      
        {/*Två bilder bredvid varandra,visa bilder på olika projekt hur det var före och efter? */}
-       <div className="mt-[5%] flex flex-col md:flex-row px-4 md:px-40  justify-between items-stretch">
-          {/* Bildcontainer */}
-          <div 
-            className="basis-full md:basis-[40%] min-h-[400px] h-full bg-[url('src/assets/bilder/spackling.webp')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-center bg-cover flex items-center justify-center">
-          </div>
+        {/* 
+                    <InfoCard
+                      image="src/assets/bilder/spackling.webp"
+                      title="src/assets/bilder/spackling.webp"
+                      linkText="Kontakta oss för en offert!"
+                      className="border"
+                      link="/projekt"      
+                      reverse={true}
+                    />
+              
+              <div className="mt-[5%] flex flex-col md:flex-row px-4 md:px-40  justify-between items-stretch">
+                  <div 
+                    className="basis-full md:basis-[40%] min-h-[400px] h-full bg-[url('src/assets/bilder/spackling.webp')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-center bg-cover flex items-center justify-center">
+                  </div>
 
-          {/* Bildcontainer */}
-          <div 
-            className="basis-full md:basis-[40%] min-h-[400px] h-full bg-[url('src/assets/bilder/spackling.webp')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-center bg-cover flex items-center justify-center">
-          </div>
-        </div>
+                  <div 
+                    className="basis-full md:basis-[40%] min-h-[400px] h-full bg-[url('src/assets/bilder/spackling.webp')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-center bg-cover flex items-center justify-center">
+                  </div>
+                </div>
 
-        <p className="text-[var(--text-color)]">
-          Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle
-        </p>
-
+                <p className="text-[var(--text-color)]">
+                  Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle Lorem Ipsmum fimeingrnvjkle
+                </p>
+        */}
         {/* Sektion: Tidsline */}
         <p className="text-[var(--text-color)] text-[14px] font-light leading-[22px] p-[10px]">
           Företaget ägs och drivs av Peter Hedström som har över 26 års erfarenhet i branschen. 

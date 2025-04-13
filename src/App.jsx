@@ -11,7 +11,7 @@ function App() {
     return (
         <Routes>
             {/* Layout omsluter alla sidor */}
-            <Route path="/" element={<Layout />}>
+                <Route path="/" element={<Layout />}>
                 <Route index element={<Hem />} />
                 <Route path="kontakt" element={<Kontakt />} />
                 <Route path="om" element={<Om />} />

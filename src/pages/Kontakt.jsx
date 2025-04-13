@@ -5,10 +5,7 @@
   import { Card, CardContent } from "/src/components/ui/card";
   import { useLocation } from "react-router-dom";
 
-
-    
-
-  //KONTAKT FORMULÄR - ej i användning i nuläget endast demonstration av komponenter
+  //KONTAKT FORMULÄR - ej kopplat ill backend i nuläget endast demonstration av komponenter
   export default function ContactForm() {
     const [formData, setFormData] = useState({
       name: "",
@@ -40,11 +37,11 @@
       setFormSubmitted(true);
     };
 
-    // Variabler och funktion för att scrolla till Google Maps-kartan från både footern och lokalt på denna sida
+    // Variabler och funktion för att scrolla till Google Maps-kartan från både länk i footern och lokalt på denna sida
     const location = useLocation();
     const mapRef = useRef(null);
 
-    // Scrolla till Google Maps-kartan när adress i trycks
+    // Scrolla till Google Maps-kartan när adress trycks
       useEffect(() => {
       const params = new URLSearchParams(location.search);
       const shouldScroll = params.get("scrollTo") === "map";
@@ -61,20 +58,16 @@
 
   return (
     <div className="bg-gray-100 min-h-screen">
-        
-      {/* Header */}
       <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/grabakgrund.webp')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
         <h1 className="text-white text-4xl font-semibold text-center">
           Kontakta oss
         </h1>
       </header>
 
-  {/* Kontaktformulär */}
-  <div className="flex flex-col lg:flex-row justify-center items-start gap-8 p-4 max-w-6xl mx-auto">
-        <Card className="w-full max-w-lg shadow-lg rounded-2xl p-6 bg-white">
-          <CardContent>
-          
-
+      {/* Kontaktformulär */}
+      <div className="flex flex-col lg:flex-row justify-center items-start gap-8 p-4 max-w-6xl mx-auto">
+            <Card className="w-full max-w-lg shadow-lg rounded-2xl p-6 bg-white">
+              <CardContent>
             {/* Formulär med Tack meddelande */}
             {!formSubmitted ? (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -198,7 +191,7 @@
         </Card>
       </div>
     
-            {/* Google Maps-karta */}
+        {/* Google Maps-karta */}
         <div ref={mapRef} className="flex justify-center items-center p-4 mt-10">
           <div className="w-full max-w-4xl h-[400px]">
             <iframe

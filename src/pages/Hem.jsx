@@ -3,7 +3,6 @@ import "../styles/hem.css";
 import ServiceCard from "/src/components/ui/ServiceCard";
 import services from "../data/services";
 
-
 const Hem = () => {  
   return (
    <>      
