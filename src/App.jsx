@@ -6,6 +6,8 @@ import Om from './pages/Om';
 import Projekt from './pages/Projekt';
 import Tjanster from './pages/Tjanster';
 import Rot from './pages/Rot';
+import Integritetspolicy from './pages/integritetspolicy';
+
 
 function App() {
     return (
@@ -18,6 +20,8 @@ function App() {
                 <Route path="projekt" element={<Projekt />} />
                 <Route path="rot" element={<Rot/>} />
                 <Route path="tjanster" element={<Tjanster />} />
+                <Route path="integritetspolicy" element={<Integritetspolicy />} />
+
             </Route>
         </Routes>
     );
