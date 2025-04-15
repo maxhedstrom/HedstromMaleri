@@ -11,6 +11,7 @@ export default function Navbar() {
 
   //Array med länkar som visas i navbar
   const navLinks = [
+    { href: "/admin", label: "Admin" },
     { href: "/", label: "Hem" },
     { href: "/om", label: "Om oss" },
     { href: "/tjanster", label: "Tjänster" },

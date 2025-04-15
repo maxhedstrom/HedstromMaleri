@@ -7,6 +7,10 @@ import Projekt from './pages/Projekt';
 import Tjanster from './pages/Tjanster';
 import Rot from './pages/Rot';
 import Integritetspolicy from './pages/integritetspolicy';
+import AdminPanel from "./components/AdminPanel"; 
+import PasswordProtectedRoute from "./components/PasswordProtectedRoute";
+
+
 
 
 function App() {
@@ -21,6 +25,12 @@ function App() {
                 <Route path="rot" element={<Rot/>} />
                 <Route path="tjanster" element={<Tjanster />} />
                 <Route path="integritetspolicy" element={<Integritetspolicy />} />
+                <Route path="/admin" element={<AdminPanel />} />
+
+                {/* AVKOMMENTERA NEDAN NÄR DU VILL HA LÖSENORDSSKYDDAD ADMINPANEL */}
+                {/* <Route path="/admin" element={<PasswordProtectedRoute  />} /> */}
+
+
 
             </Route>
         </Routes>

@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import "../styles/hem.css";
 import { FaLinkedin } from "react-icons/fa";
 
-
 function Footer() {
   const footerRef = useRef(null); // Referens till footer-elementet i DOM
   const [inView, setInView] = useState(false); // Håller koll på om footern är synlig på skärmen
@@ -88,57 +87,55 @@ function Footer() {
         </ul>
       </div>
       <div className="relative mt-8 px-4 text-sm">
-  {/* Alltid synlig: Copyright-texten */}
-  <p className="text-center">
-    2025 © HEDSTRÖM MÅLERI AB - ALLA RÄTTIGHETER RESERVERADE.
-  </p>
+        {/* Alltid synlig: Copyright-texten */}
+        <p className="text-center">
+          2025 © HEDSTRÖM MÅLERI AB - ALLA RÄTTIGHETER RESERVERADE.
+        </p>
 
-  {/* Block för skapad-text och länkar i responsivt läge (< md) */}
-  <div className="md:hidden flex flex-col items-center mt-2 gap-2">
-    {/* Sida skapad av Max med LinkedIn-ikon */}
-    <p className="text-center flex items-center justify-center ">
-      SIDA SKAPAD AV MAX HEDSTRÖM
-      <a
-        href="https://www.linkedin.com/in/max-hedstrom"
-        className="mt-3.5 text-white"
-      >
-        <FaLinkedin />
-      </a>
-    </p>
-    {/* Länkar under "Sida skapad" */}
-    <div className="flex gap-4">
-      <a href="/integritetspolicy" className="text-gray-500 hover:underline">
-      INTEGRITETSPOLICY
-      </a>
-      <a href="/cookies" className="text-gray-500 hover:underline">
-        COOKIES
-      </a>
-    </div>
-  </div>
-  
+        {/* Block för skapad-text och länkar i responsivt läge (< md) */}
+        <div className="md:hidden flex flex-col items-center mt-2 gap-2">
+          {/* Sida skapad av Max med LinkedIn-ikon */}
+          <p className="text-center flex items-center justify-center ">
+            SIDA SKAPAD AV MAX HEDSTRÖM
+            <a
+              href="https://www.linkedin.com/in/max-hedstrom"
+              className="text-white"
+            >
+              <FaLinkedin />
+            </a>
+          </p>
+          {/* Länkar under "Sida skapad" */}
+          <div className="flex gap-4">
+            <a href="/integritetspolicy" className="text-gray-500 hover:underline">
+              INTEGRITETSPOLICY
+            </a>
+            <a href="/integritetspolicy#cookies" className="text-gray-500 hover:underline">
+              COOKIES
+            </a>
+          </div>
+        </div>
 
-  {/* Block för "Sida skapad" i icke-responsivt läge (>= md)
-      visas under copyright */}
-  <p className="hidden md:block text-center flex flex-nowrap items-center justify-center">
-    SIDA SKAPAD AV MAX HEDSTRÖM
-    <a
-      href="https://www.linkedin.com/in/max-hedstrom"
-      className="ml-1 text-white hover:underline inline-flex"
-    >
-      <FaLinkedin />
-    </a>
-  </p>
-  {/* Länkar i icke-responsivt läge (>= md) som positioneras absolut till höger */}
-  <div className="hidden md:flex absolute top-0 right-0 items-center space-x-4">
-    <a href="/integritetspolicy" className="text-gray-500 hover:underline">
-    INTEGRITETSPOLICY
-    </a>
-    <a href="/cookies" className="text-gray-500 hover:underline">
-      COOKIES
-    </a>
-  </div>
-</div>
-
+        {/* Block för "Sida skapad" i icke-responsivt läge (>= md)
+            visas under copyright */}
+        <p className="hidden md:block text-center flex flex-nowrap items-center justify-center">
+          SIDA SKAPAD AV MAX HEDSTRÖM
+          <a
+            href="https://www.linkedin.com/in/max-hedstrom"
+            className="ml-1 mt-1 text-white hover:underline inline-flex"
+          >
+            <FaLinkedin />
+          </a>
+        </p>
+        {/* Länkar i icke-responsivt läge (>= md) som positioneras absolut till höger */}
+        <div className="hidden md:flex absolute top-0 right-0 items-center space-x-4">
+          <a href="/integritetspolicy" className="text-gray-500 hover:underline">
+            INTEGRITETSPOLICY
+          </a>
+          <a href="/integritetspolicy#cookies" className="text-gray-500 hover:underline">
+            COOKIES
+          </a>
+        </div>
+      </div>
     </footer>
   );
 }
