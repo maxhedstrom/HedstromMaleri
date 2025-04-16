@@ -1,51 +1,97 @@
-// src/components/AdminPanel.jsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function AdminPanel() {
-  const [currentTab, setCurrentTab] = useState("dashboard");
+  const [services, setServices] = useState([]);
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [newService, setNewService] = useState({ title: "", description: "" });
+
+  // Ladda tjänster från services.json
+  useEffect(() => {
+    fetch("/services.json")
+      .then((res) => res.json())
+      .then((data) => setServices(data))
+      .catch((err) => console.error("Kunde inte ladda tjänster:", err));
+  }, []);
+
+  const handleEdit = (index) => setEditingIndex(index);
+
+  const handleSave = (index) => {
+    setEditingIndex(null);
+    // ev. spara till backend här sen!
+  };
+
+  const handleDelete = (index) => {
+    const updated = [...services];
+    updated.splice(index, 1);
+    setServices(updated);
+  };
+
+  const handleAdd = () => {
+    const updated = [...services, { ...newService, id: Date.now() }];
+    setServices(updated);
+    setNewService({ title: "", description: "" });
+  };
 
   return (
-    <>    
-        <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/grabakgrund.webp')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
-        <h1 className="text-white text-4xl font-semibold text-center">
-          Välkommen till adminpanelen
-        </h1>
-      </header>
-      <div className="min-h-screen bg-gray-100 p-4">
-      <div className="flex gap-4 mb-6">
-        <button onClick={() => setCurrentTab("dashboard")} className="btn">
-          Översikt
-        </button>
-        <button onClick={() => setCurrentTab("services")} className="btn">
-          Tjänster
-        </button>
-        <button onClick={() => setCurrentTab("images")} className="btn">
-          Bilder
-        </button>
-        <button onClick={() => setCurrentTab("contact")} className="btn">
-          Kontakt
-        </button>
-      </div>
+    <div className="max-w-4xl mx-auto py-10">
+      <h2 className="text-2xl font-bold mb-6">Tjänster</h2>
 
-      <div className="bg-white p-6 rounded shadow">
-        {currentTab === "dashboard" && <p>Välkommen till adminpanelen!</p>}
-        {currentTab === "services" && <ServicesEditor />}
-        {currentTab === "images" && <ImagesEditor />}
-        {currentTab === "contact" && <ContactEditor />}
+      {services.map((service, index) => (
+        <div key={service.id} className="bg-white border rounded p-4 mb-4">
+          {editingIndex === index ? (
+            <>
+              <input
+                value={service.title}
+                onChange={(e) => {
+                  const updated = [...services];
+                  updated[index].title = e.target.value;
+                  setServices(updated);
+                }}
+                className="w-full mb-2 p-2 border rounded"
+              />
+              <textarea
+                value={service.description}
+                onChange={(e) => {
+                  const updated = [...services];
+                  updated[index].description = e.target.value;
+                  setServices(updated);
+                }}
+                className="w-full mb-2 p-2 border rounded"
+              />
+              <button onClick={() => handleSave(index)} className="bg-green-500 text-white px-3 py-1 rounded mr-2">
+                Spara
+              </button>
+            </>
+          ) : (
+            <>
+              <h3 className="font-semibold">{service.title}</h3>
+              <p className="mb-2">{service.description}</p>
+              <button onClick={() => handleEdit(index)} className="text-blue-600 mr-2">Redigera</button>
+              <button onClick={() => handleDelete(index)} className="text-red-600">Ta bort</button>
+            </>
+          )}
+        </div>
+      ))}
+
+      {/* Lägg till ny tjänst */}
+      <div className="mt-10 p-4 bg-gray-100 rounded">
+        <h3 className="font-semibold mb-2">Ny tjänst</h3>
+        <input
+          value={newService.title}
+          onChange={(e) => setNewService({ ...newService, title: e.target.value })}
+          placeholder="Titel"
+          className="w-full mb-2 p-2 border rounded"
+        />
+        <textarea
+          value={newService.description}
+          onChange={(e) => setNewService({ ...newService, description: e.target.value })}
+          placeholder="Beskrivning"
+          className="w-full mb-2 p-2 border rounded"
+        />
+        <button onClick={handleAdd} className="bg-blue-600 text-white px-3 py-1 rounded">
+          Lägg till
+        </button>
       </div>
     </div>
-    </>
-
   );
-}
-
-// Dessa komponenter bygger vi upp var för sig i nästa steg:
-function ServicesEditor() {
-  return <div>Här kan du redigera tjänster</div>;
-}
-function ImagesEditor() {
-  return <div>Här kan du ladda upp bilder</div>;
-}
-function ContactEditor() {
-  return <div>Här kan du ändra kontaktinfo</div>;
 }
