@@ -1,24 +1,56 @@
 const express = require("express");
-const fs = require("fs");
 const cors = require("cors");
+const fs = require("fs");
+const path = require("path");
+
 const app = express();
-const PORT = 5000;
+const port = 5000;
 
-app.use(cors()); // Tillåt förfrågningar från frontend
-app.use(express.json()); // Tolka inkommande JSON
+app.use(cors());
+app.use(express.json()); // För att kunna läsa JSON i request-body
 
-// POST: Spara data till services.json
-app.post("/api/save", (req, res) => {
-  fs.writeFile("../data/services.json", JSON.stringify(req.body, null, 2), (err) => {
+const servicesFilePath = path.join(__dirname, "data", "services.json");
+
+// Hämtar tjänster från services.json
+app.get("/api/get", (req, res) => {
+  fs.readFile(servicesFilePath, "utf8", (err, data) => {
     if (err) {
-      console.error("Fel vid skrivning:", err);
-      return res.status(500).send("Fel vid sparande");
+      console.error("Error reading services.json:", err);
+      return res.status(500).json({ error: "Fel vid hämtning av tjänster" });
     }
-    res.send("Tjänster sparade!");
+    try {
+      const services = JSON.parse(data);
+      res.json(services);
+    } catch (parseError) {
+      console.error("Error parsing services.json:", parseError);
+      res.status(500).json({ error: "Fel vid bearbetning av tjänster" });
+    }
   });
 });
 
-// Starta servern
-app.listen(PORT, () => {
-  console.log(`✅ Servern körs på http://localhost:${PORT}`);
+// Sparar tjänster till services.json
+app.post("/api/save", (req, res) => {
+  const services = req.body.services; // Tjänster som skickas från frontend
+  if (!Array.isArray(services)) {
+    console.error("Tjänsterna är inte en array:", services);
+    return res.status(400).json({ error: "Tjänsterna måste vara en array" });
+  }
+
+  fs.writeFile(servicesFilePath, JSON.stringify(services, null, 2), "utf8", (err) => {
+    if (err) {
+      console.error("Error saving services:", err);
+      return res.status(500).json({ error: "Fel vid sparande av tjänster" });
+    }
+    res.json({ message: "Tjänster sparade!" });
+  });
 });
+
+app.listen(port, () => {
+  console.log(`Servern körs på http://localhost:${port}`);
+});
+
+app.use((err, req, res, next) => {
+    console.error("Ett okänt fel inträffade:", err);
+    res.status(500).json({ error: "Ett okänt fel inträffade på servern" });
+  });
+  
