@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/hem.css";
 import ServiceCard from "/src/components/ui/ServiceCard";
-import services from "../data/services";
 import axios from "axios";
 
 const Hem = () => {

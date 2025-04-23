@@ -28,6 +28,17 @@ app.get("/api/get", (req, res) => {
   });
 });
 
+// Hämtar tjänster från personal.json
+app.get("/api/personal", (req, res) => {
+  fs.readFile("./data/personal.json", "utf-8", (err, data) => {
+    if (err) {
+      return res.status(500).json({ error: "Kunde inte läsa personalfilen." });
+    }
+    res.json(JSON.parse(data));
+  });
+});
+
+
 // Sparar tjänster till services.json
 app.post("/api/save", (req, res) => {
   const services = req.body.services; // Tjänster som skickas från frontend
@@ -35,6 +46,19 @@ app.post("/api/save", (req, res) => {
     console.error("Tjänsterna är inte en array:", services);
     return res.status(400).json({ error: "Tjänsterna måste vara en array" });
   }
+
+  // Sparar tjänster till personal.json
+
+  app.post("/api/save-personal", (req, res) => {
+    const personal = req.body.personal;
+    fs.writeFile("./data/personal.json", JSON.stringify(personal, null, 2), (err) => {
+      if (err) {
+        return res.status(500).json({ error: "Kunde inte spara personalfilen." });
+      }
+      res.json({ success: true });
+    });
+  });
+  
 
   fs.writeFile(servicesFilePath, JSON.stringify(services, null, 2), "utf8", (err) => {
     if (err) {
