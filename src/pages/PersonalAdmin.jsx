@@ -19,7 +19,6 @@ export default function PersonalAdmin() {
 
   const addPerson = () => {
     setStaff([
-      ...staff,
       {
         id: Date.now(),
         name: "",
@@ -28,6 +27,7 @@ export default function PersonalAdmin() {
         image: "",
         description: "",
       },
+      ...staff,
     ]);
   };
 
@@ -59,11 +59,30 @@ export default function PersonalAdmin() {
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">Redigera Personal</h2>
+      
+      <div className="flex gap-4 mt-6">
+        <button
+          onClick={addPerson}
+          className="bg-[var(--text-color)] text-white px-5 py-2 rounded hover:bg-[var(--rubrik-color)] cursor-pointer"
+        >
+          Lägg till person
+        </button>
+
+        <button
+          onClick={saveStaff}
+          disabled={isSaving}
+          className={`px-5 py-2 rounded cursor-pointer text-white transition ${
+            isSaving ? "bg-gray-400 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"
+          }`}
+        >
+          {isSaving ? "Sparar..." : "Spara ändringar"}
+        </button>
+      </div>
       {staff.map((person, index) => (
-        <div key={person.id} className="bg-white p-4 rounded shadow relative space-y-2">
+        <div key={person.id} className="bg-white p-4 rounded shadow relative space-y-2 ">
           <button
             onClick={() => deletePerson(person.id)}
-            className="absolute top-2 right-2 text-red-500 hover:text-red-700"
+            className="absolute top-2 right-2 cursor-pointer"
             title="Ta bort"
           >
             🗑️
@@ -101,24 +120,6 @@ export default function PersonalAdmin() {
         </div>
       ))}
 
-      <div className="flex gap-4 mt-6">
-        <button
-          onClick={addPerson}
-          className="bg-green-600 text-white px-5 py-2 rounded hover:bg-green-700"
-        >
-          Lägg till person
-        </button>
-
-        <button
-          onClick={saveStaff}
-          disabled={isSaving}
-          className={`px-5 py-2 rounded text-white transition ${
-            isSaving ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
-          }`}
-        >
-          {isSaving ? "Sparar..." : "Spara ändringar"}
-        </button>
-      </div>
     </div>
   );
 }

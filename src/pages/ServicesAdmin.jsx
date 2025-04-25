@@ -37,7 +37,7 @@ export default function AdminPanel() {
       name: "",
       description: "",
     };
-    setServices([...services, newService]);
+    setServices([newService, ...services]);
   };
 
   const deleteService = (id) => {
@@ -71,29 +71,38 @@ export default function AdminPanel() {
 
   return (
     <div className="flex h-screen">
-      {/* SIDEBAR */}
-      <nav className="w-56 bg-gray-800 text-white p-4">
-        <div className="flex items-center gap-2 mb-6">
-          <span className="text-2xl">🛠️</span>
-          <span className="text-xl font-semibold">Tjänster</span>
-        </div>
-        {/* Här kan du i framtiden lägga till fler menyalternativ */}
-      </nav>
-
+      
       {/* HUVUDINNEHÅLL */}
       <div className="flex-1 flex flex-col">
-        <header className="bg-gray-100 p-4 shadow">
-          <h1 className="text-2xl font-bold">Adminpanel</h1>
-        </header>
-
         <main className="flex-1 overflow-auto p-6">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
             Redigera Tjänster
           </h2>
           <p className="text-gray-600 mb-8">
-            Här kan du uppdatera befintliga tjänster, lägga till nya eller ta
+            Här kan du uppdatera befintliga tjänster som visas under sidan "Hem", lägga till nya eller ta
             bort.
           </p>
+          
+          <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={addNewService}
+              className="bg-[var(--text-color)] text-white px-5 py-2 rounded hover:bg-[var(--rubrik-color)] transition cursor-pointer"
+            >
+              Lägg till ny tjänst
+            </button>
+
+            <button
+              onClick={saveServices}
+              disabled={isSaving}
+              className={`px-5 py-2 rounded cursor-pointer text-white transition ${
+                isSaving
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-green-600 hover:bg-green-700"
+              }`}
+            >
+              {isSaving ? "Sparar..." : "Spara ändringar"}
+            </button>
+          </div>
 
           <div className="space-y-6">
             {services.length > 0 ? (
@@ -105,7 +114,7 @@ export default function AdminPanel() {
                   {/* Ta bort-knapp */}
                   <button
                     onClick={() => deleteService(service.id)}
-                    className="absolute top-3 right-3 text-red-500 hover:text-red-700 text-xl font-bold cursor-pointer"
+                    className="absolute top-3 right-3 font-bold cursor-pointer"
                     title="Ta bort tjänst"
                   >
                     🗑️
@@ -136,26 +145,6 @@ export default function AdminPanel() {
             )}
           </div>
 
-          <div className="mt-10 flex flex-col sm:flex-row gap-4">
-            <button
-              onClick={addNewService}
-              className="bg-green-600 text-white px-5 py-2 rounded hover:bg-green-700 transition"
-            >
-              Lägg till ny tjänst
-            </button>
-
-            <button
-              onClick={saveServices}
-              disabled={isSaving}
-              className={`px-5 py-2 rounded text-white transition ${
-                isSaving
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-blue-600 hover:bg-blue-700"
-              }`}
-            >
-              {isSaving ? "Sparar..." : "Spara ändringar"}
-            </button>
-          </div>
         </main>
       </div>
     </div>

@@ -49,6 +49,7 @@ function App() {
             index
             element={<Navigate to="services" replace />}
           />
+          
           {/* /admin/services */}
           <Route path="services" element={<ServicesAdmin />} />
           <Route path="personal" element={<PersonalAdmin />} />
