@@ -9,7 +9,7 @@ import Tjanster from './pages/Tjanster';
 import Rot from './pages/Rot';
 import Integritetspolicy from './pages/integritetspolicy';
 
-import AdminPanel from "./components/AdminPanel"; 
+import AdminPanel from "./components/admin/AdminPanel"; 
 // import PasswordProtectedRoute from "./components/PasswordProtectedRoute";
 import ServicesAdmin from "./pages/ServicesAdmin";
 import PersonalAdmin from "./pages/PersonalAdmin";
