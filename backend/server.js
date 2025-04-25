@@ -10,8 +10,11 @@ app.use(cors());
 app.use(express.json()); // För att kunna läsa JSON i request-body
 
 const servicesFilePath = path.join(__dirname, "data", "services.json");
+const personalFilePath = path.join(__dirname, "data", "personal.json");
 
-// Hämtar tjänster från services.json
+// ==============================
+// Hämta tjänster
+// ==============================
 app.get("/api/get", (req, res) => {
   fs.readFile(servicesFilePath, "utf8", (err, data) => {
     if (err) {
@@ -28,9 +31,11 @@ app.get("/api/get", (req, res) => {
   });
 });
 
-// Hämtar tjänster från personal.json
+// ==============================
+// Hämta personal
+// ==============================
 app.get("/api/personal", (req, res) => {
-  fs.readFile("./data/personal.json", "utf-8", (err, data) => {
+  fs.readFile(personalFilePath, "utf-8", (err, data) => {
     if (err) {
       return res.status(500).json({ error: "Kunde inte läsa personalfilen." });
     }
@@ -38,27 +43,15 @@ app.get("/api/personal", (req, res) => {
   });
 });
 
-
-// Sparar tjänster till services.json
+// ==============================
+// Spara tjänster
+// ==============================
 app.post("/api/save", (req, res) => {
-  const services = req.body.services; // Tjänster som skickas från frontend
+  const services = req.body.services;
   if (!Array.isArray(services)) {
     console.error("Tjänsterna är inte en array:", services);
     return res.status(400).json({ error: "Tjänsterna måste vara en array" });
   }
-
-  // Sparar tjänster till personal.json
-
-  app.post("/api/save-personal", (req, res) => {
-    const personal = req.body.personal;
-    fs.writeFile("./data/personal.json", JSON.stringify(personal, null, 2), (err) => {
-      if (err) {
-        return res.status(500).json({ error: "Kunde inte spara personalfilen." });
-      }
-      res.json({ success: true });
-    });
-  });
-  
 
   fs.writeFile(servicesFilePath, JSON.stringify(services, null, 2), "utf8", (err) => {
     if (err) {
@@ -69,12 +62,34 @@ app.post("/api/save", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Servern körs på http://localhost:${port}`);
+// ==============================
+// Spara personal
+// ==============================
+app.post("/api/save-personal", (req, res) => {
+  const personal = req.body.personal;
+  if (!Array.isArray(personal)) {
+    return res.status(400).json({ error: "Personal måste vara en array." });
+  }
+
+  fs.writeFile(personalFilePath, JSON.stringify(personal, null, 2), "utf8", (err) => {
+    if (err) {
+      return res.status(500).json({ error: "Kunde inte spara personalfilen." });
+    }
+    res.json({ success: true });
+  });
 });
 
+// ==============================
+// Starta servern
+// ==============================
+app.listen(port, () => {
+  console.log(`Servern körs på http://localhost:${port} din jävla grävlign`);
+});
+
+// ==============================
+// Global felhantering
+// ==============================
 app.use((err, req, res, next) => {
-    console.error("Ett okänt fel inträffade:", err);
-    res.status(500).json({ error: "Ett okänt fel inträffade på servern" });
-  });
-  
+  console.error("Ett okänt fel inträffade:", err);
+  res.status(500).json({ error: "Ett okänt fel inträffade på servern" });
+});

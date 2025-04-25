@@ -15,6 +15,7 @@ export default function AdminPersonal() {
     fetchUrl: "http://localhost:5000/api/personal",      // Hämta personaldata
     saveUrl: "http://localhost:5000/api/save-personal", // Spara personaldata
     defaultItem: { name: "", role: "", email: "", image: "", description: "" },
+    resourceName: "personal",
   });
 
   // Definiera vilka fält ListEditor ska rendera
