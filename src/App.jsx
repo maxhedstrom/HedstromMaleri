@@ -11,8 +11,8 @@ import Integritetspolicy from './pages/integritetspolicy';
 
 import AdminPanel from "./components/admin/AdminPanel"; 
 // import PasswordProtectedRoute from "./components/PasswordProtectedRoute";
-import ServicesAdmin from "./pages/ServicesAdmin";
-import PersonalAdmin from "./pages/PersonalAdmin";
+import ServicesAdmin from "./pages/admin/ServicesAdmin";
+import PersonalAdmin from "./pages/admin/PersonalAdmin";
 
 function App() {
   return (

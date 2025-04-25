@@ -6,8 +6,12 @@ function AdminPanel() {
     <header
       className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/slottet.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center">
         <h1 className="text-white text-4xl font-bold drop-shadow-xl">
-        Välkommen till Adminpanelen!
+        Välkommen till Adminpanelen! <br /> <br />
+        {/* <h2 className="text-white text-3xl font-bold drop-shadow-xl">
+          Observera att du alltid måste trycka på spara-ändringar knappen <br /> oavsett om raderar, ändrar eller lägger till något nytt. 
+        </h2> */}
         </h1> 
+        
     </header> 
     
     <div className="flex h-screen">   

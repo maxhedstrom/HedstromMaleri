@@ -2,57 +2,65 @@ import { useState, useEffect } from "react";
 
 /**
  * useAdminResource
- * @param {{ fetchUrl: string, saveUrl: string, defaultItem: object }}
+ * @param {{
+ *   fetchUrl: string,
+ *   saveUrl: string,
+ *   defaultItem: object,
+ *   resourceName: string
+ * }}
  */
-export function useAdminResource({ fetchUrl, saveUrl, defaultItem }) {
-  const [items, setItems] = useState([]);         // listan vi jobbar med
-  const [isSaving, setIsSaving] = useState(false); // flagga när vi sparar
+export function useAdminResource({ fetchUrl, saveUrl, defaultItem, resourceName }) {
+  const [items, setItems] = useState([]);
+  const [isSaving, setIsSaving] = useState(false);
 
-  // 1) Hämta data från API:t
+  // Hämta data vid mount / url-ändring
   useEffect(() => {
     fetch(fetchUrl)
-      .then((res) => {
+      .then(res => {
         if (!res.ok) throw new Error("Fetch error");
         return res.json();
       })
-      .then((data) => {
+      .then(data => {
         if (Array.isArray(data)) setItems(data);
         else console.error("Förväntade array, fick:", data);
       })
-      .catch((err) => console.error("Fel vid hämtning:", err));
+      .catch(err => console.error("Fel vid hämtning:", err));
   }, [fetchUrl]);
 
-  // 2) Uppdatera ett fält på ett objekt
+  // Uppdatera fält
   const handleChange = (index, field, value) => {
-    const updated = [...items];
-    updated[index] = { ...updated[index], [field]: value };
-    setItems(updated);
+    setItems(prev => {
+      const copy = [...prev];
+      copy[index] = { ...copy[index], [field]: value };
+      return copy;
+    });
   };
 
-  // 3) Lägg till nytt objekt överst
+  // Lägg till nytt objekt överst
   const addItem = () => {
     const newItem = { id: Date.now(), ...defaultItem };
-    setItems([newItem, ...items]);
+    setItems(prev => [newItem, ...prev]);
   };
 
-  // 4) Ta bort objekt
-  const deleteItem = (id) => {
+  // Ta bort objekt
+  const deleteItem = id => {
     if (window.confirm("Är du säker på att du vill ta bort?")) {
-      setItems(items.filter((i) => i.id !== id));
+      setItems(prev => prev.filter(i => i.id !== id));
     }
   };
 
-  // 5) Spara hela listan
+  // Spara alla
   const saveItems = async () => {
     setIsSaving(true);
     try {
+      const payload = { [resourceName]: items };
       const res = await fetch(saveUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items }),
+        body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error("Save failed");
-      console.log("Sparat!");
+      console.log(`${resourceName} sparade!`);
     } catch (err) {
       console.error("Fel vid sparande:", err);
     } finally {
