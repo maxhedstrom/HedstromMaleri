@@ -11,7 +11,6 @@ function AdminPanel() {
           Observera att du alltid måste trycka på spara-ändringar knappen <br /> oavsett om raderar, ändrar eller lägger till något nytt. 
         </h2> */}
         </h1> 
-        
     </header> 
     
     <div className="flex h-screen">   
@@ -21,12 +20,12 @@ function AdminPanel() {
 
           <nav className="flex flex-col space-y-4">
             <NavLink
-              to="services"
+              to="homeServices"
               className={({ isActive }) =>
                 isActive ? "text-white font-semibold" : "text-black hover:underline"
               }
             >
-              Hantera tjänster
+              Hantera tjänster [Hem]
             </NavLink>
 
             <NavLink
@@ -35,9 +34,20 @@ function AdminPanel() {
                 isActive ? "text-white font-semibold" : "text-black hover:underline"
               }
             >
-              Hantera personal
+              Hantera personal [Om oss] 
             </NavLink>
+            
+            <NavLink
+              to="services"
+              className={({ isActive }) =>
+                isActive ? "text-white font-semibold" : "text-black hover:underline"
+              }
+            >
+              Hantera tjänster [Tjänster]
+            </NavLink>
+
           </nav>
+          
         </aside>
 
             {/* HUVUDINNEHÅLL */}

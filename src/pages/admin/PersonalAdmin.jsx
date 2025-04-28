@@ -30,7 +30,7 @@ export default function AdminPersonal() {
   return (
     <ListEditor
       title="Redigera Personal"
-      description="Här kan du uppdatera befintlig personal, lägga till nya eller ta bort befintliga poster."
+      description="Här kan du uppdatera befintlig personal, lägga till nya eller ta bort befintliga poster. Denna information används på sidan 'Om oss'."
       items={items}
       isSaving={isSaving}
       handleChange={handleChange}

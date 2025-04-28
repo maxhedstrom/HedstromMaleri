@@ -11,7 +11,7 @@ import Integritetspolicy from './pages/integritetspolicy';
 
 import AdminPanel from "./components/admin/AdminPanel"; 
 // import PasswordProtectedRoute from "./components/PasswordProtectedRoute";
-import ServicesAdmin from "./pages/admin/ServicesAdmin";
+import HomeServicesAdmin from "./pages/admin/HomeServicesAdmin";
 import PersonalAdmin from "./pages/admin/PersonalAdmin";
 
 function App() {
@@ -51,7 +51,7 @@ function App() {
           />
           
           {/* /admin/services */}
-          <Route path="services" element={<ServicesAdmin />} />
+          <Route path="services" element={<HomeServicesAdmin />} />
           <Route path="personal" element={<PersonalAdmin />} />
 
         </Route>

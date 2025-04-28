@@ -2,7 +2,7 @@ import React from "react";
 import { useAdminResource } from "../../hooks/useAdminResource";
 import ListEditor from "../../components/admin/ListEditor";
 
-export default function ServicesAdmin() {
+export default function HomeServicesAdmin() {
   const {
     items: services,
     isSaving,
