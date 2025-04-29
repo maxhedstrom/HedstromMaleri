@@ -11,10 +11,10 @@ export default function HomeServicesAdmin() {
     deleteItem,
     saveItems,
   } = useAdminResource({
-    fetchUrl: "http://localhost:5000/api/get",
-    saveUrl:  "http://localhost:5000/api/save",
+    fetchUrl: "http://localhost:5000/api/get-home-services",
+    saveUrl:  "http://localhost:5000/api/save-home-services",
     defaultItem: { name: "", description: "" },
-    resourceName: "services",
+    resourceName: "homeservices",
   });
 
   const fields = [

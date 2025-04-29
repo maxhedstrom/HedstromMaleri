@@ -13,6 +13,10 @@ import AdminPanel from "./components/admin/AdminPanel";
 // import PasswordProtectedRoute from "./components/PasswordProtectedRoute";
 import HomeServicesAdmin from "./pages/admin/HomeServicesAdmin";
 import PersonalAdmin from "./pages/admin/PersonalAdmin";
+import ServicesAdmin from "./pages/admin/ServicesAdmin";
+import ProjektAdmin from "./pages/admin/ProjektAdmin";
+import KontaktAdmin from "./pages/admin/KontaktAdmin";
+
 
 function App() {
   return (
@@ -47,12 +51,17 @@ function App() {
           {/* /admin → /admin/services */}
           <Route
             index
-            element={<Navigate to="services" replace />}
+            element={<Navigate to="HomeServices" replace />}
           />
           
           {/* /admin/services */}
-          <Route path="services" element={<HomeServicesAdmin />} />
+          <Route path="HomeServices" element={<HomeServicesAdmin />} />
           <Route path="personal" element={<PersonalAdmin />} />
+          <Route path="services" element={<ServicesAdmin />} />
+          <Route path="projekt" element={<ProjektAdmin />} />
+          <Route path="kontakt" element={<KontaktAdmin />} />
+
+
 
         </Route>
       </Route>
