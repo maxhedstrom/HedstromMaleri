@@ -1,5 +1,13 @@
 [
   {
+    "id": 1746003938527,
+    "name": "namn",
+    "role": "titel",
+    "email": "roll",
+    "image": "jurl",
+    "description": "beskriving"
+  },
+  {
     "name": "Peter Hedström",
     "role": "VD & Målare",
     "email": "peter@hedstrommaleri.se || 073-600 20 47",

@@ -32,26 +32,17 @@ export default function ListEditor({
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">{title}</h2>
       {description && <p className="text-gray-600 mb-8">{description}</p>}
 
-      {/* Knappar */}
-      <div className="mt-10 flex flex-col sm:flex-row gap-4">
-        <button
-          onClick={addItem}
-          className="bg-[var(--text-color)] text-white px-5 py-2 rounded hover:bg-[var(--rubrik-color)] transition cursor-pointer"
-        >
-          Lägg till ny
-        </button>
-        <button
-          onClick={saveItems}
-          disabled={isSaving}
-          className={`px-5 py-2 rounded cursor-pointer text-white transition ${
-            isSaving
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-green-600 hover:bg-green-700"
-          }`}
-        >
-          {isSaving ? "Sparar..." : "Spara ändringar"}
-        </button>
-      </div>
+      {/* Lägg till-knapp */}
+{/* Lägg till-knapp */}
+  <div className ="ml-4 mb-4">
+    <button
+        onClick={addItem}
+        className=" px-5 py-2 rounded cursor-pointer text-white transition bg-[var(--text-color)] hover:bg-[var(--rubrik-color)]"
+      >
+        Lägg till ny
+    </button>
+  </div>
+
 
       {/* Lista med objekt */}
       <div className="space-y-6 mt-6">
@@ -85,6 +76,19 @@ export default function ListEditor({
                   />
                 );
               })}
+
+              {/* Spara-knapp för hela listan */}
+              <button
+                onClick={saveItems}
+                disabled={isSaving}
+                className={`mt-2 px-4 py-2 rounded cursor-pointer text-white transition ${
+                  isSaving
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-green-600 hover:bg-green-700"
+                }`}
+              >
+                {isSaving ? "Sparar..." : "Spara ändringar"}
+              </button>
             </div>
           ))
         ) : (
