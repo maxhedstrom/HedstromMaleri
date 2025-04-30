@@ -14,7 +14,7 @@ export default function HomeServicesAdmin() {
     fetchUrl: "http://localhost:5000/api/get-home-services",
     saveUrl:  "http://localhost:5000/api/save-home-services",
     defaultItem: { name: "", description: "" },
-    resourceName: "homeservices",
+    resourceName: "homeServices",
   });
 
   const fields = [
