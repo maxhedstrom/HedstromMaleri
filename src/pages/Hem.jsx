@@ -7,7 +7,7 @@ const Hem = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/home-services")
+    axios.get("http://localhost:5000/api/get-home-services")
       .then((res) => {
         setServices(res.data);
       })
