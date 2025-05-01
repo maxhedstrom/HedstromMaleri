@@ -42,18 +42,11 @@ export function useAdminResource({ fetchUrl, saveUrl, defaultItem, resourceName 
     setItems(prev => [newItem, ...prev]);
   };
 
-  // Ta bort objekt
-  const deleteItem = id => {
-    if (window.confirm("Är du säker på att du vill ta bort?")) {
-      setItems(prev => prev.filter(i => i.id !== id));
-    }
-  };
-
-  // Spara alla
-  const saveItems = async () => {
+  // Spara alla (kan ta emot en lista att spara, annars sparar nuvarande state)
+  const saveItems = async (customItems = items) => {
     setIsSaving(true);
     try {
-      const payload = { [resourceName]: items };
+      const payload = { [resourceName]: customItems };
       const res = await fetch(saveUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -67,6 +60,15 @@ export function useAdminResource({ fetchUrl, saveUrl, defaultItem, resourceName 
       setIsSaving(false);
     }
   };
+
+  const deleteItem = id => {
+    setItems(prev => {
+      const updated = prev.filter(i => i.id !== id);
+      saveItems(updated); // spara den nya listan direkt
+      return updated;
+    });
+  };
+  
 
   return { items, isSaving, handleChange, addItem, deleteItem, saveItems };
 }

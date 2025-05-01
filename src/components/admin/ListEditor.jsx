@@ -1,5 +1,4 @@
-// src/components/admin/ListEditor.jsx
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 /**
  * En återanvändbar lista-editor med enhetlig design
@@ -26,6 +25,24 @@ export default function ListEditor({
   saveItems,
   fields,
 }) {
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+
+  // Efter en lyckad sparning, visa bekräftelse under knappen i 3 sek
+  useEffect(() => {
+    let timer;
+    if (showConfirm) {
+      timer = setTimeout(() => setShowConfirm(false), 3000);
+    }
+    return () => clearTimeout(timer);
+  }, [showConfirm]);
+
+  // Wrapper för saveItems så vi kan visa bekräftelse
+  const handleSave = async () => {
+    await saveItems();
+    setShowConfirm(true);
+  };
+
   return (
     <main className="flex-1 overflow-auto p-6">
       {/* Rubrik och beskrivning */}
@@ -33,16 +50,14 @@ export default function ListEditor({
       {description && <p className="text-gray-600 mb-8">{description}</p>}
 
       {/* Lägg till-knapp */}
-{/* Lägg till-knapp */}
-  <div className ="ml-4 mb-4">
-    <button
-        onClick={addItem}
-        className=" px-5 py-2 rounded cursor-pointer text-white transition bg-[var(--text-color)] hover:bg-[var(--rubrik-color)]"
-      >
-        Lägg till ny
-    </button>
-  </div>
-
+      <div className="ml-4 mb-4">
+        <button
+          onClick={addItem}
+          className="px-5 py-2 rounded cursor-pointer text-white transition bg-[var(--text-color)] hover:bg-[var(--rubrik-color)]"
+        >
+          Lägg till ny
+        </button>
+      </div>
 
       {/* Lista med objekt */}
       <div className="space-y-6 mt-6">
@@ -54,7 +69,7 @@ export default function ListEditor({
             >
               {/* Ta bort-knapp */}
               <button
-                onClick={() => deleteItem(item.id)}
+                onClick={() => setConfirmDeleteId(item.id)}
                 className="absolute top-3 right-3 font-bold cursor-pointer"
                 title="Ta bort"
               >
@@ -77,24 +92,75 @@ export default function ListEditor({
                 );
               })}
 
-              {/* Spara-knapp för hela listan */}
-              <button
-                onClick={saveItems}
-                disabled={isSaving}
-                className={`mt-2 px-4 py-2 rounded cursor-pointer text-white transition ${
-                  isSaving
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-green-600 hover:bg-green-700"
-                }`}
-              >
-                {isSaving ? "Sparar..." : "Spara ändringar"}
-              </button>
+              {/* Spara-knapp per objekt */}
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={handleSave}
+                  disabled={isSaving}
+                  className={`px-4 py-2 rounded cursor-pointer text-white transition ${
+                    isSaving
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-green-600 hover:bg-green-700"
+                  }`}
+                >
+                  {isSaving ? "Sparar..." : "Spara ändringar"}
+                </button>
+                {showConfirm && !isSaving && (
+                  <span className="text-green-600">✔️ Sparat!</span>
+                )}
+              </div>
             </div>
           ))
         ) : (
           <p className="text-gray-500">Inga poster tillgängliga att visa.</p>
         )}
       </div>
+
+      {/* Spara-knapp för hela listan */}
+      {items.length > 0 && (
+        <div className="mt-8 flex items-center gap-4">
+          <button
+            onClick={handleSave}
+            disabled={isSaving}
+            className={`px-4 py-2 rounded cursor-pointer text-white transition ${
+              isSaving
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-green-600 hover:bg-green-700"
+            }`}
+          >
+            {isSaving ? "Sparar..." : "Spara alla ändringar"}
+          </button>
+          {showConfirm && !isSaving && (
+            <span className="text-green-600">✔️ Sparat!</span>
+          )}
+        </div>
+      )}
+
+      {/* Bekräftelsemodal för borttagning */}
+      {confirmDeleteId !== null && (
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl shadow-lg p-6 max-w-sm w-full space-y-4 text-center">
+            <p className="text-lg">Är du säker på att du vill ta bort? <br /> Detta går inte att ångra.</p>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={() => {
+                  deleteItem(confirmDeleteId);
+                  setConfirmDeleteId(null);
+                }}
+                className="px-4 py-2 rounded cursor-pointer text-white bg-red-600 hover:bg-red-700"
+              >
+                Ja, ta bort
+              </button>
+              <button
+                onClick={() => setConfirmDeleteId(null)}
+                className="px-4 py-2 cursor-pointer rounded border"
+              >
+                Avbryt
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
