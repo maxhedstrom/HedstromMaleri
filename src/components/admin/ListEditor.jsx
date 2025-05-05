@@ -78,19 +78,50 @@ export default function ListEditor({
 
               {/* Fält */}
               {fields.map((field) => {
-                const Tag = field.type === "textarea" ? "textarea" : "input";
-                return (
-                  <Tag
-                    key={field.name}
-                    type={field.type === "textarea" ? undefined : field.type || "text"}
-                    value={item[field.name] || ""}
-                    onChange={(e) => handleChange(index, field.name, e.target.value)}
-                    placeholder={field.placeholder}
-                    rows={field.type === "textarea" ? 3 : undefined}
-                    className="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                  />
-                );
-              })}
+                const value = item[field.name] || (field.type === "checkbox" ? false : "");
+
+                if (field.type === "textarea") {
+                  return (
+                    <div key={field.name}>
+                      {field.label && <label className="block mb-1 font-semibold">{field.label}</label>}
+                      <textarea
+                        value={value}
+                        onChange={(e) => handleChange(index, field.name, e.target.value)}
+                        placeholder={field.placeholder}
+                        rows={3}
+                        className="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      />
+                    </div>
+                  );
+                }
+
+                if (field.type === "checkbox") {
+                  return (
+                    <div key={field.name} className="flex items-center gap-2">
+                      <input
+                        type="checkbox"
+                        checked={value}
+                        onChange={(e) => handleChange(index, field.name, e.target.checked)}
+                      />
+                      <label className="text-sm font-medium">{field.label || field.placeholder}</label>
+                    </div>
+                  );
+                }
+  return (
+    <div key={field.name}>
+      {field.label && <label className="block mb-1 font-semibold">{field.label}</label>}
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => handleChange(index, field.name, e.target.value)}
+        placeholder={field.placeholder}
+        className="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
+    </div>
+  );
+})}
+
+
 
               {/* Spara-knapp per objekt */}
               <div className="flex items-center gap-4">

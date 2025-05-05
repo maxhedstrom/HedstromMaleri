@@ -81,7 +81,7 @@
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full border-gray-300 rounded-md p-2 text-[var(--text-color)]"
+                      className="w-full border-gray-300 rounded-md cursor-pointer p-2 text-[var(--text-color)]"
                       required
                     >
                       <option value="">Välj ett alternativ</option>

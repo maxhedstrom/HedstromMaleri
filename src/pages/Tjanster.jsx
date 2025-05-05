@@ -1,20 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/hem.css";
 import InfoCard from "/src/components/ui/infoCard";
-import tjanster from "../data/tjanster";
 
 function Tjanster() {
-  useEffect(() => {
+  const [tjanster, setTjanster] = useState([]);
 
-    // Funktionalitet för att ta emot länkar från Footern. Om en hash finns i URL:en, scrolla till motsvarande sektion
+  useEffect(() => {
+    // Hämta tjänster från backend
+    const fetchData = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/api/get-services");
+        const data = await res.json();
+        setTjanster(data);
+      } catch (error) {
+        console.error("Kunde inte hämta tjänster:", error);
+      }
+    };
+
+    fetchData();
+
+    // Scroll till sektion om hash finns i URL:en
     if (window.location.hash) {
-      const id = window.location.hash.substring(1); // ta bort "#"
+      const id = window.location.hash.substring(1);
       const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
-    }, []);
+  }, []);
 
   return (
     <>
@@ -32,10 +45,18 @@ function Tjanster() {
 
         {tjanster.map((tjanst, index) => (
           <div id={`tjanst-${index}`} key={index}>
-            <InfoCard {...tjanst} className="border" />
+            <InfoCard
+              title={tjanst.title}
+              description={tjanst.description}
+              image={tjanst.image || "/src/assets/bilder/default.jpg"}
+              linkText={tjanst.linkText || "Kontakta oss för en offert!"}
+              link={tjanst.link || "/kontakt"}
+              reverse={tjanst.reverse}
+              className="border"
+            />
           </div>
         ))}
-    
+
         <h2 className="text-black text-2xl font-extralight text-center mt-10">
           Har du frågor eller vill ha en offert? <br /> Tveka inte att kontakta oss!
         </h2>
@@ -46,4 +67,5 @@ function Tjanster() {
     </>
   );
 }
+
 export default Tjanster;
