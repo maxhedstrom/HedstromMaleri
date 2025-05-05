@@ -140,6 +140,23 @@ app.post("/api/save-services", (req, res) => {
   });
 });
 
+// ==============================
+// Spara projekt [Projekt.jsx]
+// ==============================
+app.post("/api/save-projekt", (req, res) => {
+  const projekt = req.body.projekt;         // 1) Läs rätt namn
+  if (!Array.isArray(projekt)) {
+    return res.status(400).json({ error: "Projekt måste vara en array" });
+  }
+  fs.writeFile(projektFilePath,             // 2) Skriv till rätt fil
+               JSON.stringify(projekt, null, 2),
+               "utf8",
+               err => {
+    if (err) return res.status(500).json({ error: "Fel vid sparande av projekt" });
+    res.json({ message: "Projekt sparat!" });
+  });
+});
+
 
 // ==============================
 // Spara services [Kontakt.jsx]
