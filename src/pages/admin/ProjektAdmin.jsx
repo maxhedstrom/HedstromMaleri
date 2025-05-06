@@ -26,7 +26,7 @@ export default function ProjektAdmin() {
     <div className="p-8">
       <ListEditor
         title="Redigera tidslinje"
-        description="Lägg till, ändra eller ta bort milstolpar i tidslinjen."
+        description="Lägg till, ändra eller ta bort milstolpar i tidslinjen. Milstolparna visas i ordning efter årtal automatiskt."
         items={timeline}
         isSaving={isSaving}
         handleChange={handleChange}
