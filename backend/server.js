@@ -80,7 +80,7 @@ app.get("/api/get-projekt", (req, res) => {
 // Hämta kontakt [Kontakt.jsx]
 // ==============================
 app.get("/api/get-kontakt", (req, res) => {
-  fs.readFile(projektFilePath, "utf8", (err, data) => {
+  fs.readFile(kontaktFilePath, "utf8", (err, data) => {
     if (err) return res.status(500).json({ error: "Fel vid hämtning av kontakt" });
     try {
       res.json(JSON.parse(data));
@@ -89,6 +89,7 @@ app.get("/api/get-kontakt", (req, res) => {
     }
   });
 });
+
 
 // ==============================
 // Spara tjänster [Hem.jsx]
@@ -162,13 +163,14 @@ app.post("/api/save-projekt", (req, res) => {
 // Spara services [Kontakt.jsx]
 // ==============================
 app.post("/api/save-kontakt", (req, res) => {
-  const services = req.body.services;
-  if (!Array.isArray(services)) {
-    return res.status(400).json({ error: "Kontakt måste vara en array" });
+  const kontakt = req.body.kontakt;
+  if (typeof kontakt !== "object" || kontakt === null) {
+    return res.status(400).json({ error: "Kontakt måste vara ett objekt" });
   }
-  fs.writeFile(servicesFilePath, JSON.stringify(services, null, 2), "utf8", err => {
+
+  fs.writeFile(kontaktFilePath, JSON.stringify(kontakt, null, 2), "utf8", err => {
     if (err) return res.status(500).json({ error: "Fel vid sparande av kontakt" });
-    res.json({ message: "Kontaktinfo sparat!" });
+    res.json({ message: "Kontaktinfo sparad!" });
   });
 });
 

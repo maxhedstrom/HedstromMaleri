@@ -13,7 +13,8 @@
       message: "",
       subject: ""
     });
-      
+      const [info, setInfo] = useState(null);
+    
     // State för att hantera om formuläret har skickats
     const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -49,6 +50,15 @@
         mapRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }, [location]);
+
+      useEffect(() => {
+        fetch("/api/companyInfo")
+          .then(res => res.json())
+          .then(data => setInfo(data.companyInfo))
+          .catch(err => console.error("Fel vid hämtning av företagsinfo:", err));
+      }, []);
+
+      
 
     const scrollToMap = () => {
       if (mapRef.current) {
@@ -144,32 +154,35 @@
         {/* Företagsinfo + Faktura */}
         <Card className="w-full lg:w-1/2 shadow-xl rounded-2xl p-6 bg-white">
         <CardContent>
+            <h2 className="text-3xl font-bold text-[var(--rubrik-color)] mb-6 flex items-center gap-2">
+              🏢 Företagsinformation
+            </h2>
           <h2 className="text-3xl font-bold text-[var(--rubrik-color)] mb-6 flex items-center gap-2">
             🏢 Företagsinformation
           </h2>
-          <ul className="space-y-3 text-gray-700 text-base">
-            <li>
-              <strong>📛 Företag:</strong> Hedström Måleri AB
-            </li>
-            <li>
-              <strong>🧾 Org.nr:</strong> 556123-4567
-            </li>
-            <li>
-              <strong>📞 Telefon:</strong> 073–600 20 47  
-            </li>
-            <li>
-              <strong>✉️ E-post:</strong> <a href="mailto:info@hedstrommaleri.se" className="text-[var(--detalj-color)] hover:bg-[var(--rutor-color)] hover:underline">info@hedstrommaleri.se</a>
-            </li>
-            <li>
-            <strong>📍 Adress:</strong>{" "}
-                <button
-                  onClick={scrollToMap}
-                  className="text-[var(--detalj-color)] hover:underline"
-                >
-                  Engelbrektsgatan 27, 702 13 Örebro
+
+          {info ? (
+            <ul className="space-y-3 text-gray-700 text-base">
+              <li><strong>📛 Företag:</strong> {info.name}</li>
+              <li><strong>🧾 Org.nr:</strong> {info.orgNumber}</li>
+              <li><strong>📞 Telefon:</strong> {info.phone}</li>
+              <li>
+                <strong>✉️ E-post:</strong>{" "}
+                <a href={`mailto:${info.email}`} className="text-[var(--detalj-color)] hover:bg-[var(--rutor-color)] hover:underline">
+                  {info.email}
+                </a>
+              </li>
+              <li>
+                <strong>📍 Adress:</strong>{" "}
+                <button onClick={scrollToMap} className="text-[var(--detalj-color)] hover:underline">
+                  {info.address}
                 </button>
               </li>
-          </ul>
+            </ul>
+          ) : (
+            <p>Laddar företagsinformation...</p>
+          )}
+
 
           <div className="mt-8 space-y-4">
             <a 

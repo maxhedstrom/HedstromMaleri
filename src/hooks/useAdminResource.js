@@ -25,20 +25,25 @@ export function useAdminResource({ fetchUrl, saveUrl, defaultItem, resourceName 
   const [isSaving, setIsSaving] = useState(false);
 
   // Hämta data vid mount / url-ändring
-  useEffect(() => {
-    fetch(fetchUrl)
-      .then(res => {
-        if (!res.ok) throw new Error("Fetch error");
-        return res.json();
-      })
-      .then(data => {
-        if (Array.isArray(data)) {
-          // sortera innan du sätter state
-          setItems(sortByYear(data));
-        } else console.error("Förväntade array, fick:", data);
-      })
-      .catch(err => console.error("Fel vid hämtning:", err));
-  }, [fetchUrl]);
+useEffect(() => {
+  fetch(fetchUrl)
+    .then(res => {
+      if (!res.ok) throw new Error("Fetch error");
+      return res.json();
+    })
+    .then(data => {
+      if (!Array.isArray(data)) {
+        console.error("Förväntade array, fick:", data);
+        return;
+      }
+      // Endast sortera för projektsidan
+      const finalItems = resourceName === "projekt"
+        ? sortByYear(data)
+        : data;
+      setItems(finalItems);
+    })
+    .catch(err => console.error("Fel vid hämtning:", err));
+}, [fetchUrl, resourceName]);
   
 
   // Uppdatera fält
@@ -50,47 +55,53 @@ export function useAdminResource({ fetchUrl, saveUrl, defaultItem, resourceName 
     });
   };
 
-  // Lägg till nytt objekt överst
-  const addItem = () => {
-    const newItem = { id: Date.now(), ...defaultItem };
-    setItems(prev => {
-      const withNew = [...prev, newItem];
-      return sortByYear(withNew);
-    });
-  };
-    
+ // Lägg till nytt objekt överst
+const addItem = () => {
+  const newItem = { id: Date.now(), ...defaultItem };
+  setItems(prev => {
+    const withNew = [...prev, newItem];
+    return resourceName === "projekt"
+      ? sortByYear(withNew)
+      : withNew;
+  });
+};
 
-  // Spara alla (kan ta emot en lista att spara, annars sparar nuvarande state)
-  const saveItems = async (customItems = items) => {
-    setIsSaving(true);
-    try {
-      const sorted = sortByYear(customItems);
-      const payload = { [resourceName]: sorted };
-      console.log("Payload som skickas:", JSON.stringify(payload, null, 2));
-      const res = await fetch(saveUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error("Save failed");
-      console.log(`${resourceName} sparade!`);
-      // uppdatera även state med sorterad lista
-      setItems(sorted);
-    } catch (err) {
-      console.error("Fel vid sparande:", err);
-    } finally {
-      setIsSaving(false);
-    }
-  };
-  
+// Spara alla (kan ta emot en lista att spara, annars sparar nuvarande state)
+const saveItems = async (customItems = items) => {
+  setIsSaving(true);
+  try {
+    const sorted = resourceName === "projekt"
+      ? sortByYear(customItems)
+      : customItems;
 
-  const deleteItem = id => {
-    setItems(prev => {
-      const updated = prev.filter(i => i.id !== id);
-      saveItems(updated); // spara den nya listan direkt
-      return updated;
+    const payload = { [resourceName]: sorted };
+    console.log("Payload som skickas:", JSON.stringify(payload, null, 2));
+
+    const res = await fetch(saveUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
     });
-  };
+
+    if (!res.ok) throw new Error("Save failed");
+    console.log(`${resourceName} sparade!`);
+    setItems(sorted);
+  } catch (err) {
+    console.error("Fel vid sparande:", err);
+  } finally {
+    setIsSaving(false);
+  }
+};
+
+// Radera objekt och spara nya listan
+const deleteItem = id => {
+  setItems(prev => {
+    const updated = prev.filter(i => i.id !== id);
+    saveItems(updated); // spara den nya listan direkt
+    return updated;
+  });
+};
+
   
 
   return { items, isSaving, handleChange, addItem, deleteItem, saveItems };
