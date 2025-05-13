@@ -15,182 +15,201 @@ const fallbackKontakt = {
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
+    subject: "",
     name: "",
     email: "",
-    message: "",
-    subject: ""
+    message: ""
   });
-  
+  const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   const [info, setInfo] = useState(null);
   const [usingFallback, setUsingFallback] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const firstErrorRef = useRef(null);
 
   const location = useLocation();
   const mapRef = useRef(null);
 
+  // Hantera input-ändringar och rensa fel för det fältet
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((f) => ({ ...f, [name]: value }));
+    setErrors((f) => ({ ...f, [name]: "" }));
   };
 
+  // Validering
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.subject) newErrors.subject = "Välj ett ärende.";
+    if (!formData.name.trim()) newErrors.name = "Namn krävs.";
+    if (!formData.email.trim()) {
+      newErrors.email = "E-post krävs.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Ogiltig e-postadress.";
+    }
+    if (!formData.message.trim()) newErrors.message = "Meddelande krävs.";
+    setErrors(newErrors);
+    return newErrors;
+  };
+
+  // Skicka formuläret
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const emptyField = Object.entries(formData).find(([key, value]) => value.trim() === "");
-
-    if (emptyField) {
-      const el = document.querySelector(`[name="${emptyField[0]}"]`);
-      if (el) el.focus();
+    const valErr = validateForm();
+    if (Object.keys(valErr).length) {
+      // sätt fokus på första felande fält
+      const first = Object.keys(valErr)[0];
+      document.querySelector(`[name="${first}"]`)?.focus();
       return;
     }
 
+    setIsLoading(true);
     try {
       const res = await fetch("http://localhost:5000/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
       });
-
       if (res.ok) {
-        console.log("E-post skickad!");
         setFormSubmitted(true);
-        setFormData({ name: "", email: "", message: "", subject: "" });
+        setFormData({ subject: "", name: "", email: "", message: "" });
+        setErrors({});
       } else {
-        alert("Kunde inte skicka meddelandet. Försök igen senare.");
+        alert("Kunde inte skicka. Försök senare.");
       }
-    } catch (error) {
-      console.error("Fel vid formulärhantering:", error);
-      alert("Något gick fel. Försök igen.");
+    } catch {
+      alert("Mailet kunde inte skickas, kvarstår problemet så kan du skicka ett mail direkt till oss på: hedstrom@info.se");
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    if (params.get("scrollTo") === "map" && mapRef.current) {
-      mapRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [location]);
-
+  // Hämta företagsinfo med fallback
   useEffect(() => {
     fetch("http://localhost:5000/api/get-kontakt")
-      .then((res) => {
-        if (!res.ok) throw new Error("Nätverksfel eller icke-OK status");
-        return res.json();
+      .then((r) => {
+        if (!r.ok) throw new Error();
+        return r.json();
       })
       .then((data) => {
-        if (Array.isArray(data) && data.length > 0) {
+        if (Array.isArray(data) && data.length) {
           setInfo(data[0]);
         } else {
-          console.warn("Tom data – använder fallback");
           setInfo(fallbackKontakt);
           setUsingFallback(true);
         }
       })
-      .catch((err) => {
-        console.error("Fel vid hämtning av företagsinfo:", err);
+      .catch(() => {
         setInfo(fallbackKontakt);
         setUsingFallback(true);
       });
   }, []);
 
-  const scrollToMap = () => {
-    if (mapRef.current) {
-      mapRef.current.scrollIntoView({ behavior: "smooth" });
+  // Scroll-to-map från URL
+  useEffect(() => {
+    if (location.search.includes("scrollTo=map")) {
+      mapRef.current?.scrollIntoView({ behavior: "smooth" });
     }
-  };
+  }, [location]);
+
+  const scrollToMap = () => mapRef.current?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <div className="bg-gray-100 min-h-screen">
+      {/* Hero */}
       <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/grabakgrund.webp')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
         <h1 className="text-white text-4xl font-semibold text-center">Kontakta oss</h1>
       </header>
 
-      <main className="flex flex-col lg:flex-row justify-center items-start gap-8 p-4 max-w-6xl mx-auto">
+      <main className="flex flex-col lg:flex-row gap-8 p-6 max-w-6xl mx-auto">
         {/* Formulär */}
-        <Card className="w-full max-w-lg shadow-lg rounded-2xl p-6 bg-white">
+        <Card className="w-full max-w-lg">
           <CardContent>
             {!formSubmitted ? (
-              <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+              <form onSubmit={handleSubmit} noValidate className="space-y-4">
                 <h2 className="text-2xl font-bold text-center text-[var(--rubrik-color)] mb-6">
                   Fyll i kontaktformuläret så hör vi av oss inom 24 timmar.
                 </h2>
-
+                {/* Ärende */}
                 <div>
-                  <label htmlFor="subject" className="block text-[var(--rubrik-color)] font-medium">
-                    Vad gäller ditt meddelande?
-                  </label>
-                  <div className="border p-2 rounded-md">
-                    <select
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      className="w-full border-gray-300 rounded-md cursor-pointer p-2 text-[var(--text-color)]"
-                      required
-                    >
-                      <option value="">Välj ett alternativ</option>
-                      <option value="Tapetsering">Tapetsering</option>
-                      <option value="Målning och Tapetsering">Målning och Tapetsering</option>
-                      <option value="Invändig målning">Invändig målning</option>
-                      <option value="Utvändig målning">Utvändig målning</option>
-                      <option value="Fasadmålning">Fasadmålning</option>
-                      <option value="Våtrumsmålning">Våtrumsmålning</option>
-                      <option value="Övrigt">Övrigt</option>
-                    </select>
-                  </div>
+                  <label className="block font-medium text-[var(--rubrik-color)]">Ärende</label>
+                  <select
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    className={`w-full border px-3 py-2 rounded ${errors.subject ? "border-red-500" : ""}`}
+                  >
+                    <option value="">Välj...</option>
+                    <option>Tapetsering</option>
+                    <option>Målning och Tapetsering</option>
+                    <option>Invändig målning</option>
+                    <option>Utvändig målning</option>
+                    <option>Fasadmålning</option>
+                    <option>Våtrumsmålning</option>
+                    <option>Övrigt</option>
+                  </select>
+                  {errors.subject && <p className="text-red-600 text-sm">{errors.subject}</p>}
                 </div>
 
+                {/* Namn */}
                 <div>
-                  <label htmlFor="name" className="block text-[var(--rubrik-color)] font-medium">Namn</label>
+                  <label className="block font-medium text-[var(--rubrik-color)]">Namn</label>
                   <Input
-                    id="name"
-                    type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Ditt namn"
-                    required
+                    className={errors.name ? "border-red-500" : ""}
                   />
+                  {errors.name && <p className="text-red-600 text-sm">{errors.name}</p>}
                 </div>
 
+                {/* E-post */}
                 <div>
-                  <label htmlFor="email" className="block text-[var(--rubrik-color)] font-medium">E-post</label>
+                  <label className="block font-medium text-[var(--rubrik-color)]">E-post</label>
                   <Input
-                    id="email"
-                    type="email"
                     name="email"
+                    type="email"
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Din e-post"
-                    required
+                    className={errors.email ? "border-red-500" : ""}
                   />
+                  {errors.email && <p className="text-red-600 text-sm">{errors.email}</p>}
                 </div>
 
+                {/* Meddelande */}
                 <div>
-                  <label htmlFor="message" className="block text-[var(--rubrik-color)] font-medium">Meddelande</label>
+                  <label className="block font-medium text-[var(--rubrik-color)]">Meddelande</label>
                   <Textarea
-                    id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Beskriv vad du behöver hjälp med här..."
-                    rows="4"
-                    required
+                    rows={4}
+                    placeholder="Skriv ditt meddelande här..."
+                    className={errors.message ? "border-red-500" : ""}
                   />
+                  {errors.message && <p className="text-red-600 text-sm">{errors.message}</p>}
                 </div>
 
-                <Button type="submit" className="w-full">Skicka</Button>
+                {/* Skicka-knapp */}
+                <Button type="submit" className="w-full" disabled={isLoading}>
+                  {isLoading ? "Meddelandet skickas... lämna inte sidan" : "Skicka"}
+                </Button>
               </form>
             ) : (
-              <h3 className="text-center text-4xl text-[var(--rubrik-color)]">
+             <h3 className="text-center text-4xl text-[var(--rubrik-color)]">
                 Tack för ditt meddelande <br /><br /> ✅ <br /><br />Vi återkommer så snart vi kan.
               </h3>
             )}
           </CardContent>
         </Card>
 
-        {/* Företagsinfo */}
-        <Card className="w-full lg:w-1/2 shadow-xl rounded-2xl p-6 bg-white">
-          <CardContent>
+ {/* Företagsinfo */}
+ 
+        <Card className="w-full lg:w-1/2 shadow-xl rounded-2xl p-6 bg-gray-100">
+        
+            <CardContent className="-mt-10">
             <h2 className="text-3xl font-bold text-[var(--rubrik-color)] mb-6 flex items-center gap-2">
               🏢 Företagsinformation
             </h2>
@@ -235,22 +254,19 @@ export default function ContactForm() {
               </a>
             </div>
           </CardContent>
-        </Card>
+        </Card> 
+        
       </main>
 
-      {/* Karta */}
-      <section ref={mapRef} className="flex justify-center items-center p-4 mt-10">
-        <div className="w-full max-w-4xl h-[400px]">
+      {/* Google Maps */}
+      <section ref={mapRef} className="p-4">
+        <div className="w-full max-w-4xl mx-auto h-[400px]">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2038.7678437657532!2d15.22228237649802!3d59.27002757458561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465c14fc4e3f1c91%3A0xc7d6ca23e573e096!2sEngelbrektsgatan%2027%2C%20702%2013%20%C3%96rebro%2C%20Sverige!5e0!3m2!1ssv!2ses!4v1744365960019!5m2!1ssv!2ses&zoom=10"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
+            className="w-full h-full rounded-2xl shadow-lg"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2038.7678437657532!2d15.22228237649802!3d59.27002757458561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465c14fc4e3f1c91%3A0xc7d6ca23e573e096!2sEngelbrektsgatan%2027%2C%20702%2013%20Örebro!5e0!3m2!1ssv!2ses!4v1744365960019!5m2!1ssv!2ses"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="rounded-2xl shadow-lg"
-          ></iframe>
+          />
         </div>
       </section>
     </div>
