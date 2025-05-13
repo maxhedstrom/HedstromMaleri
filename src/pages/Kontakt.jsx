@@ -14,7 +14,7 @@
       subject: ""
     });
       const [info, setInfo] = useState(null);
-    
+
     // State för att hantera om formuläret har skickats
     const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -51,13 +51,15 @@
       }
     }, [location]);
 
-      useEffect(() => {
-        fetch("/api/companyInfo")
-          .then(res => res.json())
-          .then(data => setInfo(data.companyInfo))
-          .catch(err => console.error("Fel vid hämtning av företagsinfo:", err));
-      }, []);
+    useEffect(() => {
+fetch("http://localhost:5000/api/get-kontakt")
+    .then(res => res.json())
+    .then(data => setInfo(data[0]))  // Här hämtar vi första objektet om du använder en array
+    .catch(err => console.error("Fel vid hämtning av företagsinfo:", err));
+}, []);
 
+
+   
       
 
     const scrollToMap = () => {

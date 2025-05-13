@@ -2,12 +2,7 @@ import React, { useState } from "react";
 import { useAdminResource } from "../../hooks/useAdminResource";
 
 export default function KontaktAdmin() {
-  const {
-    items: kontakt,
-    isSaving,
-    handleChange,
-    saveItems
-  } = useAdminResource({
+  const { items: kontakt = [{}], isSaving, handleChange, saveItems } = useAdminResource({
     fetchUrl: "http://localhost:5000/api/get-kontakt",
     saveUrl:  "http://localhost:5000/api/save-kontakt",
     defaultItem: {
@@ -18,7 +13,7 @@ export default function KontaktAdmin() {
       address: ""
     },
     resourceName: "kontakt",
-    isArray: false
+    isArray: true
   });
 
   const [showConfirm, setShowConfirm] = useState(false);
@@ -49,8 +44,8 @@ export default function KontaktAdmin() {
             <input
               type="text"
               name={field.name}
-              value={kontakt[field.name]}
-              onChange={(e) => handleChange(field.name, e.target.value)}
+              value={kontakt[0]?.[field.name] || ""}
+              onChange={(e) => handleChange(0, field.name, e.target.value)}
               className="w-full border rounded p-2"
             />
           </label>

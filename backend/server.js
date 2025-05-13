@@ -1,190 +1,190 @@
+// Importera nödvändiga moduler
 const express = require("express");
 const cors = require("cors");
-const fs = require("fs");
+const fs = require("fs/promises");
 const path = require("path");
 
 const app = express();
 const port = 5000;
 
-app.use(cors());
-app.use(express.json()); // För att kunna läsa JSON i request-body
+// Middleware
+app.use(cors()); // Tillåter förfrågningar från andra domäner (t.ex. din frontend)
+app.use(express.json()); // Gör att vi kan läsa JSON i inkommande requests
 
-const homeServicesFilePath = path.join(__dirname, "data", "homeServices.json");
-const personalFilePath = path.join(__dirname, "data", "personal.json");
-const servicesFilePath = path.join(__dirname, "data", "services.json");
-const projektFilePath = path.join(__dirname, "data", "projekt.json");
-const kontaktFilePath = path.join(__dirname, "data", "kontakt.json");
+// Definiera sökvägar till JSON-filerna
+const dataDir = path.join(__dirname, "data");
+const filePaths = {
+  homeServices: path.join(dataDir, "homeServices.json"),
+  personal: path.join(dataDir, "personal.json"),
+  services: path.join(dataDir, "services.json"),
+  projekt: path.join(dataDir, "projekt.json"),
+  kontakt: path.join(dataDir, "kontakt.json"),
+};
 
- 
-// ==============================
-// Hämta tjänster [Hem.jsx]
-// ==============================
-app.get("/api/get-home-services", (req, res) => {
-  fs.readFile(homeServicesFilePath, "utf8", (err, data) => {
-    if (err) {
-      console.error("Error reading homeServices.json:", err);
-      return res.status(500).json({ error: "Fel vid hämtning av hem-tjänster" });
-    }
-    try {
-      const homeServices = JSON.parse(data);
-      res.json(homeServices);
-    } catch (parseError) {
-      console.error("Error parsing homeServices.json:", parseError);
-      res.status(500).json({ error: "Fel vid bearbetning av hem-tjänster" });
-    }
-  });
-});
+// Se till att data-mappen finns (skapas om den saknas)
+fs.mkdir(dataDir, { recursive: true }).catch(console.error);
 
 // ==============================
-// Hämta personal [Om.jsx]
+// GET-routes för att läsa data
 // ==============================
-app.get("/api/personal", (req, res) => {
-  fs.readFile(personalFilePath, "utf-8", (err, data) => {
-    if (err) {
-      return res.status(500).json({ error: "Kunde inte läsa personalfilen." });
-    }
+
+// Hämtar hem-tjänster (för startsidan)
+app.get("/api/get-home-services", async (req, res) => {
+  try {
+    const data = await fs.readFile(filePaths.homeServices, "utf8");
     res.json(JSON.parse(data));
-  });
+  } catch (err) {
+    console.error("Fel vid hämtning av homeServices:", err);
+    res.status(500).json({ error: "Fel vid hämtning av hem-tjänster" });
+  }
+});
+
+// Hämtar personalinformation (för 'Om oss'-sidan)
+app.get("/api/personal", async (req, res) => {
+  try {
+    const data = await fs.readFile(filePaths.personal, "utf8");
+    res.json(JSON.parse(data));
+  } catch (err) {
+    console.error("Fel vid hämtning av personal:", err);
+    res.status(500).json({ error: "Kunde inte läsa personalfilen." });
+  }
+});
+
+// Hämtar tjänster (för tjänstesidan)
+app.get("/api/get-services", async (req, res) => {
+  try {
+    const data = await fs.readFile(filePaths.services, "utf8");
+    res.json(JSON.parse(data));
+  } catch (err) {
+    console.error("Fel vid hämtning av services:", err);
+    res.status(500).json({ error: "Fel vid hämtning av services" });
+  }
+});
+
+// Hämtar projekt (för referenser/projekt-sidan)
+app.get("/api/get-projekt", async (req, res) => {
+  try {
+    const data = await fs.readFile(filePaths.projekt, "utf8");
+    res.json(JSON.parse(data));
+  } catch (err) {
+    console.error("Fel vid hämtning av projekt:", err);
+    res.status(500).json({ error: "Fel vid hämtning av projekt" });
+  }
+});
+
+// Hämtar kontaktinformation (för kontaktsidan)
+app.get("/api/get-kontakt", async (req, res) => {
+  try {
+    const data = await fs.readFile(filePaths.kontakt, "utf8");
+    res.json(JSON.parse(data));
+  } catch (err) {
+    console.error("Fel vid hämtning av kontakt:", err);
+    res.status(500).json({ error: "Fel vid hämtning av kontaktinfo" });
+  }
 });
 
 // ==============================
-// Hämta services [Tjänster.jsx]
+// POST-routes för att spara data
 // ==============================
 
-app.get("/api/get-services", (req, res) => {
-  fs.readFile(servicesFilePath, "utf8", (err, data) => {
-    if (err) return res.status(500).json({ error: "Fel vid hämtning av services" });
-    try {
-      res.json(JSON.parse(data));
-    } catch {
-      res.status(500).json({ error: "Fel vid bearbetning av services" });
-    }
-  });
-});
-
-// ==============================
-// Hämta projekt [Projekt.jsx]
-// ==============================
-app.get("/api/get-projekt", (req, res) => {
-  fs.readFile(projektFilePath, "utf8", (err, data) => {
-    if (err) return res.status(500).json({ error: "Fel vid hämtning av projekt" });
-    try {
-      res.json(JSON.parse(data));
-    } catch {
-      res.status(500).json({ error: "Fel vid bearbetning av projekt" });
-    }
-  });
-});
-
-// ==============================
-// Hämta kontakt [Kontakt.jsx]
-// ==============================
-app.get("/api/get-kontakt", (req, res) => {
-  fs.readFile(kontaktFilePath, "utf8", (err, data) => {
-    if (err) return res.status(500).json({ error: "Fel vid hämtning av kontakt" });
-    try {
-      res.json(JSON.parse(data));
-    } catch {
-      res.status(500).json({ error: "Fel vid bearbetning av kontaktinfo" });
-    }
-  });
-});
-
-
-// ==============================
-// Spara tjänster [Hem.jsx]
-// ==============================
-app.post("/api/save-home-services", (req, res) => {
+// Sparar hem-tjänster
+app.post("/api/save-home-services", async (req, res) => {
   const homeServices = req.body.homeServices;
   if (!Array.isArray(homeServices)) {
-    console.error("Hem-tjänsterna är inte en array:", homeServices);
     return res.status(400).json({ error: "Hem-tjänsterna måste vara en array" });
   }
 
-  fs.writeFile(homeServicesFilePath, JSON.stringify(homeServices, null, 2), "utf8", (err) => {
-    if (err) {
-      console.error("Error saving homeServices:", err);
-      return res.status(500).json({ error: "Fel vid sparande av hem-tjänster" });
-    }
-    res.json({ message: "Hem-tjänster sparade!" });
-  });
+  try {
+    await fs.writeFile(filePaths.homeServices, JSON.stringify(homeServices, null, 2), "utf8");
+    res.json({ success: true, message: "Hem-tjänster sparade!" });
+  } catch (err) {
+    console.error("Fel vid sparande av homeServices:", err);
+    res.status(500).json({ error: "Fel vid sparande av hem-tjänster" });
+  }
 });
 
-// ==============================
-// Spara personal [Om.jsx]
-// ==============================
-app.post("/api/save-personal", (req, res) => {
+// Sparar personalinformation
+app.post("/api/save-personal", async (req, res) => {
   const personal = req.body.personal;
   if (!Array.isArray(personal)) {
     return res.status(400).json({ error: "Personal måste vara en array." });
   }
 
-  fs.writeFile(personalFilePath, JSON.stringify(personal, null, 2), "utf8", (err) => {
-    if (err) {
-      return res.status(500).json({ error: "Kunde inte spara personalfilen." });
-    }
-    res.json({ success: true });
-  });
+  try {
+    await fs.writeFile(filePaths.personal, JSON.stringify(personal, null, 2), "utf8");
+    res.json({ success: true, message: "Personal sparad!" });
+  } catch (err) {
+    console.error("Fel vid sparande av personal:", err);
+    res.status(500).json({ error: "Kunde inte spara personalfilen." });
+  }
 });
 
-// ==============================
-// Spara services [Tjänster.jsx]
-// ==============================
-app.post("/api/save-services", (req, res) => {
+// Sparar tjänster
+app.post("/api/save-services", async (req, res) => {
   const services = req.body.services;
   if (!Array.isArray(services)) {
     return res.status(400).json({ error: "Services måste vara en array" });
   }
-  fs.writeFile(servicesFilePath, JSON.stringify(services, null, 2), "utf8", err => {
-    if (err) return res.status(500).json({ error: "Fel vid sparande av services" });
-    res.json({ message: "Services sparade!" });
-  });
+
+  try {
+    await fs.writeFile(filePaths.services, JSON.stringify(services, null, 2), "utf8");
+    res.json({ success: true, message: "Services sparade!" });
+  } catch (err) {
+    console.error("Fel vid sparande av services:", err);
+    res.status(500).json({ error: "Fel vid sparande av services" });
+  }
 });
 
-// ==============================
-// Spara projekt [Projekt.jsx]
-// ==============================
-app.post("/api/save-projekt", (req, res) => {
-  const projekt = req.body.projekt;         // 1) Läs rätt namn
+// Sparar projekt
+app.post("/api/save-projekt", async (req, res) => {
+  const projekt = req.body.projekt;
   if (!Array.isArray(projekt)) {
     return res.status(400).json({ error: "Projekt måste vara en array" });
   }
-  fs.writeFile(projektFilePath,             // 2) Skriv till rätt fil
-               JSON.stringify(projekt, null, 2),
-               "utf8",
-               err => {
-    if (err) return res.status(500).json({ error: "Fel vid sparande av projekt" });
-    res.json({ message: "Projekt sparat!" });
-  });
+
+  try {
+    await fs.writeFile(filePaths.projekt, JSON.stringify(projekt, null, 2), "utf8");
+    res.json({ success: true, message: "Projekt sparade!" });
+  } catch (err) {
+    console.error("Fel vid sparande av projekt:", err);
+    res.status(500).json({ error: "Fel vid sparande av projekt" });
+  }
 });
 
-
-// ==============================
-// Spara services [Kontakt.jsx]
-// ==============================
-app.post("/api/save-kontakt", (req, res) => {
+// Sparar kontaktinformation
+app.post("/api/save-kontakt", async (req, res) => {
   const kontakt = req.body.kontakt;
   if (typeof kontakt !== "object" || kontakt === null) {
     return res.status(400).json({ error: "Kontakt måste vara ett objekt" });
   }
 
-  fs.writeFile(kontaktFilePath, JSON.stringify(kontakt, null, 2), "utf8", err => {
-    if (err) return res.status(500).json({ error: "Fel vid sparande av kontakt" });
-    res.json({ message: "Kontaktinfo sparad!" });
-  });
+  try {
+    await fs.writeFile(filePaths.kontakt, JSON.stringify(kontakt, null, 2), "utf8");
+    res.json({ success: true, message: "Kontaktinfo sparad!" });
+  } catch (err) {
+    console.error("Fel vid sparande av kontakt:", err);
+    res.status(500).json({ error: "Fel vid sparande av kontakt" });
+  }
+});
+
+// ==============================
+// Hälsokontroll (användbar för felsökning)
+// ==============================
+app.get("/", (req, res) => {
+  res.send("Servern är igång! ✅");
+});
+
+// ==============================
+// Global felhanterare
+// ==============================
+app.use((err, req, res, next) => {
+  console.error("Ett okänt fel inträffade:", err);
+  res.status(500).json({ error: "Ett okänt fel inträffade på servern" });
 });
 
 // ==============================
 // Starta servern
 // ==============================
 app.listen(port, () => {
-  console.log(`Servern körs på http://localhost:${port} din jävla grävlign`);
-});
-
-// ==============================
-// Global felhantering
-// ==============================
-app.use((err, req, res, next) => {
-  console.error("Ett okänt fel inträffade:", err);
-  res.status(500).json({ error: "Ett okänt fel inträffade på servern" });
+  console.log(`Servern körs på http://localhost:${port}`);
 });
