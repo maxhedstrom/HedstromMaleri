@@ -1,5 +1,5 @@
   //Används i tidslinjen i Projekt.jsx
- const timeline = [
+ const fallbacktimeline = [
     { year: "2011", text: "Hedström Måleri grundas i Örebro." },
     { year: "2012", text: "Företaget expanderar i personal och tar sig an fler projekt." },
     { year: "2013", text: "Ett samarbete med Skanska inleds." },
@@ -15,5 +15,5 @@
     { year: "2025 - pågående", text: "Inlett samarbete med HMB, målning av fjärrkylecentral i Universitetsjukhuset Örebro." },
   ];
 
-  export default timeline;
+  export default fallbacktimeline;
  

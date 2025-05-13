@@ -1,5 +1,5 @@
 //Används i Om.jsx
-const personal = [
+const fallbackpersonal = [
     {
       name: "Peter Hedström",
       role: "VD & Målare",
@@ -26,5 +26,5 @@ const personal = [
     },
   ];
 
-  export default personal;
+  export default fallbackpersonal;
  

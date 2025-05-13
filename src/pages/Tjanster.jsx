@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/hem.css";
 import InfoCard from "/src/components/ui/infoCard";
+import fallBackTjanster from "../data/fallbacktjanster"; // Importera fallback
 
 function Tjanster() {
   const [tjanster, setTjanster] = useState([]);
@@ -10,10 +11,14 @@ function Tjanster() {
     const fetchData = async () => {
       try {
         const res = await fetch("http://localhost:5000/api/get-services");
+        if (!res.ok) {
+          throw new Error("Tjänster kunde inte hämtas från backend.");
+        }
         const data = await res.json();
         setTjanster(data);
       } catch (error) {
         console.error("Kunde inte hämta tjänster:", error);
+        setTjanster(fallBackTjanster); // Sätt fallback-tjänster om något går fel
       }
     };
 

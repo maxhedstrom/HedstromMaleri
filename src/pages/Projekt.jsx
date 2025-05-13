@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import InfoCard from "/src/components/ui/InfoCard";
-
+import fallbackTimeline  from "../data/fallbacktimeline";
 const Projekt = () => {
   const [scrollHeight, setScrollHeight] = useState(0);
   const [timeline, setTimeline] = useState([]); // Här lagras projekten
@@ -30,13 +30,18 @@ const Projekt = () => {
   }, []);
 
   useEffect(() => {
-    // Hämta projekten från projekt.json
     fetch("http://localhost:5000/api/get-projekt")
-
-    .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error("Kunde inte hämta från backend");
+        return res.json();
+      })
       .then((data) => setTimeline(data))
-      .catch((err) => console.error("Kunde inte läsa in projekt.json", err));
+      .catch((err) => {
+        console.error("Använder fallback:", err);
+        setTimeline(fallbackTimeline); 
+      });
   }, []);
+
 
   return (
     <>
@@ -75,23 +80,6 @@ const Projekt = () => {
             ))}
           </div>
         </div>
-
-        {/* Exempel på projektbilder med beskrivning */}
-        <div className="mt-10">
-          {timeline.length > 0 && (
-            <div className="mt-[5%] flex flex-col md:flex-row px-4 md:px-40 justify-between items-stretch">
-              {timeline.map((project, index) => (
-                <div key={index} className="basis-full md:basis-[40%] min-h-[400px] h-full bg-[url('src/assets/bilder/spackling.webp')] rounded-[10px] mb-5 md:mb-0 py-1 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)] bg-no-repeat bg-center bg-cover flex items-center justify-center">
-                  <div className="text-white text-center p-5 bg-black bg-opacity-50 w-full rounded-md">
-                    <h3 className="text-xl font-semibold">{project.year}</h3>
-                    <p>{project.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
       </section>
     </>
   );

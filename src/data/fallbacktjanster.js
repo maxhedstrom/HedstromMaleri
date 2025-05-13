@@ -1,5 +1,5 @@
 //Används i Tjanster.jsx
-const tjanster = [
+const fallbacktjanster = [
     {
       image: "src/assets/bilder/tapetsering.png",
       title: "Målning och tapetsering",
@@ -47,5 +47,5 @@ const tjanster = [
       },
   ];
   
-  export default tjanster;
+  export default fallbacktjanster;
   

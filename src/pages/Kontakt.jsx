@@ -183,9 +183,6 @@ useEffect(() => {
             <h2 className="text-3xl font-bold text-[var(--rubrik-color)] mb-6 flex items-center gap-2">
               🏢 Företagsinformation
             </h2>
-          <h2 className="text-3xl font-bold text-[var(--rubrik-color)] mb-6 flex items-center gap-2">
-            🏢 Företagsinformation
-          </h2>
 
     {info ? (
   <>
