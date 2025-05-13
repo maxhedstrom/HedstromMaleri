@@ -6,6 +6,7 @@ const path = require("path");
 
 const app = express();
 const port = 5000;
+const nodemailer = require("nodemailer");
 
 // Middleware
 app.use(cors()); // Tillåter förfrågningar från andra domäner (t.ex. din frontend)
@@ -181,6 +182,43 @@ app.use((err, req, res, next) => {
   console.error("Ett okänt fel inträffade:", err);
   res.status(500).json({ error: "Ett okänt fel inträffade på servern" });
 });
+
+// ==============================
+// POST-routes för att hantera mail
+// ==============================
+app.post("/api/send-email", async (req, res) => {
+  const { name, email, message, subject } = req.body;
+
+  if (!name || !email || !message || !subject) {
+    return res.status(400).json({ error: "Alla fält måste fyllas i." });
+  }
+
+  try {
+    // OBS! Du måste ersätta dessa uppgifter med din e-postinformation
+    let transporter = nodemailer.createTransport({
+      service: "icloud", // Exempel: Gmail, Outlook etc.
+      auth: {
+        user: "max.hedstrom@icloud.com",
+        pass: "npkr-gjsi-cteb-cwto" // Använd *inte* ditt vanliga lösen – se nedan!
+      }
+    });
+
+    let mailOptions = {
+      from: "max.hedstrom@icloud.com",
+      to: "max.hedstrom@icloud.com", // Din mottagaradress
+      subject: `Kontaktförfrågan: ${subject}`,
+      text: `Namn: ${name}\nE-post: ${email}\n\nMeddelande:\n${message}`
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: "E-post skickat!" });
+
+  } catch (error) {
+    console.error("Fel vid skickande av e-post:", error);
+    res.status(500).json({ error: "Misslyckades att skicka e-post." });
+  }
+});
+
 
 // ==============================
 // Starta servern
