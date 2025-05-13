@@ -6,6 +6,14 @@
   import { useLocation } from "react-router-dom";
 
   //KONTAKT FORMULÄR - ej kopplat ill backend i nuläget endast demonstration av komponenter
+  // Lägg högst upp i filen, ovanför ContactForm-komponenten
+  const fallbackKontakt = {
+  name: "Hedström Måleri AB",
+  orgNumber: "556123-4567",
+  phone: "070-123 45 67",
+  email: "info@hedstrommaleri.se",
+  address: "Exempelgatan 1, 123 45 Örebro"
+};
   export default function ContactForm() {
     const [formData, setFormData] = useState({
       name: "",
@@ -13,7 +21,9 @@
       message: "",
       subject: ""
     });
-      const [info, setInfo] = useState(null);
+
+    const [info, setInfo] = useState(null);
+    const [usingFallback, setUsingFallback] = useState(false); // <- Nytt
 
     // State för att hantera om formuläret har skickats
     const [formSubmitted, setFormSubmitted] = useState(false);
@@ -51,13 +61,27 @@
       }
     }, [location]);
 
-    useEffect(() => {
-fetch("http://localhost:5000/api/get-kontakt")
-    .then(res => res.json())
-    .then(data => setInfo(data[0]))  // Här hämtar vi första objektet om du använder en array
-    .catch(err => console.error("Fel vid hämtning av företagsinfo:", err));
+useEffect(() => {
+  fetch("http://localhost:5000/api/get-kontakt")
+    .then((res) => {
+      if (!res.ok) throw new Error("Nätverksfel eller icke-OK status");
+      return res.json();
+    })
+    .then((data) => {
+      if (Array.isArray(data) && data.length > 0) {
+        setInfo(data[0]);
+      } else {
+        console.warn("Tom data – använder fallback");
+        setInfo(fallbackKontakt);
+        setUsingFallback(true);
+      }
+    })
+    .catch((err) => {
+      console.error("Fel vid hämtning av företagsinfo:", err);
+      setInfo(fallbackKontakt);
+      setUsingFallback(true);
+    });
 }, []);
-
 
    
       
@@ -163,27 +187,44 @@ fetch("http://localhost:5000/api/get-kontakt")
             🏢 Företagsinformation
           </h2>
 
-          {info ? (
-            <ul className="space-y-3 text-gray-700 text-base">
-              <li><strong>📛 Företag:</strong> {info.name}</li>
-              <li><strong>🧾 Org.nr:</strong> {info.orgNumber}</li>
-              <li><strong>📞 Telefon:</strong> {info.phone}</li>
-              <li>
-                <strong>✉️ E-post:</strong>{" "}
-                <a href={`mailto:${info.email}`} className="text-[var(--detalj-color)] hover:bg-[var(--rutor-color)] hover:underline">
-                  {info.email}
-                </a>
-              </li>
-              <li>
-                <strong>📍 Adress:</strong>{" "}
-                <button onClick={scrollToMap} className="text-[var(--detalj-color)] hover:underline">
-                  {info.address}
-                </button>
-              </li>
-            </ul>
-          ) : (
-            <p>Laddar företagsinformation...</p>
-          )}
+    {info ? (
+  <>
+    <ul className="space-y-3 text-gray-700 text-base">
+      <li><strong>📛 Företag:</strong> {info.name}</li>
+      <li><strong>🧾 Org.nr:</strong> {info.orgNumber}</li>
+      <li><strong>📞 Telefon:</strong> {info.phone}</li>
+      <li>
+        <strong>✉️ E-post:</strong>{" "}
+        <a
+          href={`mailto:${info.email}`}
+          className="text-[var(--detalj-color)] hover:bg-[var(--rutor-color)] hover:underline"
+        >
+          {info.email}
+        </a>
+      </li>
+      <li>
+        <strong>📍 Adress:</strong>{" "}
+        <button
+          onClick={scrollToMap}
+          className="text-[var(--detalj-color)] hover:underline"
+        >
+          {info.address}
+        </button>
+      </li>
+    </ul>
+
+    {usingFallback && (
+      <p className="text-sm text-yellow-600 mt-4">
+        ⚠️ Visar reservinformation – kunde inte hämta data från servern. 
+        <br />
+        För att vara säker på att du har den senaste informationen, vänligen kontakta oss direkt eller via formuläret på denna sida.
+      </p>
+    )}
+  </>
+) : (
+  <p>Laddar företagsinformation...</p>
+)}
+
 
 
           <div className="mt-8 space-y-4">
