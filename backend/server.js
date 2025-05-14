@@ -7,13 +7,33 @@ const path = require("path");
 const app = express();
 const port = 5000;
 const nodemailer = require("nodemailer");
+const multer = require("multer");
+const dataDir = path.join(__dirname, "data");
 
 // Middleware
 app.use(cors()); // Tillåter förfrågningar från andra domäner (t.ex. din frontend)
 app.use(express.json()); // Gör att vi kan läsa JSON i inkommande requests
 
+const uploadDir = path.join(__dirname, 'public', 'uploads')
+fs.mkdir(uploadDir, { recursive: true }).catch(console.error);
+
+// Multer setup:
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, uploadDir),
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const name = Date.now() + '-' + Math.round(Math.random()*1E9) + ext;
+    cb(null, name);
+  }
+});
+const upload = multer({ storage });
+
+// Se till att data-mappen finns (skapas om den saknas)
+fs.mkdir(dataDir, { recursive: true }).catch(console.error);
+//multer (bild hantering)
+app.use('/uploads', express.static(uploadDir));
+
 // Definiera sökvägar till JSON-filerna
-const dataDir = path.join(__dirname, "data");
 const filePaths = {
   homeServices: path.join(dataDir, "homeServices.json"),
   personal: path.join(dataDir, "personal.json"),
@@ -21,9 +41,6 @@ const filePaths = {
   projekt: path.join(dataDir, "projekt.json"),
   kontakt: path.join(dataDir, "kontakt.json"),
 };
-
-// Se till att data-mappen finns (skapas om den saknas)
-fs.mkdir(dataDir, { recursive: true }).catch(console.error);
 
 // ==============================
 // GET-routes för att läsa data
@@ -181,6 +198,17 @@ app.get("/", (req, res) => {
 app.use((err, req, res, next) => {
   console.error("Ett okänt fel inträffade:", err);
   res.status(500).json({ error: "Ett okänt fel inträffade på servern" });
+});
+
+
+// ==============================
+// POST-routes för att hantera bilduppladdnig
+// ==============================
+app.post('/api/upload-image', upload.single('image'), (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'Ingen fil mottagen' });
+  // Returnera URL som frontend kan spara i sin JSON
+  const url = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+  res.json({ url });
 });
 
 // ==============================

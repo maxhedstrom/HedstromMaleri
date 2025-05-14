@@ -1,13 +1,5 @@
 [
   {
-    "id": 1746438676503,
-    "name": "",
-    "role": "",
-    "email": "",
-    "image": "",
-    "description": ""
-  },
-  {
     "name": "Peter Hedström",
     "role": "VD & Målare",
     "email": "peter@hedstrommaleri.se || 073-600 20 47",
@@ -27,5 +19,13 @@
     "email": "ulrika@hedstrommaleri.se",
     "image": "src/assets/bilder/ulrika.jpg",
     "description": "Ulrika stöttar upp den administrativa delen och är den som ser till att allt flyter på. Hon är den som ser till att alla papper är i ordning och att alla kunder får korrekta fakturor."
+  },
+  {
+    "id": 1747221664399,
+    "name": "",
+    "role": "",
+    "email": "",
+    "image": "",
+    "description": ""
   }
 ]

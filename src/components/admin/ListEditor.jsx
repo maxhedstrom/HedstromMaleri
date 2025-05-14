@@ -12,7 +12,7 @@ import React, { useState, useEffect } from "react";
  * - addItem: funktion för att lägga till nytt objekt
  * - deleteItem: funktion (id) för att ta bort objekt
  * - saveItems: funktion för att spara alla objekt
- * - fields: array med fälldefinitioner [{ name, placeholder, type? }]
+ * - fields: array med fälldefinitioner [{ name, placeholder, type?, label?, customRender? }]
  */
 export default function ListEditor({
   title,
@@ -28,7 +28,7 @@ export default function ListEditor({
   const [showConfirm, setShowConfirm] = useState(false);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
 
-  // Efter en lyckad sparning, visa bekräftelse under knappen i 3 sek
+  // Visa bekräftelse i 3 sek efter sparning
   useEffect(() => {
     let timer;
     if (showConfirm) {
@@ -37,7 +37,6 @@ export default function ListEditor({
     return () => clearTimeout(timer);
   }, [showConfirm]);
 
-  // Wrapper för saveItems så vi kan visa bekräftelse
   const handleSave = async () => {
     await saveItems();
     setShowConfirm(true);
@@ -78,15 +77,36 @@ export default function ListEditor({
 
               {/* Fält */}
               {fields.map((field) => {
-                const value = item[field.name] || (field.type === "checkbox" ? false : "");
+                // Anpassad render-funktion (t.ex. för filuppladdning)
+                if (typeof field.customRender === "function") {
+                  return (
+                    <div key={field.name}>
+                      {field.label && (
+                        <label className="block mb-1 font-semibold">
+                          {field.label}
+                        </label>
+                      )}
+                      {field.customRender(item, index)}
+                    </div>
+                  );
+                }
+
+                const value =
+                  item[field.name] || (field.type === "checkbox" ? false : "");
 
                 if (field.type === "textarea") {
                   return (
                     <div key={field.name}>
-                      {field.label && <label className="block mb-1 font-semibold">{field.label}</label>}
+                      {field.label && (
+                        <label className="block mb-1 font-semibold">
+                          {field.label}
+                        </label>
+                      )}
                       <textarea
                         value={value}
-                        onChange={(e) => handleChange(index, field.name, e.target.value)}
+                        onChange={(e) =>
+                          handleChange(index, field.name, e.target.value)
+                        }
                         placeholder={field.placeholder}
                         rows={3}
                         className="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -101,27 +121,37 @@ export default function ListEditor({
                       <input
                         type="checkbox"
                         checked={value}
-                        onChange={(e) => handleChange(index, field.name, e.target.checked)}
+                        onChange={(e) =>
+                          handleChange(index, field.name, e.target.checked)
+                        }
                       />
-                      <label className="text-sm font-medium">{field.label || field.placeholder}</label>
+                      <label className="text-sm font-medium">
+                        {field.label || field.placeholder}
+                      </label>
                     </div>
                   );
                 }
-  return (
-    <div key={field.name}>
-      {field.label && <label className="block mb-1 font-semibold">{field.label}</label>}
-      <input
-        type="text"
-        value={value}
-        onChange={(e) => handleChange(index, field.name, e.target.value)}
-        placeholder={field.placeholder}
-        className="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-      />
-    </div>
-  );
-})}
 
-
+                // Standard-input
+                return (
+                  <div key={field.name}>
+                    {field.label && (
+                      <label className="block mb-1 font-semibold">
+                        {field.label}
+                      </label>
+                    )}
+                    <input
+                      type="text"
+                      value={value}
+                      onChange={(e) =>
+                        handleChange(index, field.name, e.target.value)
+                      }
+                      placeholder={field.placeholder}
+                      className="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    />
+                  </div>
+                );
+              })}
 
               {/* Spara-knapp per objekt */}
               <div className="flex items-center gap-4">
@@ -171,7 +201,9 @@ export default function ListEditor({
       {confirmDeleteId !== null && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
           <div className="bg-white rounded-xl shadow-lg p-6 max-w-sm w-full space-y-4 text-center">
-            <p className="text-lg">Är du säker på att du vill ta bort? <br /> Detta går inte att ångra.</p>
+            <p className="text-lg">
+              Är du säker på att du vill ta bort? <br /> Detta går inte att ångra.
+            </p>
             <div className="flex justify-center gap-4">
               <button
                 onClick={() => {

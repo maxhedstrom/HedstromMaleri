@@ -103,6 +103,13 @@ const deleteItem = id => {
 };
 
   
-
-  return { items, isSaving, handleChange, addItem, deleteItem, saveItems };
+return {
+  items,
+  isSaving,
+  handleChange,
+  addItem,
+  deleteItem,
+  saveItems,
+  setItems,
+};
 }
