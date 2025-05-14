@@ -5,9 +5,6 @@ import ListEditor from "../../components/admin/ListEditor";
 import axios from "axios";
 import ImageUploader from "../../components/admin/ImageUploader";
 
-
-
-
 export default function AdminPersonal() {
   const {
     items,
@@ -121,7 +118,7 @@ export default function AdminPersonal() {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="p-8">
       <ListEditor
         title="Redigera Personal"
         description="Här kan du uppdatera befintlig personal, lägga till nya eller ta bort befintliga poster. Denna information används på sidan 'Om oss'."

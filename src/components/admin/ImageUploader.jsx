@@ -3,12 +3,12 @@ import React from "react";
 
 export default function ImageUploader({ src, onChange, id }) {
   return (
-    <div className="flex flex-col items-center p-4 border border-gray-200 rounded-2xl shadow-sm bg-white">
+    <div className="flex flex-col items-center p-4 border rounded-md shadow-sm bg-white">
       {src ? (
         <img
           src={src}
           alt="En Defaultbild finns uppladdad, det går fortfarande att byta bild"
-          className="w-302 h-32  object-cover rounded-lg mb-2"
+          className="w-302 h-32 object-cover rounded-lg mb-2"
         />
       ) : (
         <div className="w-32 h-32 bg-gray-100 rounded-lg mb-2 flex items-center justify-center text-gray-400">

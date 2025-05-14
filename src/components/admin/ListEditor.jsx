@@ -1,3 +1,4 @@
+// src/components/admin/ListEditor.jsx
 import React, { useState, useEffect } from "react";
 
 /**
@@ -12,8 +13,9 @@ import React, { useState, useEffect } from "react";
  * - addItem: funktion för att lägga till nytt objekt
  * - deleteItem: funktion (id) för att ta bort objekt
  * - saveItems: funktion för att spara alla objekt
- * - fields: array med fälldefinitioner [{ name, placeholder, type?, label?, customRender? }]
+ * - fields: array med fältdefinitioner [{ name, placeholder, type?, label?, customRender? }]
  */
+
 export default function ListEditor({
   title,
   description,
@@ -28,7 +30,6 @@ export default function ListEditor({
   const [showConfirm, setShowConfirm] = useState(false);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
 
-  // Visa bekräftelse i 3 sek efter sparning
   useEffect(() => {
     let timer;
     if (showConfirm) {
@@ -44,11 +45,9 @@ export default function ListEditor({
 
   return (
     <main className="flex-1 overflow-auto p-6">
-      {/* Rubrik och beskrivning */}
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">{title}</h2>
       {description && <p className="text-gray-600 mb-8">{description}</p>}
 
-      {/* Lägg till-knapp */}
       <div className="ml-4 mb-4">
         <button
           onClick={addItem}
@@ -58,15 +57,13 @@ export default function ListEditor({
         </button>
       </div>
 
-      {/* Lista med objekt */}
       <div className="space-y-6 mt-6">
         {items.length > 0 ? (
           items.map((item, index) => (
             <div
-              key={item.id}
+              key={item.id ?? index}
               className="relative bg-white rounded-xl shadow-md p-6 space-y-4"
             >
-              {/* Ta bort-knapp */}
               <button
                 onClick={() => setConfirmDeleteId(item.id)}
                 className="absolute top-3 right-3 font-bold cursor-pointer"
@@ -75,9 +72,7 @@ export default function ListEditor({
                 🗑️
               </button>
 
-              {/* Fält */}
               {fields.map((field) => {
-                // Anpassad render-funktion (t.ex. för filuppladdning)
                 if (typeof field.customRender === "function") {
                   return (
                     <div key={field.name}>
@@ -132,7 +127,6 @@ export default function ListEditor({
                   );
                 }
 
-                // Standard-input
                 return (
                   <div key={field.name}>
                     {field.label && (
@@ -153,7 +147,6 @@ export default function ListEditor({
                 );
               })}
 
-              {/* Spara-knapp per objekt */}
               <div className="flex items-center gap-4">
                 <button
                   onClick={handleSave}
@@ -177,7 +170,6 @@ export default function ListEditor({
         )}
       </div>
 
-      {/* Spara-knapp för hela listan */}
       {items.length > 0 && (
         <div className="mt-8 flex items-center gap-4">
           <button
@@ -197,7 +189,6 @@ export default function ListEditor({
         </div>
       )}
 
-      {/* Bekräftelsemodal för borttagning */}
       {confirmDeleteId !== null && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
           <div className="bg-white rounded-xl shadow-lg p-6 max-w-sm w-full space-y-4 text-center">
