@@ -23,9 +23,9 @@ export default function ProjektAdmin() {
   ];
 
   return (
-    <div className="p-8">
+    <div>
       <ListEditor
-        title="Redigera tidslinje"
+        title="📝 Redigera tidslinje"
         description="Lägg till, ändra eller ta bort milstolpar i tidslinjen. Milstolparna visas i ordning efter årtal automatiskt."
         items={timeline}
         isSaving={isSaving}

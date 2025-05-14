@@ -91,9 +91,9 @@ export default function ServicesAdmin() {
   ];
 
   return (
-    <div className="p-8">
+    <div>
       <ListEditor
-        title="Redigera tjänster"
+        title="📝 Redigera tjänster"
         description="Lägg till, ändra eller ta bort tjänster som visas under fliken 'Tjänster'."
         items={services}
         isSaving={isSaving}

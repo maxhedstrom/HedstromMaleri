@@ -118,9 +118,9 @@ export default function AdminPersonal() {
   ];
 
   return (
-    <div className="p-8">
+    <div>
       <ListEditor
-        title="Redigera Personal"
+        title="📝 Redigera Personal"
         description="Här kan du uppdatera befintlig personal, lägga till nya eller ta bort befintliga poster. Denna information används på sidan 'Om oss'."
         items={items}
         isSaving={isSaving}
