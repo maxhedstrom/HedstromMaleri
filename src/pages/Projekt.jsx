@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import InfoCard from "/src/components/ui/InfoCard";
 import fallbackTimeline  from "../data/fallbacktimeline";
+import altLogo from '/src/assets/bilder/altLogo.jpg';
+
 const Projekt = () => {
   const [scrollHeight, setScrollHeight] = useState(0);
   const [timeline, setTimeline] = useState([]); // Här lagras projekten
@@ -75,7 +77,11 @@ const Projekt = () => {
                   <h3 className="text-lg font-semibold text-[var(--rubrik-color)]">{event.year}</h3>
                   <p className="text-[var(--text-color)] text-sm md:text-base">{event.text}</p>
                 </div>
-                <div className="w-8 h-8 bg-red-500 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
+<img
+  src={altLogo}
+  alt="Tidslinje ikon"
+  className="w-16 h-16 rounded-full absolute left-1/2 transform -translate-x-1/2 object-cover"
+/>
               </div>
             ))}
           </div>
