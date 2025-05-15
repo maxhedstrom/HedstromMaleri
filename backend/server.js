@@ -28,7 +28,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// Se till att data-mappen finns (skapas om den saknas)
+
 fs.mkdir(dataDir, { recursive: true }).catch(console.error);
 //multer (bild hantering)
 app.use('/uploads', express.static(uploadDir));

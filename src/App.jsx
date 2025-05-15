@@ -8,9 +8,8 @@ import Projekt from './pages/Projekt';
 import Tjanster from './pages/Tjanster';
 import Rot from './pages/Rot';
 import Integritetspolicy from './pages/integritetspolicy';
-
 import AdminPanel from "./components/admin/AdminPanel"; 
-// import PasswordProtectedRoute from "./components/PasswordProtectedRoute";
+import PasswordProtectedRoute from "./components/admin/PasswordProtectedRoute";
 import HomeServicesAdmin from "./pages/admin/HomeServicesAdmin";
 import PersonalAdmin from "./pages/admin/PersonalAdmin";
 import ServicesAdmin from "./pages/admin/ServicesAdmin";
@@ -30,38 +29,26 @@ function App() {
         <Route path="rot"               element={<Rot />} />
         <Route path="tjanster"          element={<Tjanster />} />
         <Route path="integritetspolicy" element={<Integritetspolicy />} />
-
-        {/*
-          Admin-routes:
-          /admin           → redirect till /admin/services
-          /admin/services  → ServicesAdmin inuti AdminPanel-layout
-        */}
+          {/* Admin-routes:
+            /admin           → redirect till /admin/services
+            /admin/services  → ServicesAdmin inuti AdminPanel-layout 
+          */}
+       
+       {/* Skyddade admin-routes */}
         <Route
           path="admin"
           element={
-            /* 
-              Byt till PasswordProtectedRoute när du vill lösenordsskydda:
-              <PasswordProtectedRoute>
-                <AdminPanel />
-              </PasswordProtectedRoute>
-            */
-            <AdminPanel />
+            <PasswordProtectedRoute>
+              <AdminPanel />
+            </PasswordProtectedRoute>
           }
         >
-          {/* /admin → /admin/services */}
-          <Route 
-          index element={<Navigate to="homeServices" replace />}
-          />
-          
-          {/* /admin/services */}
+          <Route index element={<Navigate to="homeServices" replace />} />
           <Route path="homeServices" element={<HomeServicesAdmin />} />
           <Route path="personal" element={<PersonalAdmin />} />
           <Route path="services" element={<ServicesAdmin />} />
           <Route path="projekt" element={<ProjektAdmin />} />
           <Route path="kontakt" element={<KontaktAdmin />} />
-
-
-
         </Route>
       </Route>
     </Routes>

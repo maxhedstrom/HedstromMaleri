@@ -78,7 +78,7 @@ export default function ContactForm() {
         alert("Kunde inte skicka. Försök senare.");
       }
     } catch {
-      alert("Mailet kunde inte skickas, kvarstår problemet så kan du skicka ett mail direkt till oss på: hedstrom@info.se");
+      alert("Mailet kunde inte skickas, kvarstår problemet så kan du skicka ett mail direkt till oss på: info@hedstrommaleri.se");
     } finally {
       setIsLoading(false);
     }
@@ -128,7 +128,7 @@ export default function ContactForm() {
             {!formSubmitted ? (
               <form onSubmit={handleSubmit} noValidate className="space-y-4">
                 <h2 className="text-2xl font-bold text-center text-[var(--rubrik-color)] mb-6">
-                  Fyll i kontaktformuläret så hör vi av oss inom 24 timmar.
+                  Fyll i kontaktformuläret så hör vi av oss inom 48 timmar.
                 </h2>
                 {/* Ärende */}
                 <div>
@@ -199,7 +199,11 @@ export default function ContactForm() {
               </form>
             ) : (
              <h3 className="text-center text-4xl text-[var(--rubrik-color)]">
-                Tack för ditt meddelande <br /><br /> ✅ <br /><br />Vi återkommer så snart vi kan.
+                Tack för ditt meddelande!
+                <br /><br /> 
+                ✅ 
+                <br /><br />
+                Vi återkommer så snart vi kan via din angivna e-postadress.
               </h3>
             )}
           </CardContent>

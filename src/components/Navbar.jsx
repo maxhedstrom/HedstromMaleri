@@ -8,6 +8,13 @@ export default function Navbar() {
   const [isFixed, setIsFixed] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Kontrollera auth-status från localStorage när komponenten mountas
+  useEffect(() => {
+    const savedAuth = localStorage.getItem("isAdminAuthenticated");
+    setIsAuthenticated(savedAuth === "true");
+  }, []);
 
   //Array med länkar som visas i navbar
   const navLinks = [
@@ -18,7 +25,8 @@ export default function Navbar() {
     { href: "/projekt", label: "Våra projekt" },
     { href: "/rot", label: "ROT-Avdrag" },
     { href: "/kontakt", label: "Kontakta oss" },
-  ];
+  ].filter(link => (link.href === "/admin" ? isAuthenticated : true));
+
   
   
   useEffect(() => {
