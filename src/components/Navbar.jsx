@@ -48,7 +48,7 @@ return (
 
     {/* Stor logotyp utanför nav */}
     {!isFixed && (
-      <div className="absolute top-[10px] left-[30px] p-[5px] z-20 hidden md:block">
+      <div className="absolute top-[10px] left-[30px] p-[5px] z-20 hidden min-[948px]:block">
         <a href="/">
           <img
             src="/logo-med-farg.png"
@@ -62,7 +62,7 @@ return (
   <nav className="relative flex items-center justify-between px-[6%] py-[2%] w-full">
     {/* Liten logotyp när navbaren är fast */}
     {isFixed && (
-      <div className="absolute top-[0px] left-[30px] -m-1 z-20 hidden md:block">
+      <div className="absolute top-[0px] left-[30px] -m-1 z-20 hidden min-[948px]:block">
         <a href="/">
           <img src="/logo-med-farg.png" 
           alt="Logotyp"
@@ -72,9 +72,8 @@ return (
       </div>
     )}
 
-
-   {/* Desktop-nav */}
-   <div className="hidden md:flex flex-1 justify-end">
+    {/* Desktop-nav: visar från 948px */}
+  <div className="hidden min-[948px]:flex flex-1 justify-end">
     <ul className="flex gap-[0px] list-none">
       {navLinks.map((link, index) => (
         <li key={index} className={`py-[8px] px-[${index === navLinks.length - 1 ? "0px" : "12px"}]`}>
@@ -84,8 +83,8 @@ return (
     </ul>
    </div>
 
-    {/* Mobil-nav */}
-    <div className="text-white text-2xl font-bold  left-6 top-4 md:hidden">
+{/* Mobil-nav-logga: visar under 948px */}
+   <div className="text-white text-2xl font-bold left-6 top-4 max-[948px]:block hidden">
         <a href="/">
           <img         
           src="/logo-med-farg.png"
@@ -95,7 +94,7 @@ return (
     </div>
 
     {/* Hamburgermeny för mobila enheter */}
-    <div className="md:hidden absolute right-12 top-6 z-20">
+    <div className="absolute right-12 top-6 z-20 max-[948px]:block hidden">
       <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
         {isMenuOpen ? (
           <FaTimes className="text-white text-3xl" />
@@ -106,10 +105,15 @@ return (
     </div>
 
         {/* Mobil meny som visas vid klick */}
-    <div
-      className={`absolute top-0 left-0 w-full h-screen bg-[#505050] flex flex-col items-center justify-center transform transition-transform duration-300 
-      ${isMenuOpen ? "translate-x-0" : "-translate-x-full"} md:hidden z-10`}
-    >
+     <div
+          className={`
+            fixed top-0 left-0 w-full h-screen bg-[#505050]
+            flex flex-col items-center justify-center
+            transform transition-transform duration-300
+            ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}
+            max-[948px]:flex hidden z-10
+          `}
+        >
       {/* Bild högst upp */}
       <img 
         src="/logo-med-farg.png"

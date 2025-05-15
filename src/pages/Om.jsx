@@ -117,7 +117,7 @@ const Om = () => {
         <h2 className="text-[var(--rubrik-color)] text-3xl md:text-4xl font-semibold mb-8">
           Det är vi som är Hedström Måleri!
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-16 px-4 justify-center items-center">
+        <div className="grid grid-cols-1 min-[650px]:grid-cols-2 min-[948px]:grid-cols-3 gap-10 py-16 px-4 justify-center items-center">
           {personal.map((person, index) => (
             <Personal key={index} person={person} />
           ))}
