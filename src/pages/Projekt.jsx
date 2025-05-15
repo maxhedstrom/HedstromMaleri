@@ -47,7 +47,7 @@ const Projekt = () => {
 
       <section className="w-3/4 md:w-5/5 lg:w-8/9 mx-auto text-center pt-[100px]">
         <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold text-center">
-          Vi har stor erfarenhet av alla typer av projekt och du kan se ett utplock av dessa här
+          Här kan du läsa om vår stolta historia och se ett urplock av våra projekt genom åren.
         </h1>
 
         <p className="text-[var(--text-color)] text-[14px] font-light leading-[22px] p-[10px]">
