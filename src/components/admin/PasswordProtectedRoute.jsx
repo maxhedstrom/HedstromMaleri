@@ -44,7 +44,7 @@ export default function PasswordProtectedRoute() {
           {showHelp && (
             <div className="absolute right-0 mt-2 w-64 p-3 bg-white border rounded shadow text-sm z-10">
               Kontakta{" "}
-              <span className="font-semibold">max.hedstrom@icloud.com</span> för att
+              <span className="font-semibold">info@hedstrommaleri.se</span> för att
               få tillgång till adminpanelen.
             </div>
           )}
@@ -62,7 +62,7 @@ export default function PasswordProtectedRoute() {
           />
           <button
             onClick={handleLogin}
-            className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 cursor-pointer"
+            className="w-full bg-[var(--text-color)] text-white p-2 rounded hover:bg-[var(--rubrik-color)] cursor-pointer"
           >
             Logga in
           </button>

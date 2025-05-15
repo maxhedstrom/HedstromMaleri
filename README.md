@@ -34,3 +34,6 @@ Projektet använder följande Vite-plugins och paket:
 
 7. **multer** - En middleware för Express som hanterar multipart/form-data-förfrågningar, vilket gör det enkelt att ladda upp filer (bilder, dokument) till din server.
    npm install multer
+
+7. **bcrypt** - Används för att hascha lösenord 
+   npm install bcrypt
