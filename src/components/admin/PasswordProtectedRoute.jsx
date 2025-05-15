@@ -7,7 +7,30 @@ export default function PasswordProtectedRoute() {
   const [input, setInput] = useState("");
   const [showHelp, setShowHelp] = useState(false);
 
-  const correctPassword = "1"; // Sätt ditt lösenord här
+const handleLogin = async () => {
+  try {
+    const res = await fetch("http://localhost:5000/api/admin-login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: input }),
+    });
+
+    if (!res.ok) {
+      alert("Fel lösenord");
+      return;
+    }
+
+    const data = await res.json();
+    if (data.success) {
+      setIsAuthenticated(true);
+      localStorage.setItem("isAdminAuthenticated", "true");
+    }
+  } catch (err) {
+    console.error("Inloggningsfel:", err);
+    alert("Serverfel vid inloggning");
+  }
+};
+
 
   useEffect(() => {
     // Kolla om användaren redan är inloggad i localStorage vid mount
@@ -17,14 +40,6 @@ export default function PasswordProtectedRoute() {
     }
   }, []);
 
-  const handleLogin = () => {
-    if (input === correctPassword) {
-      setIsAuthenticated(true);
-      localStorage.setItem("isAdminAuthenticated", "true"); // spara status i localStorage
-    } else {
-      alert("Fel lösenord");
-    }
-  };
 
   if (isAuthenticated) {
     return <AdminPanel />;

@@ -9,6 +9,7 @@ const port = 5000;
 const nodemailer = require("nodemailer");
 const multer = require("multer");
 const dataDir = path.join(__dirname, "data");
+const bcrypt = require("bcrypt");
 
 // Middleware
 app.use(cors()); // Tillåter förfrågningar från andra domäner (t.ex. din frontend)
@@ -26,7 +27,16 @@ const storage = multer.diskStorage({
     cb(null, name);
   }
 });
-const upload = multer({ storage });
+const upload = multer({ 
+  storage,
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype.startsWith("image/")) {
+      cb(null, true);
+    } else {
+      cb(new Error("Endast bildfiler tillåtna."), false);
+    }
+  }
+});
 
 
 fs.mkdir(dataDir, { recursive: true }).catch(console.error);
@@ -247,6 +257,29 @@ app.post("/api/send-email", async (req, res) => {
   }
 });
 
+// ==============================
+// POST-routes för att hantera lösenord
+// ==============================
+app.post("/api/admin-login", async (req, res) => {
+  const { password } = req.body;
+  if (!password) return res.status(400).json({ error: "Lösenord krävs." });
+
+  try {
+    const data = await fs.readFile(path.join(dataDir, "adminPassword.json"), "utf8");
+    const { hash } = JSON.parse(data);
+
+    const match = await bcrypt.compare(password, hash);
+
+    if (match) {
+      res.json({ success: true });
+    } else {
+      res.status(401).json({ error: "Fel lösenord" });
+    }
+  } catch (err) {
+    console.error("Fel vid inloggning:", err);
+    res.status(500).json({ error: "Internt serverfel" });
+  }
+});
 
 // ==============================
 // Starta servern
