@@ -119,6 +119,7 @@ export default function AdminPersonal() {
 
   return (
     <div>
+      <div className="flex-1 flex flex-col">
       <ListEditor
         title="📝 Redigera Personal"
         description="Här kan du uppdatera befintlig personal, lägga till nya eller ta bort befintliga poster. Denna information används på sidan 'Om oss'."
@@ -132,6 +133,7 @@ export default function AdminPersonal() {
         // Här kan du skicka in en egen klass för varje “kort”
         itemWrapperClassName="bg-gray-50 p-4 mb-4 rounded-xl shadow-inner"
       />
+      </div>
     </div>
   );
 }

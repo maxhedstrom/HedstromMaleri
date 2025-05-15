@@ -49,13 +49,12 @@ function App() {
           }
         >
           {/* /admin → /admin/services */}
-          <Route
-            index
-            element={<Navigate to="HomeServices" replace />}
+          <Route 
+          index element={<Navigate to="homeServices" replace />}
           />
           
           {/* /admin/services */}
-          <Route path="HomeServices" element={<HomeServicesAdmin />} />
+          <Route path="homeServices" element={<HomeServicesAdmin />} />
           <Route path="personal" element={<PersonalAdmin />} />
           <Route path="services" element={<ServicesAdmin />} />
           <Route path="projekt" element={<ProjektAdmin />} />
