@@ -1,289 +1,248 @@
+// Ladda in miljövariabler allra överst
+require('dotenv').config();
+
 // Importera nödvändiga moduler
-const express = require("express");
-const cors = require("cors");
-const fs = require("fs/promises");
-const path = require("path");
+const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
+const fs = require('fs/promises');
+const path = require('path');
+const multer = require('multer');
+const nodemailer = require('nodemailer');
+const bcrypt = require('bcrypt');
+const rateLimit = require('express-rate-limit');
+const { body, validationResult } = require('express-validator');
 
+// Applikationsinställningar
 const app = express();
-const port = 5000;
-const nodemailer = require("nodemailer");
-const multer = require("multer");
-const dataDir = path.join(__dirname, "data");
-const bcrypt = require("bcrypt");
+const port = process.env.PORT || 5000;
+const dataDir = path.join(__dirname, 'data');
+const uploadDir = path.join(__dirname, 'public', 'uploads');
 
-// Middleware
-app.use(cors()); // Tillåter förfrågningar från andra domäner (t.ex. din frontend)
-app.use(express.json()); // Gör att vi kan läsa JSON i inkommande requests
+// Lita på proxy (t.ex. Heroku, Nginx) för korrekt req.secure
+app.set('trust proxy', 1);
 
-const uploadDir = path.join(__dirname, 'public', 'uploads')
+// Endast om NODE_ENV=production: omdirigera HTTP → HTTPS
+if (process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    if (req.secure) return next();
+    // Använd vanlig strängkonkatenering för https-redirect
+    const redirectUrl = 'https://' + req.headers.host + req.originalUrl;
+    return res.redirect(301, redirectUrl);
+  });
+}
+
+// Säkerhetsheaders
+app.use(helmet());
+
+// CORS: endast din frontend
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN || '*',
+    optionsSuccessStatus: 200
+  })
+);
+
+// JSON-parser
+app.use(express.json());
+
+// Skapa nödvändiga kataloger
 fs.mkdir(uploadDir, { recursive: true }).catch(console.error);
+fs.mkdir(dataDir, { recursive: true }).catch(console.error);
 
-// Multer setup:
+// Statisk servering av uppladdade filer
+app.use('/uploads', express.static(uploadDir));
+
+// Multer-inställningar för bilduppladdning
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, uploadDir),
   filename: (req, file, cb) => {
     const ext = path.extname(file.originalname);
-    const name = Date.now() + '-' + Math.round(Math.random()*1E9) + ext;
+    const name = `${Date.now()}-${Math.round(Math.random() * 1e9)}${ext}`;
     cb(null, name);
   }
 });
-const upload = multer({ 
+const upload = multer({
   storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // max 5 MB
   fileFilter: (req, file, cb) => {
-    if (file.mimetype.startsWith("image/")) {
-      cb(null, true);
-    } else {
-      cb(new Error("Endast bildfiler tillåtna."), false);
-    }
+    if (file.mimetype.startsWith('image/')) cb(null, true);
+    else cb(new Error('Endast bildfiler tillåtna.'), false);
   }
 });
 
-
-fs.mkdir(dataDir, { recursive: true }).catch(console.error);
-//multer (bild hantering)
-app.use('/uploads', express.static(uploadDir));
-
-// Definiera sökvägar till JSON-filerna
+// Sökvärden för JSON-filer
 const filePaths = {
-  homeServices: path.join(dataDir, "homeServices.json"),
-  personal: path.join(dataDir, "personal.json"),
-  services: path.join(dataDir, "services.json"),
-  projekt: path.join(dataDir, "projekt.json"),
-  kontakt: path.join(dataDir, "kontakt.json"),
+  homeServices: path.join(dataDir, 'homeServices.json'),
+  personal: path.join(dataDir, 'personal.json'),
+  services: path.join(dataDir, 'services.json'),
+  projekt: path.join(dataDir, 'projekt.json'),
+  kontakt: path.join(dataDir, 'kontakt.json'),
 };
+
+// ==============================
+// Rate Limiters
+// ==============================
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 min
+  max: 5,
+  message: { error: 'För många inloggningsförsök, försök igen om 15 min.' }
+});
+const emailLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 min
+  max: 3,
+  message: { error: 'För många mailförsök, försök igen om en minut.' }
+});
 
 // ==============================
 // GET-routes för att läsa data
 // ==============================
+['homeServices','personal','services','projekt','kontakt'].forEach((key) => {
+  let route;
+  if (key === 'homeServices') route = 'get-home-services';
+  else if (key === 'personal') route = 'personal';
+  else if (key === 'services') route = 'get-services';
+  else if (key === 'projekt') route = 'get-projekt';
+  else if (key === 'kontakt') route = 'get-kontakt';
+  else route = key;
 
-// Hämtar hem-tjänster (för startsidan)
-app.get("/api/get-home-services", async (req, res) => {
-  try {
-    const data = await fs.readFile(filePaths.homeServices, "utf8");
-    res.json(JSON.parse(data));
-  } catch (err) {
-    console.error("Fel vid hämtning av homeServices:", err);
-    res.status(500).json({ error: "Fel vid hämtning av hem-tjänster" });
-  }
-});
-
-// Hämtar personalinformation (för 'Om oss'-sidan)
-app.get("/api/personal", async (req, res) => {
-  try {
-    const data = await fs.readFile(filePaths.personal, "utf8");
-    res.json(JSON.parse(data));
-  } catch (err) {
-    console.error("Fel vid hämtning av personal:", err);
-    res.status(500).json({ error: "Kunde inte läsa personalfilen." });
-  }
-});
-
-// Hämtar tjänster (för tjänstesidan)
-app.get("/api/get-services", async (req, res) => {
-  try {
-    const data = await fs.readFile(filePaths.services, "utf8");
-    res.json(JSON.parse(data));
-  } catch (err) {
-    console.error("Fel vid hämtning av services:", err);
-    res.status(500).json({ error: "Fel vid hämtning av services" });
-  }
-});
-
-// Hämtar projekt (för referenser/projekt-sidan)
-app.get("/api/get-projekt", async (req, res) => {
-  try {
-    const data = await fs.readFile(filePaths.projekt, "utf8");
-    res.json(JSON.parse(data));
-  } catch (err) {
-    console.error("Fel vid hämtning av projekt:", err);
-    res.status(500).json({ error: "Fel vid hämtning av projekt" });
-  }
-});
-
-// Hämtar kontaktinformation (för kontaktsidan)
-app.get("/api/get-kontakt", async (req, res) => {
-  try {
-    const data = await fs.readFile(filePaths.kontakt, "utf8");
-    res.json(JSON.parse(data));
-  } catch (err) {
-    console.error("Fel vid hämtning av kontakt:", err);
-    res.status(500).json({ error: "Fel vid hämtning av kontaktinfo" });
-  }
+  app.get(`/api/${route}`, async (req, res) => {
+    try {
+      const data = await fs.readFile(filePaths[key], 'utf8');
+      res.json(JSON.parse(data));
+    } catch (err) {
+      console.error(`Fel vid hämtning av ${key}:`, err);
+      res.status(500).json({ error: `Fel vid hämtning av ${key}` });
+    }
+  });
 });
 
 // ==============================
 // POST-routes för att spara data
 // ==============================
-
-// Sparar hem-tjänster
-app.post("/api/save-home-services", async (req, res) => {
-  const homeServices = req.body.homeServices;
-  if (!Array.isArray(homeServices)) {
-    return res.status(400).json({ error: "Hem-tjänsterna måste vara en array" });
-  }
-
-  try {
-    await fs.writeFile(filePaths.homeServices, JSON.stringify(homeServices, null, 2), "utf8");
-    res.json({ success: true, message: "Hem-tjänster sparade!" });
-  } catch (err) {
-    console.error("Fel vid sparande av homeServices:", err);
-    res.status(500).json({ error: "Fel vid sparande av hem-tjänster" });
-  }
+['homeServices','personal','services','projekt'].forEach((key) => {
+  const route = `save-${key}`;
+  const prop = key;
+  app.post(`/api/${route}`, async (req, res) => {
+    const arr = req.body[prop];
+    if (!Array.isArray(arr)) {
+      return res.status(400).json({ error: `${prop} måste vara en array.` });
+    }
+    try {
+      await fs.writeFile(filePaths[key], JSON.stringify(arr,null,2),'utf8');
+      res.json({ success: true, message: `${prop} sparade!` });
+    } catch (err) {
+      console.error(`Fel vid sparande av ${key}:`, err);
+      res.status(500).json({ error: `Fel vid sparande av ${prop}` });
+    }
+  });
 });
 
-// Sparar personalinformation
-app.post("/api/save-personal", async (req, res) => {
-  const personal = req.body.personal;
-  if (!Array.isArray(personal)) {
-    return res.status(400).json({ error: "Personal måste vara en array." });
-  }
-
-  try {
-    await fs.writeFile(filePaths.personal, JSON.stringify(personal, null, 2), "utf8");
-    res.json({ success: true, message: "Personal sparad!" });
-  } catch (err) {
-    console.error("Fel vid sparande av personal:", err);
-    res.status(500).json({ error: "Kunde inte spara personalfilen." });
-  }
-});
-
-// Sparar tjänster
-app.post("/api/save-services", async (req, res) => {
-  const services = req.body.services;
-  if (!Array.isArray(services)) {
-    return res.status(400).json({ error: "Services måste vara en array" });
-  }
-
-  try {
-    await fs.writeFile(filePaths.services, JSON.stringify(services, null, 2), "utf8");
-    res.json({ success: true, message: "Services sparade!" });
-  } catch (err) {
-    console.error("Fel vid sparande av services:", err);
-    res.status(500).json({ error: "Fel vid sparande av services" });
-  }
-});
-
-// Sparar projekt
-app.post("/api/save-projekt", async (req, res) => {
-  const projekt = req.body.projekt;
-  if (!Array.isArray(projekt)) {
-    return res.status(400).json({ error: "Projekt måste vara en array" });
-  }
-
-  try {
-    await fs.writeFile(filePaths.projekt, JSON.stringify(projekt, null, 2), "utf8");
-    res.json({ success: true, message: "Projekt sparade!" });
-  } catch (err) {
-    console.error("Fel vid sparande av projekt:", err);
-    res.status(500).json({ error: "Fel vid sparande av projekt" });
-  }
-});
-
-// Sparar kontaktinformation
-app.post("/api/save-kontakt", async (req, res) => {
+// Kontakt (objekt)
+app.post('/api/save-kontakt', async (req, res) => {
   const kontakt = req.body.kontakt;
-  if (typeof kontakt !== "object" || kontakt === null) {
-    return res.status(400).json({ error: "Kontakt måste vara ett objekt" });
+  if (typeof kontakt !== 'object' || kontakt === null) {
+    return res.status(400).json({ error: 'Kontakt måste vara ett objekt.' });
   }
-
   try {
-    await fs.writeFile(filePaths.kontakt, JSON.stringify(kontakt, null, 2), "utf8");
-    res.json({ success: true, message: "Kontaktinfo sparad!" });
+    await fs.writeFile(filePaths.kontakt, JSON.stringify(kontakt,null,2),'utf8');
+    res.json({ success: true, message: 'Kontaktinfo sparad!' });
   } catch (err) {
-    console.error("Fel vid sparande av kontakt:", err);
-    res.status(500).json({ error: "Fel vid sparande av kontakt" });
+    console.error('Fel vid sparande av kontakt:', err);
+    res.status(500).json({ error: 'Fel vid sparande av kontakt' });
   }
 });
 
 // ==============================
-// Hälsokontroll (användbar för felsökning)
+// Hälsokontroll
 // ==============================
-app.get("/", (req, res) => {
-  res.send("Servern är igång! ✅");
-});
+app.get('/', (req, res) => res.send('Servern är igång! ✅'));
 
 // ==============================
-// Global felhanterare
-// ==============================
-app.use((err, req, res, next) => {
-  console.error("Ett okänt fel inträffade:", err);
-  res.status(500).json({ error: "Ett okänt fel inträffade på servern" });
-});
-
-
-// ==============================
-// POST-routes för att hantera bilduppladdnig
+// Bilduppladdning
 // ==============================
 app.post('/api/upload-image', upload.single('image'), (req, res) => {
-  if (!req.file) return res.status(400).json({ error: 'Ingen fil mottagen' });
-  // Returnera URL som frontend kan spara i sin JSON
+  if (!req.file) return res.status(400).json({ error: 'Ingen fil mottagen.' });
   const url = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
   res.json({ url });
 });
 
 // ==============================
-// POST-routes för att hantera mail
+// Skicka e-post
 // ==============================
-app.post("/api/send-email", async (req, res) => {
-  const { name, email, message, subject } = req.body;
-
-  if (!name || !email || !message || !subject) {
-    return res.status(400).json({ error: "Alla fält måste fyllas i." });
-  }
-
-  try {
-    // OBS! Du måste ersätta dessa uppgifter med din e-postinformation
-    let transporter = nodemailer.createTransport({
-      service: "icloud", // Exempel: Gmail, Outlook etc.
-      auth: {
-        user: "max.hedstrom@icloud.com",
-        pass: "npkr-gjsi-cteb-cwto" // Använd *inte* ditt vanliga lösen – se nedan!
-      }
-    });
-
-    let mailOptions = {
-      from: "max.hedstrom@icloud.com",
-      to: "max.hedstrom@icloud.com", // Din mottagaradress
-      subject: `Kontaktförfrågan: ${subject}`,
-      text: `Namn: ${name}\nE-post: ${email}\n\nMeddelande:\n${message}`
-    };
-
-    await transporter.sendMail(mailOptions);
-    res.status(200).json({ message: "E-post skickat!" });
-
-  } catch (error) {
-    console.error("Fel vid skickande av e-post:", error);
-    res.status(500).json({ error: "Misslyckades att skicka e-post." });
-  }
-});
-
-// ==============================
-// POST-routes för att hantera lösenord
-// ==============================
-app.post("/api/admin-login", async (req, res) => {
-  const { password } = req.body;
-  if (!password) return res.status(400).json({ error: "Lösenord krävs." });
-
-  try {
-    const data = await fs.readFile(path.join(dataDir, "adminPassword.json"), "utf8");
-    const { hash } = JSON.parse(data);
-
-    const match = await bcrypt.compare(password, hash);
-
-    if (match) {
-      res.json({ success: true });
-    } else {
-      res.status(401).json({ error: "Fel lösenord" });
+app.post(
+  '/api/send-email',
+  emailLimiter,
+  [
+    body('name').isString().trim().notEmpty(),
+    body('email').isEmail(),
+    body('subject').isString().trim().notEmpty(),
+    body('message').isString().trim().notEmpty(),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
     }
-  } catch (err) {
-    console.error("Fel vid inloggning:", err);
-    res.status(500).json({ error: "Internt serverfel" });
+    const { name, email, subject, message } = req.body;
+    try {
+      const transporter = nodemailer.createTransport({
+        service: process.env.MAIL_SERVICE || 'icloud',
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS
+        }
+      });
+      const mailOptions = {
+        from: process.env.MAIL_FROM,
+        to: process.env.MAIL_TO,
+        subject: `Kontaktförfrågan: ${subject}`,
+        text: `Namn: ${name}\nE-post: ${email}\n\nMeddelande:\n${message}`
+      };
+      await transporter.sendMail(mailOptions);
+      res.json({ success: true, message: 'E-post skickat!' });
+    } catch (err) {
+      console.error('Fel vid skickande av e-post:', err);
+      res.status(500).json({ error: 'Misslyckades att skicka e-post.' });
+    }
   }
-});
+);
 
 // ==============================
-// Starta servern
+// Admin-login
 // ==============================
+app.post(
+  '/api/admin-login',
+  loginLimiter,
+  [ body('password').isString().isLength({ min: 8 }) ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    const { password } = req.body;
+    try {
+      const data = await fs.readFile(path.join(dataDir,'adminPassword.json'),'utf8');
+      const { hash } = JSON.parse(data);
+      const match = await bcrypt.compare(password, hash);
+      if (match) return res.json({ success: true });
+      res.status(401).json({ error: 'Fel lösenord' });
+    } catch (err) {
+      console.error('Fel vid inloggning:', err);
+      res.status(500).json({ error: 'Internt serverfel' });
+    }
+  }
+);
+
+// ==============================
+// Global felhanterare
+// ==============================
+app.use((err, req, res, next) => {
+  console.error('Oväntat fel:', err);
+  res.status(500).json({ error: 'Ett okänt fel inträffade på servern.' });
+});
+
+// Starta servern
 app.listen(port, () => {
-  console.log(`Servern körs på http://localhost:${port}`);
+  console.log(`Servern körs på port ${port} i ${process.env.NODE_ENV || 'utvecklings'}-läge`);
 });

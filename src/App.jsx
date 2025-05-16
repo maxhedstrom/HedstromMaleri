@@ -1,6 +1,9 @@
-// src/App.jsx
 import { Routes, Route, Navigate } from 'react-router-dom';
+
 import Layout from './components/layout';
+import PasswordProtectedRoute from "./components/admin/PasswordProtectedRoute";
+import AdminPanel from "./components/admin/AdminPanel";
+
 import Hem from './pages/Hem';
 import Kontakt from './pages/Kontakt';
 import Om from './pages/Om';
@@ -8,8 +11,7 @@ import Projekt from './pages/Projekt';
 import Tjanster from './pages/Tjanster';
 import Rot from './pages/Rot';
 import Integritetspolicy from './pages/integritetspolicy';
-import AdminPanel from "./components/admin/AdminPanel"; 
-import PasswordProtectedRoute from "./components/admin/PasswordProtectedRoute";
+
 import HomeServicesAdmin from "./pages/admin/HomeServicesAdmin";
 import PersonalAdmin from "./pages/admin/PersonalAdmin";
 import ServicesAdmin from "./pages/admin/ServicesAdmin";
