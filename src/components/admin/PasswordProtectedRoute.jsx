@@ -6,8 +6,9 @@ export default function PasswordProtectedRoute() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [input, setInput] = useState("");
   const [showHelp, setShowHelp] = useState(false);
+  const [error, setError] = useState("");
 
-const handleLogin = async () => {
+ const handleLogin = async () => {
   try {
     const res = await fetch("http://localhost:5000/api/admin-login", {
       method: "POST",
@@ -16,7 +17,7 @@ const handleLogin = async () => {
     });
 
     if (!res.ok) {
-      alert("Fel lösenord");
+      setError("Fel lösenord. Försök igen.");
       return;
     }
 
@@ -24,13 +25,14 @@ const handleLogin = async () => {
     if (data.success) {
       setIsAuthenticated(true);
       localStorage.setItem("isAdminAuthenticated", "true");
+      setError(""); // Nollställ ev. gammalt fel
+      window.location.reload(); // Ladda om sidan för att visa adminpanelen navbar korrekt
     }
   } catch (err) {
     console.error("Inloggningsfel:", err);
-    alert("Serverfel vid inloggning");
+    setError("Serverfel vid inloggning. Försök igen senare.");
   }
 };
-
 
   useEffect(() => {
     // Kolla om användaren redan är inloggad i localStorage vid mount
@@ -74,13 +76,18 @@ const handleLogin = async () => {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Lösenord"
             className="w-full border p-2 rounded mb-4"
+            
           />
+          {error && (
+            <div className="text-red-600 text-sm mb-3">{error}</div>
+          )}
           <button
             onClick={handleLogin}
             className="w-full bg-[var(--text-color)] text-white p-2 rounded hover:bg-[var(--rubrik-color)] cursor-pointer"
           >
             Logga in
           </button>
+          
         </div>
       </div>
     </>

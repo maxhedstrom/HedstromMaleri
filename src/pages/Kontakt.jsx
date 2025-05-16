@@ -128,7 +128,7 @@ export default function ContactForm() {
             {!formSubmitted ? (
               <form onSubmit={handleSubmit} noValidate className="space-y-4">
                 <h2 className="text-2xl font-bold text-center text-[var(--rubrik-color)] mb-6">
-                  Fyll i kontaktformuläret så hör vi av oss inom 48 timmar.
+                  Fyll i kontaktformuläret så <br />återkommer vi till dig.
                 </h2>
                 {/* Ärende */}
                 <div>

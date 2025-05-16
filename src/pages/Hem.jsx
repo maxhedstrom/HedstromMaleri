@@ -25,12 +25,12 @@ const Hem = () => {
     <>
       {/* HEADER / HJÄLTESektion */}
       <header
-        className="relative min-h-screen w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/hedstrombil.jpg')] bg-no-repeat bg-top md:bg-center bg-cover"
+        className="relative min-h-screen w-full bg-[linear-gradient(rgba(4,9,30,0.2),rgba(4,9,30,0.7)),url('src/assets/bilder/hedstrombil.jpg')] bg-no-repeat bg-top md:bg-center bg-cover"
       ></header>
 
       <div className="w-[90%] lg:w-3/5 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
         <h1 className="text-[var(--first-color)] text-[32px] md:text-[42px] lg:text-[42px]">
-          Välkommen till Hedström Måleri
+          Välkommen till Hedström Måleri AB
         </h1>
         <p className="mt-[10px] mb-[40px] text-[18px] md:text-[24px] lg:text-[20px]">
           Ett litet familjeföretag med fokus på kvalité och nöjda kunder.

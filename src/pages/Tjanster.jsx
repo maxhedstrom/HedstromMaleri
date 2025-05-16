@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/hem.css";
 import InfoCard from "/src/components/ui/infoCard";
 import fallBackTjanster from "../data/fallbacktjanster"; // Importera fallback

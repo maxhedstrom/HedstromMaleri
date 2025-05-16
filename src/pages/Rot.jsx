@@ -105,7 +105,7 @@ export default function Rot() {
      <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/fasad.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center">
         <div className="bg-[url('src/assets/bilder/ROTBILD.jpg')] "></div>
         <h1 className="text-white text-4xl font-semibold text-center">
-          ROT-Avdrag
+          ROT <br /> Reparation, Ombyggnad och Tillbyggnad
         </h1>
      </header>
 
@@ -113,7 +113,7 @@ export default function Rot() {
       <main className="relative py-16 px-4 bg-gradient-to-r from-gray-50 to-gray-200">
         <section className="max-w-5xl mx-auto bg-white p-12 rounded-2xl shadow-2xl animate-slideInUp">
           <h2 className="text-[var(--rubrik-color)] text-4xl font-bold text-center mb-8">
-            På denna sida har vi sammanställt en guide om ROT-avdraget som kan vara bra att veta.
+            På denna sida har vi sammanställt en guide om <br />ROT-avdraget som kan vara bra att veta.
           </h2>
 
               {/* ROT-beräknare */}
@@ -169,7 +169,7 @@ export default function Rot() {
                 Vad är ROT-avdraget?
               </h3>
               <p className="text-lg">
-                ROT-avdraget är en skattereduktion som gör det mer ekonomiskt att anlita professionella hantverkare. Med den höjda subventionsgraden på 50% får du direkt halva arbetskostnaden avdragen!
+                ROT-avdraget är en skattereduktion som gör det mer ekonomiskt att anlita professionella hantverkare. Med den höjda subventionsgraden på 50% får du direkt halva arbetskostnaden avdragen.
               </p>
               <a
                 href="https://www.skatteverket.se/privat/fastigheterochbostad/rotarbeteochrutarbete.4.2e56d4ba1202f95012080002966.html"
@@ -185,7 +185,7 @@ export default function Rot() {
               {/*  Inforuta höger sida */}
             <div className="space-y-6">
               <h3 className="text-2xl font-semibold text-[var(--detalj-color)]">
-                Så fungerar det hos Hedström Måleri
+                Så fungerar det hos Hedström Måleri 
               </h3>
               <ul className="list-disc list-inside text-lg space-y-3">
                 <li>
@@ -195,7 +195,7 @@ export default function Rot() {
                   <strong>Direkt avdrag:</strong> Från maj till december 2025 drar vi 50% av arbetskostnaden direkt på fakturan.
                 </li>
                 <li>
-                  <strong>Enkel administration:</strong> Vi hanterar all ansökan hos Skatteverket åt dig.
+                  <strong>Enkel administration:</strong> Vi hanterar ansökan hos Skatteverket.  
                 </li>
               </ul>
             </div>
@@ -207,8 +207,8 @@ export default function Rot() {
               Exempel på besparing
             </h3>
             <p className="text-lg text-center">
-              Tänk dig att arbetskostnaden för ett projekt är <strong>30 000 kr</strong>.Med ROT-avdraget dras <strong>15 000 kr</strong>
-               direkt av – du betalar alltså bara <strong>15 000 kr</strong>!
+              Tänk dig att arbetskostnaden för ett projekt är <strong>30 000 kr</strong>. <br /> Med ROT-avdraget dras <strong>15 000 kr </strong>
+                av summan – total kostnad att betala blir då <strong>15 000 kr</strong>
             </p>
           </div>
       
@@ -219,14 +219,12 @@ export default function Rot() {
             </h3>
             <ul className="list-disc list-inside text-lg space-y-3">
               <li>
-                <strong>Maximalt avdrag:</strong> Upp till 50 000 kr per år.
+                <strong>Maximalt avdrag:</strong> 50 000 kr per person och år.
               </li>
               <li>
                 <strong>Endast arbetskostnad:</strong> Material och utrustning ingår ej.
               </li>
-              <li>
-                <strong>Elektronisk betalning:</strong> Digital betalning krävs för att kvalificera.
-              </li>
+              
             </ul>
           </div>
 

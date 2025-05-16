@@ -51,7 +51,7 @@ const Projekt = () => {
         </h1>
 
         <p className="text-[var(--text-color)] text-[14px] font-light leading-[22px] p-[10px]">
-          Företaget ägs och drivs av Peter Hedström som har över 26 års erfarenhet i branschen.
+          Företaget ägs och drivs av Peter Hedström som har över 35 års erfarenhet i branschen.
         </p>
 
         <div id="target-section" className="relative flex flex-col items-center py-10">
