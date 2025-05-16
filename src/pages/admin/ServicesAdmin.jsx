@@ -1,5 +1,5 @@
 // src/pages/admin/ServicesAdmin.jsx
-import React from "react";
+import { getUrl } from "../../utils/api";
 import { useAdminResource } from "../../hooks/useAdminResource";
 import ListEditor from "../../components/admin/ListEditor";
 import axios from "axios";
@@ -25,8 +25,8 @@ export default function ServicesAdmin() {
     saveItems,
     setItems,
   } = useAdminResource({
-    fetchUrl: "http://localhost:5000/api/get-services",
-    saveUrl: "http://localhost:5000/api/save-services",
+    fetchUrl: getUrl("/api/get-services"),
+    saveUrl: getUrl("/api/save-services"),
     defaultItem,
     resourceName: "services",
   });

@@ -1,6 +1,6 @@
-import React from "react";
 import { useAdminResource } from "../../hooks/useAdminResource";
 import ListEditor from "../../components/admin/ListEditor";
+import { getUrl } from "../../utils/api";
 
 export default function KontaktAdmin() {
   const {
@@ -9,8 +9,8 @@ export default function KontaktAdmin() {
     handleChange,
     saveItems,
   } = useAdminResource({
-    fetchUrl: "http://localhost:5000/api/get-kontakt",
-    saveUrl: "http://localhost:5000/api/save-kontakt",
+    fetchUrl: getUrl("/api/get-kontakt"),
+    saveUrl:  getUrl("/api/save-kontakt"),
     defaultItem: {
       name: "",
       orgNumber: "",

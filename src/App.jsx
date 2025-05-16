@@ -40,9 +40,7 @@ function App() {
         <Route
           path="admin"
           element={
-            <PasswordProtectedRoute>
               <AdminPanel />
-            </PasswordProtectedRoute>
           }
         >
           <Route index element={<Navigate to="homeServices" replace />} />

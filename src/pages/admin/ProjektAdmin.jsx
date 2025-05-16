@@ -1,4 +1,4 @@
-import React from "react";
+import { getUrl } from "../../utils/api";
 import { useAdminResource } from "../../hooks/useAdminResource";
 import ListEditor from "../../components/admin/ListEditor";
 
@@ -11,8 +11,8 @@ export default function ProjektAdmin() {
     deleteItem,
     saveItems,
   } = useAdminResource({
-    fetchUrl: "http://localhost:5000/api/get-projekt",
-    saveUrl: "http://localhost:5000/api/save-projekt",
+    fetchUrl: getUrl("/api/get-projekt"),
+    saveUrl: getUrl("/api/save-projekt"),
     defaultItem: { year: "", text: "" },
     resourceName: "projekt",
   });

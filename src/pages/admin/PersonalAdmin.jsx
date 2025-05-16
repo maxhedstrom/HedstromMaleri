@@ -1,5 +1,6 @@
 // src/pages/admin/PersonalAdmin.jsx
-import React from "react";
+  import { getUrl } from "../../utils/api";
+  
 import { useAdminResource } from "../../hooks/useAdminResource";
 import ListEditor from "../../components/admin/ListEditor";
 import axios from "axios";
@@ -15,8 +16,8 @@ export default function AdminPersonal() {
     saveItems,
     setItems,
   } = useAdminResource({
-    fetchUrl: "http://localhost:5000/api/personal",
-    saveUrl: "http://localhost:5000/api/save-personal",
+    fetchUrl: getUrl("/api/personal"),
+    saveUrl: getUrl("/api/save-personal"),
     defaultItem: {
       name: "",
       role: "",

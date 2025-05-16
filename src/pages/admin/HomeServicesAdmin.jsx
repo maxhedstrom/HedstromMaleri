@@ -1,6 +1,8 @@
   import React from "react";
   import { useAdminResource } from "../../hooks/useAdminResource";
   import ListEditor from "../../components/admin/ListEditor";
+  import { getUrl } from "../../utils/api";
+  
 
   export default function HomeServicesAdmin() {
     const {
@@ -10,9 +12,9 @@
       addItem,
       deleteItem,
       saveItems,
-    } = useAdminResource({
-      fetchUrl: "http://localhost:5000/api/get-home-services",
-      saveUrl:  "http://localhost:5000/api/save-home-services",
+      } = useAdminResource({
+      fetchUrl: getUrl("/api/get-home-services"),
+      saveUrl:  getUrl("/api/save-home-services"),
       defaultItem: { name: "", description: "" },
       resourceName: "homeServices",
     });
