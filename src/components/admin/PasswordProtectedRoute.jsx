@@ -16,10 +16,12 @@ export default function PasswordProtectedRoute() {
       body: JSON.stringify({ password: input }),
     });
 
-    if (!res.ok) {
-      setError("Fel lösenord. Försök igen.");
-      return;
-    }
+if (!res.ok) {
+  console.log("Login failed:", res.status, res.statusText);
+  setError("Fel lösenord. Försök igen.");
+  return;
+}
+
 
     const data = await res.json();
     if (data.success) {

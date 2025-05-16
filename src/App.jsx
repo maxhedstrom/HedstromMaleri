@@ -17,6 +17,8 @@ import PersonalAdmin from "./pages/admin/PersonalAdmin";
 import ServicesAdmin from "./pages/admin/ServicesAdmin";
 import ProjektAdmin from "./pages/admin/ProjektAdmin";
 import KontaktAdmin from "./pages/admin/KontaktAdmin";
+import NotFound from "./NotFound";
+
 
 
 function App() {
@@ -40,7 +42,9 @@ function App() {
         <Route
           path="admin"
           element={
+            <PasswordProtectedRoute>
               <AdminPanel />
+            </PasswordProtectedRoute>
           }
         >
           <Route index element={<Navigate to="homeServices" replace />} />
@@ -49,6 +53,7 @@ function App() {
           <Route path="services" element={<ServicesAdmin />} />
           <Route path="projekt" element={<ProjektAdmin />} />
           <Route path="kontakt" element={<KontaktAdmin />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Route>
     </Routes>

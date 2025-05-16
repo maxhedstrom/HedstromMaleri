@@ -214,7 +214,7 @@ app.post(
 app.post(
   '/api/admin-login',
   loginLimiter,
-  [ body('password').isString().isLength({ min: 8 }) ],
+  [ body('password').isString().isLength({ min: 3 }) ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
