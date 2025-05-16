@@ -11,13 +11,13 @@ import Projekt from './pages/Projekt';
 import Tjanster from './pages/Tjanster';
 import Rot from './pages/Rot';
 import Integritetspolicy from './pages/integritetspolicy';
+import NotFound from "./pages//NotFound.jsx";
 
 import HomeServicesAdmin from "./pages/admin/HomeServicesAdmin";
 import PersonalAdmin from "./pages/admin/PersonalAdmin";
 import ServicesAdmin from "./pages/admin/ServicesAdmin";
 import ProjektAdmin from "./pages/admin/ProjektAdmin";
 import KontaktAdmin from "./pages/admin/KontaktAdmin";
-import NotFound from "./NotFound";
 
 
 
@@ -33,6 +33,8 @@ function App() {
         <Route path="rot"               element={<Rot />} />
         <Route path="tjanster"          element={<Tjanster />} />
         <Route path="integritetspolicy" element={<Integritetspolicy />} />
+          <Route path="*" element={<NotFound />} />
+
           {/* Admin-routes:
             /admin           → redirect till /admin/services
             /admin/services  → ServicesAdmin inuti AdminPanel-layout 
@@ -53,7 +55,6 @@ function App() {
           <Route path="services" element={<ServicesAdmin />} />
           <Route path="projekt" element={<ProjektAdmin />} />
           <Route path="kontakt" element={<KontaktAdmin />} />
-          <Route path="*" element={<NotFound />} />
         </Route>
       </Route>
     </Routes>
