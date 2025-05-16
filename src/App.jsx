@@ -2,7 +2,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Layout from './components/layout';
 import PasswordProtectedRoute from "./components/admin/PasswordProtectedRoute";
-import AdminPanel from "./components/admin/AdminPanel";
 
 import Hem from './pages/Hem';
 import Kontakt from './pages/Kontakt';
@@ -18,7 +17,9 @@ import PersonalAdmin from "./pages/admin/PersonalAdmin";
 import ServicesAdmin from "./pages/admin/ServicesAdmin";
 import ProjektAdmin from "./pages/admin/ProjektAdmin";
 import KontaktAdmin from "./pages/admin/KontaktAdmin";
+import { lazy, Suspense } from "react";
 
+const AdminPanel = lazy(() => import("./components/admin/AdminPanel"));
 
 
 function App() {
@@ -39,14 +40,17 @@ function App() {
             /admin           → redirect till /admin/services
             /admin/services  → ServicesAdmin inuti AdminPanel-layout 
           */}
+          
        
        {/* Skyddade admin-routes */}
         <Route
           path="admin"
           element={
+         <Suspense fallback={<div>Laddar adminpanelen...</div>}>
             <PasswordProtectedRoute>
               <AdminPanel />
             </PasswordProtectedRoute>
+          </Suspense>
           }
         >
           <Route index element={<Navigate to="homeServices" replace />} />
