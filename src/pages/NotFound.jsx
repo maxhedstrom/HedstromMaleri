@@ -2,7 +2,16 @@ import React from "react";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-200 to-white px-4 text-center">
+    <div
+      className="
+        min-h-screen 
+        flex flex-col items-center justify-center 
+        bg-gradient-to-b from-blue-200 to-white 
+        px-4 
+        text-center
+        py-12 md:py-24
+      "
+    >
       <h1
         style={{ fontSize: "clamp(2rem, 10vw, 5rem)" }}
         className="font-extrabold text-[var(--detalj-color)] mb-6"
