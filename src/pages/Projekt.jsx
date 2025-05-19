@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
-import InfoCard from "/src/components/ui/InfoCard";
 import fallbackTimeline from "../data/fallbacktimeline";
 import altLogo from '/src/assets/bilder/altLogo.jpg';
+import { getUrl } from "../utils/api";
 
 const Projekt = () => {
   const [scrollHeight, setScrollHeight] = useState(0);
@@ -27,7 +27,7 @@ const Projekt = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/get-projekt")
+    fetch(getUrl("/api/get-projekt"))
       .then((res) => {
         if (!res.ok) throw new Error("Kunde inte hämta från backend");
         return res.json();

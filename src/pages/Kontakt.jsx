@@ -4,6 +4,7 @@ import { Input } from "/src/components/ui/input";
 import { Textarea } from "/src/components/ui/textarea";
 import { Card, CardContent } from "/src/components/ui/card";
 import { useLocation } from "react-router-dom";
+import { getUrl } from "../utils/api";
 
 const fallbackKontakt = {
   name: "Hedström Måleri AB",
@@ -65,7 +66,7 @@ export default function ContactForm() {
 
     setIsLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/send-email", {
+      const res = await fetch(getUrl("/api/send-email"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
@@ -86,7 +87,7 @@ export default function ContactForm() {
 
   // Hämta företagsinfo med fallback
   useEffect(() => {
-    fetch("http://localhost:5000/api/get-kontakt")
+    fetch(getUrl("/api/get-kontakt"))
       .then((r) => {
         if (!r.ok) throw new Error();
         return r.json();

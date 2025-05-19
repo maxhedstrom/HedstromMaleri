@@ -238,18 +238,6 @@ export default function Rot() {
               Har du använt ROT-Avdrag i år? Kolla ditt ROT-utrymme hos Skatteverket här!
             </a>
           </div>
-          
-
-          {/*  Konfetti-knapp (utkommenterad) Ta bort?*/}
-          {/* <div className="mt-12 text-center">
-            <button
-              onClick={handleConfetti}
-              className="mt-8 px-10 py-4 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-full shadow-xl transition-transform transform hover:scale-110 animate-bounce"
-            >
-              Fira ROT-Avdraget!
-            </button>
-          </div> */}
-          
         </section>
       </main>
     </>

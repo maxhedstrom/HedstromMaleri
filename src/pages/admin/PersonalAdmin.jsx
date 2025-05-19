@@ -1,6 +1,4 @@
-// src/pages/admin/PersonalAdmin.jsx
-  import { getUrl } from "../../utils/api";
-  
+import { getUrl } from "../../utils/api";
 import { useAdminResource } from "../../hooks/useAdminResource";
 import ListEditor from "../../components/admin/ListEditor";
 import axios from "axios";
@@ -121,19 +119,19 @@ export default function AdminPersonal() {
   return (
     <div>
       <div className="flex-1 flex flex-col">
-      <ListEditor
-        title="📝 Redigera Personal"
-        description="Här kan du uppdatera befintlig personal, lägga till nya eller ta bort befintliga poster. Denna information används på sidan 'Om oss'."
-        items={items}
-        isSaving={isSaving}
-        handleChange={handleChange}
-        addItem={addItem}
-        deleteItem={deleteItem}
-        saveItems={saveItems}
-        fields={fields}
-        // Här kan du skicka in en egen klass för varje “kort”
-        itemWrapperClassName="bg-gray-50 p-4 mb-4 rounded-xl shadow-inner"
-      />
+        <ListEditor
+          title="📝 Redigera Personal"
+          description="Här kan du uppdatera befintlig personal, lägga till nya eller ta bort befintliga poster. Denna information används på sidan 'Om oss'."
+          items={items}
+          isSaving={isSaving}
+          handleChange={handleChange}
+          addItem={addItem}
+          deleteItem={deleteItem}
+          saveItems={saveItems}
+          fields={fields}
+          // Här kan du skicka in en egen klass för varje “kort”
+          itemWrapperClassName="bg-gray-50 p-4 mb-4 rounded-xl shadow-inner"
+        />
       </div>
     </div>
   );

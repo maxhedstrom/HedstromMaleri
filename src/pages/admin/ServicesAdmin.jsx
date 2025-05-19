@@ -1,4 +1,3 @@
-// src/pages/admin/ServicesAdmin.jsx
 import { getUrl } from "../../utils/api";
 import { useAdminResource } from "../../hooks/useAdminResource";
 import ListEditor from "../../components/admin/ListEditor";
@@ -6,7 +5,6 @@ import axios from "axios";
 import ImageUploader from "../../components/admin/ImageUploader";
 
 export default function ServicesAdmin() {
-  // Lägg in defaultItem så nya rader också får rätt struktur
   const defaultItem = {
     id: "",
     title: "",

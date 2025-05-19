@@ -1,21 +1,18 @@
-  import { useEffect } from "react";
-  import { FaShieldAlt, FaEnvelope, FaLock, FaClock, FaCookieBite } from 'react-icons/fa';
+import { useEffect } from "react";
+import { FaShieldAlt, FaEnvelope, FaLock, FaClock, FaCookieBite } from 'react-icons/fa';
 
 const Integritetspolicy = () => {
-
-   useEffect(() => {
-  
-      // Funktionalitet för att ta emot länkar från Footern. Om en hash finns i URL:en, scrolla till motsvarande sektion
-      if (window.location.hash) {
-        const id = window.location.hash.substring(1); // ta bort "#"
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
+  useEffect(() => {
+    // Funktionalitet för att ta emot länkar från Footern. Om en hash finns i URL:en, scrolla till motsvarande sektion
+    if (window.location.hash) {
+      const id = window.location.hash.substring(1); // ta bort "#"
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-      }, []);
+    }
+  }, []);
 
-  
   return (
     <>
       <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/slottet.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center">
@@ -105,8 +102,6 @@ const Integritetspolicy = () => {
               cookies för analys eller marknadsföring.
             </p>
           </section>
-
-
         </div>
       </div>
     </>

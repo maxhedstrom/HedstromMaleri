@@ -1,4 +1,4 @@
-// Ladda in miljövariabler allra överst
+// Ladda in miljövariabler 
 require('dotenv').config();
 
 // Importera nödvändiga moduler

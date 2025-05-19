@@ -19,8 +19,8 @@ import ProjektAdmin from "./pages/admin/ProjektAdmin";
 import KontaktAdmin from "./pages/admin/KontaktAdmin";
 import { lazy, Suspense } from "react";
 
+// Lazy load admin panel för bättre prestanda
 const AdminPanel = lazy(() => import("./components/admin/AdminPanel"));
-
 
 function App() {
   return (
@@ -34,14 +34,8 @@ function App() {
         <Route path="rot"               element={<Rot />} />
         <Route path="tjanster"          element={<Tjanster />} />
         <Route path="integritetspolicy" element={<Integritetspolicy />} />
-          <Route path="*" element={<NotFound />} />
-
-          {/* Admin-routes:
-            /admin           → redirect till /admin/services
-            /admin/services  → ServicesAdmin inuti AdminPanel-layout 
-          */}
-          
-       
+        <Route path="*" element={<NotFound />} />
+      
        {/* Skyddade admin-routes */}
         <Route
           path="admin"

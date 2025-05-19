@@ -166,7 +166,10 @@ export default function ListEditor({
             </div>
           ))
         ) : (
-          <p className="text-gray-500">Inga poster tillgängliga att visa. Detta beror på att hemsidan inte får någon kontakt med servern. <br /> Fortsätter problemen kontakta Max.</p>
+          <p className="text-gray-500">
+            Inga poster tillgängliga att visa. Detta beror på att hemsidan inte får
+            någon kontakt med servern. <br /> Fortsätter problemen kontakta Max.
+          </p>
         )}
       </div>
 

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import "../styles/hem.css";
+import { useEffect, useState } from "react";
 import { FaSortAmountUpAlt } from "react-icons/fa";
 import InfoCard from "/src/components/ui/infoCard";
 import fallbackPersonal from "../data/fallbackpersonal";
+import { getUrl } from "../utils/api";
 
 const Personal = ({ person }) => {
   const [expanded, setExpanded] = useState(false);
@@ -63,7 +63,7 @@ const Om = () => {
   const [personal, setPersonal] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/personal")
+    fetch(getUrl("personal"))
       .then((res) => {
         if (!res.ok) throw new Error("Kunde inte hämta från backend");
         return res.json();
@@ -72,8 +72,7 @@ const Om = () => {
       .catch((err) => {
         console.error("Använder fallback:", err);
         setPersonal(fallbackPersonal);
-      setUsingFallback(true);
-
+        setUsingFallback(true);
       });
   }, []);
 

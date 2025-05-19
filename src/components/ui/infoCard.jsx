@@ -1,5 +1,3 @@
-import React from "react";
-
 // Komponent för att visa en bild och text i en kortlayout. Används i "Om" och "Tjanster".
 const InfoCard = ({ image, title, description, link, linkText, largeImage, reverse }) => {
   // Container: flex-kolumn på mobil, flex-rad på ≥948px

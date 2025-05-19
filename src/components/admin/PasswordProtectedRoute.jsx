@@ -8,33 +8,32 @@ export default function PasswordProtectedRoute() {
   const [showHelp, setShowHelp] = useState(false);
   const [error, setError] = useState("");
 
- const handleLogin = async () => {
-  try {
-    const res = await fetch("http://localhost:5000/api/admin-login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password: input }),
-    });
+  const handleLogin = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/admin-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: input }),
+      });
 
-if (!res.ok) {
-  console.log("Login failed:", res.status, res.statusText);
-  setError("Fel lösenord. Försök igen.");
-  return;
-}
+      if (!res.ok) {
+        console.log("Login failed:", res.status, res.statusText);
+        setError("Fel lösenord. Försök igen.");
+        return;
+      }
 
-
-    const data = await res.json();
-    if (data.success) {
-      setIsAuthenticated(true);
-      localStorage.setItem("isAdminAuthenticated", "true");
-      setError(""); // Nollställ ev. gammalt fel
-      window.location.reload(); // Ladda om sidan för att visa adminpanelen navbar korrekt
+      const data = await res.json();
+      if (data.success) {
+        setIsAuthenticated(true);
+        localStorage.setItem("isAdminAuthenticated", "true");
+        setError(""); // Nollställ ev. gammalt fel
+        window.location.reload(); // Ladda om sidan för att visa adminpanelen navbar korrekt
+      }
+    } catch (err) {
+      console.error("Inloggningsfel:", err);
+      setError("Serverfel vid inloggning. Försök igen senare.");
     }
-  } catch (err) {
-    console.error("Inloggningsfel:", err);
-    setError("Serverfel vid inloggning. Försök igen senare.");
-  }
-};
+  };
 
   useEffect(() => {
     // Kolla om användaren redan är inloggad i localStorage vid mount
@@ -43,7 +42,6 @@ if (!res.ok) {
       setIsAuthenticated(true);
     }
   }, []);
-
 
   if (isAuthenticated) {
     return <AdminPanel />;
@@ -78,7 +76,6 @@ if (!res.ok) {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Lösenord"
             className="w-full border p-2 rounded mb-4"
-            
           />
           {error && (
             <div className="text-red-600 text-sm mb-3">{error}</div>
@@ -89,7 +86,6 @@ if (!res.ok) {
           >
             Logga in
           </button>
-          
         </div>
       </div>
     </>

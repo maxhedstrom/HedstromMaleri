@@ -1,6 +1,4 @@
 //används i Hem.jsx presenterar serviceCard i en grid layout
-import React from "react";
-
 const ServiceCard = ({ title, description }) => {
   return (
     <div className="basis-[31%] bg-[var(--rutor-color)] rounded-[10px] mb-[5%] py-5 px-3 hover:shadow-[0_0_20px_0_rgba(0,0,0,0.2)]">

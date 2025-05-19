@@ -79,7 +79,7 @@ function AdminPanel() {
         </aside>
 
         {/* MOBILMENYKNAPP */}
-  <div className="lg:hidden px-4 py-2">
+        <div className="lg:hidden px-4 py-2">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="text-white bg-[var(--text-color)] p-2 rounded-md shadow-md"
@@ -106,7 +106,7 @@ function AdminPanel() {
         )}
 
         {/* HUVUDINNEHÅLL */}
-        <main className="flex-1 min-w-0 px-4 sm:px-6 lg:px- 8 py-4 sm:py-6">
+        <main className="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <Outlet />
         </main>
       </div>

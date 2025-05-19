@@ -1,6 +1,3 @@
-// src/components/admin/ImageUploader.jsx
-import React from "react";
-
 export default function ImageUploader({ src, onChange, id }) {
   return (
     <div className="flex flex-col items-center p-4 border rounded-md shadow-sm bg-white">

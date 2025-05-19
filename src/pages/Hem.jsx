@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../styles/hem.css";
 import ServiceCard from "/src/components/ui/ServiceCard";
 import axios from "axios";
 import fallbackhomeservices from "../data/fallbackhomeservices";
+import { getUrl } from "../utils/api";
 
 const Hem = () => {
   const [services, setServices] = useState([]);
@@ -10,15 +11,15 @@ const Hem = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/get-home-services")
+      .get(getUrl("/api/get-home-services"))
       .then((res) => {
         setServices(res.data);
       })
-     .catch((err) => {
-      console.error("Fel vid hämtning av tjänster:", err);
-      setServices(fallbackhomeservices);
-      setUsingFallback(true);
-    });
+      .catch((err) => {
+        console.error("Fel vid hämtning av tjänster:", err);
+        setServices(fallbackhomeservices);
+        setUsingFallback(true);
+      });
   }, []);
 
   return (

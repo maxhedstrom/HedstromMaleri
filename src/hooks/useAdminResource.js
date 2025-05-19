@@ -25,25 +25,25 @@ export function useAdminResource({ fetchUrl, saveUrl, defaultItem, resourceName 
   const [isSaving, setIsSaving] = useState(false);
 
   // Hämta data vid mount / url-ändring
-useEffect(() => {
-  fetch(fetchUrl)
-    .then(res => {
-      if (!res.ok) throw new Error("Fetch error");
-      return res.json();
-    })
-    .then(data => {
-      if (!Array.isArray(data)) {
-        console.error("Förväntade array, fick:", data);
-        return;
-      }
-      // Endast sortera för projektsidan
-      const finalItems = resourceName === "projekt"
-        ? sortByYear(data)
-        : data;
-      setItems(finalItems);
-    })
-    .catch(err => console.error("Fel vid hämtning:", err));
-}, [fetchUrl, resourceName]);
+  useEffect(() => {
+    fetch(fetchUrl)
+      .then(res => {
+        if (!res.ok) throw new Error("Fetch error");
+        return res.json();
+      })
+      .then(data => {
+        if (!Array.isArray(data)) {
+          console.error("Förväntade array, fick:", data);
+          return;
+        }
+        // Endast sortera för projektsidan
+        const finalItems = resourceName === "projekt"
+          ? sortByYear(data)
+          : data;
+        setItems(finalItems);
+      })
+      .catch(err => console.error("Fel vid hämtning:", err));
+  }, [fetchUrl, resourceName]);
   
 
   // Uppdatera fält
@@ -56,15 +56,15 @@ useEffect(() => {
   };
 
  // Lägg till nytt objekt överst
-const addItem = () => {
-  const newItem = { id: Date.now(), ...defaultItem };
-  setItems(prev => {
-    const withNew = [...prev, newItem];
-    return resourceName === "projekt"
-      ? sortByYear(withNew)
-      : withNew;
-  });
-};
+ const addItem = () => {
+    const newItem = { id: Date.now(), ...defaultItem };
+    setItems(prev => {
+      const withNew = [...prev, newItem];
+      return resourceName === "projekt"
+        ? sortByYear(withNew)
+        : withNew;
+    });
+  };
 
 // Spara alla (kan ta emot en lista att spara, annars sparar nuvarande state)
 const saveItems = async (customItems = items) => {
@@ -102,7 +102,6 @@ const deleteItem = id => {
   });
 };
 
-  
 return {
   items,
   isSaving,
