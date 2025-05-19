@@ -3,6 +3,7 @@ import "../styles/hem.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 import NavLink from "../components/ui/Navlink";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [isFixed, setIsFixed] = useState(false);
@@ -85,16 +86,17 @@ export default function Navbar() {
 
         {/* Desktop-nav: visar från 948px */}
         <div className="hidden min-[948px]:flex flex-1 justify-end items-center gap-4">
-          <ul className="flex gap-[0px] list-none">
-            {navLinks.map((link, index) => (
-              <li
-                key={index}
-                className={`py-[8px] px-[${index === navLinks.length - 1 ? "0px" : "12px"}]`}
-              >
-                <NavLink href={link.href}>{link.label}</NavLink>
-              </li>
-            ))}
-          </ul>
+   <ul className="flex gap-[0px] list-none">
+  {navLinks.map((link, index) => (
+    <li
+      key={index}
+      className={`py-[8px] px-[${index === navLinks.length - 1 ? "0px" : "12px"}]`}
+    >
+      <NavLink to={link.href}>{link.label}</NavLink>
+    </li>
+  ))}
+</ul>
+
           {/* Logga ut-länk visas endast om inloggad */}
           {isAuthenticated && (
             <button
@@ -140,29 +142,29 @@ export default function Navbar() {
             className="w-32 h-auto -mt-20 mb-20 mr-4"
           />
           {/* Länkar i mobilmenyn */}
-          <ul className="text-white text-[20px] font-bold space-y-6">
-            {navLinks.map((link, index) => (
-              <li key={index}>
-                <a
-                  href={link.href}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-            {/* Logga ut som länk i mobilmenyn */}
-            {isAuthenticated && (
-              <li>
-                <button
-                  onClick={handleLogout}
-                  className="text-white font-bold text-[20px]"
-                >
-                  Logga ut
-                </button>
-              </li>
-            )}
-          </ul>
+            <ul className="text-white text-[20px] font-bold space-y-6">
+              {navLinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    to={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+                        {/* Logga ut som länk i mobilmenyn */}
+              {isAuthenticated && (
+                <li>
+                  <button
+                    onClick={handleLogout}
+                    className="text-white font-bold text-[20px]"
+                  >
+                    Logga ut
+                  </button>
+                </li>
+              )}
+            </ul>
         </div>
       </nav>
     </header>

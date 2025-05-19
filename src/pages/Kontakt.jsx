@@ -11,7 +11,7 @@ const fallbackKontakt = {
   orgNumber: "556123-4567",
   phone: "070-123 45 67",
   email: "info@hedstrommaleri.se",
-  address: "Exempelgatan 1, 123 45 Örebro"
+  address: "Engelbrektsgatan 27, 702 13 Örebro"
 };
 
 export default function ContactForm() {

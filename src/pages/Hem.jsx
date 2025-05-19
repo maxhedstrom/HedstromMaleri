@@ -4,6 +4,7 @@ import ServiceCard from "/src/components/ui/ServiceCard";
 import axios from "axios";
 import fallbackhomeservices from "../data/fallbackhomeservices";
 import { getUrl } from "../utils/api";
+import slottet from "../assets/bilder/hedstrombil.jpg";
 
 const Hem = () => {
   const [services, setServices] = useState([]);
@@ -24,11 +25,14 @@ const Hem = () => {
 
   return (
     <>
-      {/* HEADER / HJÄLTESektion */}
-      <header
+      
+    <header
         className="relative min-h-screen w-full bg-[linear-gradient(rgba(4,9,30,0.2),rgba(4,9,30,0.7)),url('src/assets/bilder/hedstrombil.jpg')] bg-no-repeat bg-top md:bg-center bg-cover"
-      ></header>
-
+        style={{
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${slottet})`,
+        }}
+      >
+      </header>
       <div className="w-[90%] lg:w-3/5 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
         <h1 className="text-[var(--first-color)] text-[32px] md:text-[42px] lg:text-[42px]">
           Välkommen till Hedström Måleri AB

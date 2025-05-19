@@ -1,14 +1,14 @@
   //Används i Hem.jsx
   const fallbackhomeservices = [
     {
-      name: "Spackling",
+      name: "Fasadmålning",
       description:
         "Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.",
     },
     {
-      name: "Fasadmålning",
+      name: "Interiör",
       description:
-        "Ge din fasad ett lyft med professionell målning! Vi på Hedström Måleri AB använder moderna metoder och lift för att nå alla ytor smidigt och säkert. Med högkvalitativa färger och noggrant arbete skyddar vi din fasad och ger den ett fräscht, hållbart utseende.",
+        "Det kan handla om att måla om köket enbart eller varför inte hela hemmet. Utöver detta kan vi även hjälpa dig med tapetsering. Självklart hjälper vi dig med val av färg för rätt känsla i hemmet eller på kontoret.",
     },
     {
       name: "Våtrum",
