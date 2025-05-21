@@ -17,7 +17,7 @@ const fallbackpersonal = [
     email: "info@hedstrommaleri.se",
     image: antonImg,
     description:
-      "Anton kombinerar moderna metoder med traditionellt hantverk. Han ligger framåt på allt den senaste utveckling branschen har att erbjuda. Utöver att måla sjunger han fram stadens stolethet ÖSK. ",
+      "Anton kombinerar moderna metoder med traditionellt hantverk. Han ligger framåt på allt den senaste utveckling branschen har att erbjuda. Utöver att måla sjunger han fram stadens stolthet ÖSK. ",
   },
   {
     name: "Ulrika Hedström",

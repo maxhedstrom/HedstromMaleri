@@ -27,6 +27,6 @@
 }
 
 /* Förhindra horisontell scroll */
-body {
+html, body {
   overflow-x: hidden;
 }

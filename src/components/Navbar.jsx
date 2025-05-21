@@ -78,7 +78,7 @@ export default function Navbar() {
               <img
                 src="/logo-med-farg.png"
                 alt="Logotyp"
-                className="w-[100px] h-auto transition-all duration-500"
+                className="w-[100px] max-w-[100vw] h-auto transition-all duration-500"
               />
             </a>
           </div>
@@ -114,7 +114,7 @@ export default function Navbar() {
             <img
               src="/logo-med-farg.png"
               alt="Logotyp"
-              className="w-[60px] h-auto transition-all duration-500"
+              className="w-[60px] max-w-[100vw] h-auto transition-all duration-500"
             />
           </a>
         </div>
@@ -139,7 +139,7 @@ export default function Navbar() {
           <img
             src="/logo-med-farg.png"
             alt="Hedström Måleri AB"
-            className="w-32 h-auto -mt-20 mb-20 mr-4"
+            className="w-32 max-w-[100vw] h-auto -mt-20 mb-20 mr-4"
           />
           {/* Länkar i mobilmenyn */}
             <ul className="text-white text-[20px] font-bold space-y-6">

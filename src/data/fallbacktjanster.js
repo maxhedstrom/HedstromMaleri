@@ -41,15 +41,6 @@ const fallbacktjanster = [
     link: "/kontakt",
     reverse: true,
   },
-  {
-    image: vatrumImg,
-    title: "Våtrum",
-    description:
-      "Behöver ditt badrum eller liknande målas om krävs specialverktyg och kompetens kring hållbarhet. Våra våtrumstjänster garanterar hållbara, stilrena och fuktsäkra lösningar för ditt badrum eller tvättstuga. Vi använder högkvalitativa material och följer branschstandarder för att skapa en säker och elegant miljö",
-    linkText: "Kontakta oss för en offert!",
-    link: "/kontakt",
-    reverse: false,
-  },
 ];
 
 export default fallbacktjanster;
