@@ -72,12 +72,13 @@ function Tjanster() {
           name="description"
           content="Upptäck Hedström Måleri AB:s professionella måleritjänster för byggföretag, bostadsrättföreningar och privatpersoner."
         />
+        <link rel="preload" as="image" href="/images/bakgrundsbil-tvamalare.webp" />
+
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-        <link rel="preload" as="image" href="images/bakgrundsbil-tvamalare.jpg" />
       </Helmet>
       <header
         style={{
-          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("images/bakgrundsbil-tvamalare.jpg")`,
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("/images/bakgrundsbil-tvamalare.webp")`,
         }}
         className="relative min-h-[60vh] w-full bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center"
       >

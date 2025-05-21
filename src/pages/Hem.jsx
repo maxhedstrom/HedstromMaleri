@@ -38,6 +38,8 @@ const Hem = () => {
           content="målare Örebro, tapetsering, fasadmålning, inomhusmålning, Hedström Måleri, måleri Närke"
         />
         <meta name="author" content="Hedström Måleri AB" />
+        <link rel="preload" as="image" href="/images/hedstrombil.webp" />
+
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -54,16 +56,15 @@ const Hem = () => {
             telephone: "+4619123456",
             description:
               "Målare i Örebro som erbjuder inomhusmålning, fasadmålning och tapetsering i hela Närke.",
-            image: "https://www.hedstrommaleri.se/assets/hedstrombil.jpg"
+            image: "https://www.hedstrommaleri.se/assets/hedstrombil.webp"
           })}
         </script>
-          <link rel="preload" as="image" href="images/hedstrombil.jpg" />
       </Helmet>
 
       <header
         className="relative min-h-screen w-full bg-no-repeat bg-top md:bg-center bg-cover"
         style={{
-          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("images/hedstrombil.jpg")`,
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("/images/hedstrombil.webp")`,
         }}
       ></header>
 

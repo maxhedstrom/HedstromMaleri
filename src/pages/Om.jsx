@@ -96,6 +96,7 @@ const Om = () => {
           name="description"
           content="Lär känna teamet bakom Hedström Måleri AB – ett familjeföretag med över 35 års erfarenhet inom måleri i Örebro. Läs om vår historia och vårt engagemang."
         />
+        <link rel="preload" as="image" href="/images/slottet.webp" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -120,12 +121,11 @@ const Om = () => {
             })),
           })}
         </script>
-          <link rel="preload" as="image" href="images/slottet.jpg" />
       </Helmet>
 
       <header
         style={{
-          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("images/slottet.jpg")`,
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("/images/slottet.webp")`,
         }}
         className="relative min-h-[60vh] w-full bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center"
       >

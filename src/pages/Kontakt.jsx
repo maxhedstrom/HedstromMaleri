@@ -126,6 +126,8 @@ export default function ContactForm() {
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.hedstrommaleri.se/kontakt" />
+        <link rel="preload" as="image" href="/images/grabakgrund.webp" />
+
         <script type="application/ld+json">
           {`
           {
@@ -149,7 +151,6 @@ export default function ContactForm() {
           }
         `}
         </script>
-        <link rel="preload" as="image" href="images/grabakgrund.webp" />
       </Helmet>
       <header
         style={{

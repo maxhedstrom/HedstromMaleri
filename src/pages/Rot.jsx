@@ -103,23 +103,20 @@ export default function Rot() {
       <meta name="description" content="Läs vår guide om ROT-avdraget 2025. Räkna ut hur mycket du kan spara med vår ROT-beräknare. Hedström Måleri AB gör det enkelt!" />
       <meta name="keywords" content="ROT-avdrag 2025, ROT beräkning, ROT guide, Hedström Måleri, måleri med rot, arbetskostnad, rotavdrag kalkylator" />
       <link rel="canonical" href="https://www.hedstrommaleri.se/rot" />
-      <link rel="preload" as="image" href="images/fasad.jpg" />
-
+      <link rel="preload" as="image" href="/images/fasad.webp" />
     </Helmet>
 
     <header
         style={{
-          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("/images/fasad.jpg")`,
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("/images/fasad.webp")`,
         }}
         className="relative min-h-[60vh] w-full bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center"
       >
         <h1 className="text-white text-3xl md:text-4xl font-semibold max-w-2xl">
-                    ROT <br /> Reparation, Ombyggnad och Tillbyggnad
-
+                    ROT <br /> 
+          Reparation, Ombyggnad och Tillbyggnad
         </h1>
-      </header>
-
-
+    </header>
 
       {/* Huvudinnehåll med statisk information */}
       <main className="relative py-16 px-4 bg-gradient-to-r from-gray-50 to-gray-200">
