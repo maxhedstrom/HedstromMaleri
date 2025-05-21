@@ -149,6 +149,7 @@ export default function ContactForm() {
           }
         `}
         </script>
+        <link rel="preload" as="image" href="images/grabakgrund.webp" />
       </Helmet>
       <header
         style={{

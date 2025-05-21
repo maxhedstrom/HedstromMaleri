@@ -79,6 +79,7 @@ const Projekt = () => {
           name="description"
           content="Utforska våra projekt och historik på Hedström Måleri AB, med över 35 års erfarenhet inom måleri."
         />
+        <link rel="preload" as="image" href="images/projekt.jpg" />
       </Helmet>
 
       <header

@@ -103,6 +103,8 @@ export default function Rot() {
       <meta name="description" content="Läs vår guide om ROT-avdraget 2025. Räkna ut hur mycket du kan spara med vår ROT-beräknare. Hedström Måleri AB gör det enkelt!" />
       <meta name="keywords" content="ROT-avdrag 2025, ROT beräkning, ROT guide, Hedström Måleri, måleri med rot, arbetskostnad, rotavdrag kalkylator" />
       <link rel="canonical" href="https://www.hedstrommaleri.se/rot" />
+      <link rel="preload" as="image" href="images/fasad.jpg" />
+
     </Helmet>
 
     <header

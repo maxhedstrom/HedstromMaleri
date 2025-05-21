@@ -120,6 +120,7 @@ const Om = () => {
             })),
           })}
         </script>
+          <link rel="preload" as="image" href="images/slottet.jpg" />
       </Helmet>
 
       <header

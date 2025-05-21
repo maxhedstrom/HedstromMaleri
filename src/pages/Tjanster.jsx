@@ -73,6 +73,7 @@ function Tjanster() {
           content="Upptäck Hedström Måleri AB:s professionella måleritjänster för byggföretag, bostadsrättföreningar och privatpersoner."
         />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        <link rel="preload" as="image" href="images/bakgrundsbil-tvamalare.jpg" />
       </Helmet>
       <header
         style={{

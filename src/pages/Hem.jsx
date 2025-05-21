@@ -57,6 +57,7 @@ const Hem = () => {
             image: "https://www.hedstrommaleri.se/assets/hedstrombil.jpg"
           })}
         </script>
+          <link rel="preload" as="image" href="images/hedstrombil.jpg" />
       </Helmet>
 
       <header
