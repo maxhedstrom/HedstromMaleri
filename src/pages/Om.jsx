@@ -5,7 +5,7 @@ import fallbackPersonal from "../data/fallbackpersonal";
 import { getUrl } from "../utils/api";
 import navbar from "../assets/bilder/slottet.jpg";
 import hedstrombil2 from "../assets/bilder/hedstrombil2.jpg";
-
+import { Helmet } from "react-helmet";
 
 const Personal = ({ person }) => {
   const [expanded, setExpanded] = useState(false);
@@ -34,6 +34,14 @@ const Personal = ({ person }) => {
         className="relative h-[85%] bg-cover bg-center"
         style={{ backgroundImage: `url(${person.image})` }}
       >
+        {/* Lägg till osynlig img för SEO och tillgänglighet */}
+        <img
+          src={person.image}
+          alt={`Porträtt av ${person.name}, ${person.role}`}
+          className="sr-only"
+          aria-hidden="false"
+        />
+
         <div
           className={`absolute bottom-0 left-0 w-full bg-[var(--text-color)] bg-opacity-90 text-white flex flex-col justify-center items-center p-4 transition-all duration-[1200ms] ease-in-out ${
             expanded ? "h-1/3 md:h-1/4 translate-y-0" : "md:h-[20%] translate-y-full"
@@ -64,6 +72,7 @@ const Personal = ({ person }) => {
 
 const Om = () => {
   const [personal, setPersonal] = useState([]);
+  const [usingFallback, setUsingFallback] = useState(false);
 
   useEffect(() => {
     fetch(getUrl("personal"))
@@ -81,6 +90,40 @@ const Om = () => {
 
   return (
     <>
+      <Helmet>
+                      {/* SEO optimering  */}
+        <title>Om oss – Hedström Måleri AB | Målare i Örebro</title>
+        <meta
+          name="description"
+          content="Lär känna teamet bakom Hedström Måleri AB – ett familjeföretag med över 35 års erfarenhet inom måleri i Örebro. Läs om vår historia och vårt engagemang."
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Hedström Måleri AB",
+            url: "https://hedstrommaleri.se.se",  
+            logo: "https://hedstrommaleri.se/logo-med-farg.png",   
+            contactPoint: [
+              {
+                "@type": "ContactPoint",
+                telephone: "+46 736 00 20 47",
+                contactType: "customer service",
+                areaServed: "SE",
+                availableLanguage: "Swedish",
+              },
+            ],
+            employee: personal.map((p) => ({
+              "@type": "Person",
+              name: p.name,
+              jobTitle: p.role,
+              email: p.email,
+            })),
+          })}
+        </script>
+
+      </Helmet>
+
       <header
         style={{
           backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${navbar})`,
@@ -128,7 +171,6 @@ const Om = () => {
           {personal.map((person, index) => (
             <Personal key={index} person={person} />
           ))}
-          
         </div>
       </section>
     </>

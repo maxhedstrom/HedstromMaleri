@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import navbar from "../assets/bilder/fasad.jpg";
+import { Helmet } from "react-helmet";
 
 export default function Rot() {
   //Logik för att hantera inmatning av kostnad och formatering till rotberäknaren, bryta upp i en egen komponent?
@@ -69,11 +70,6 @@ export default function Rot() {
     }
   };
 
-  // Simulera konfetti-effekt, ta bort?
-  // const handleConfetti = () => {
-  //   alert('🎉 Konfetti! ROT-avdraget firas med stil! 🎉');
-  // };
-
   // ROT-beräknare: ROT-avdraget ger 50% rabatt på arbetskostnaden.
   let savings;
   let message = "";
@@ -103,6 +99,13 @@ export default function Rot() {
 
   return (
     <>
+    <Helmet>
+      <title>ROT-avdraget 2025 – Räkna ut din besparing | Hedström Måleri AB</title>
+      <meta name="description" content="Läs vår guide om ROT-avdraget 2025. Räkna ut hur mycket du kan spara med vår ROT-beräknare. Hedström Måleri AB gör det enkelt!" />
+      <meta name="keywords" content="ROT-avdrag 2025, ROT beräkning, ROT guide, Hedström Måleri, måleri med rot, arbetskostnad, rotavdrag kalkylator" />
+      <link rel="canonical" href="https://www.hedstrommaleri.se/rot" />
+    </Helmet>
+
     <header
         style={{
           backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${navbar})`,

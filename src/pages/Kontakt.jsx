@@ -6,6 +6,7 @@ import { Card, CardContent } from "/src/components/ui/card";
 import { useLocation } from "react-router-dom";
 import { getUrl } from "../utils/api";
 import navbar from "../assets/bilder/grabakgrund.webp";
+import { Helmet } from "react-helmet";
 
 const fallbackKontakt = {
   name: "Hedström Måleri AB",
@@ -118,6 +119,39 @@ export default function ContactForm() {
 
   return (
     <div className="bg-gray-100 min-h-screen">
+       <Helmet>
+        <title>Kontakta Hedström Måleri AB – Få en kostnadsfri offert idag</title>
+        <meta
+          name="description"
+          content="Kontakta Hedström Måleri AB i Örebro för professionell målning, tapetsering och fasadmålning. Fyll i formuläret eller ring oss för en kostnadsfri offert."
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.hedstrommaleri.se/kontakt" />
+        <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "PaintingContractor",
+            "name": "Hedström Måleri AB",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Engelbrektsgatan 27",
+              "postalCode": "702 13",
+              "addressLocality": "Örebro",
+              "addressCountry": "SE"
+            },
+            "telephone": "073-600 20 47,
+            "email": "info@hedstrommaleri.se",
+            "url": "https://www.hedstrommaleri.se",
+            "areaServed": "Örebro",
+            "description": "Måleri och tapetseringstjänster i Örebro. Professionellt utförda jobb både invändigt och utvändigt.",
+            "founder": "Hedström",
+            "foundingDate": "2011"
+          }
+        `}
+        </script>
+      </Helmet>
+
       <header
         style={{
           backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${navbar})`,
@@ -217,10 +251,8 @@ export default function ContactForm() {
           </CardContent>
         </Card>
 
- {/* Företagsinfo */}
- 
+            {/* Företagsinfo */}
         <Card className="w-full lg:w-1/2 shadow-xl rounded-2xl p-6 bg-gray-100">
-        
             <CardContent className="-mt-10">
             <h2 className="text-3xl font-bold text-[var(--rubrik-color)] mb-6 flex items-center gap-2">
               🏢 Företagsinformation
