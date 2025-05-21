@@ -3,7 +3,6 @@ import { FaSortAmountUpAlt } from "react-icons/fa";
 import InfoCard from "/src/components/ui/infoCard";
 import fallbackPersonal from "../data/fallbackpersonal";
 import { getUrl } from "../utils/api";
-import navbar from "../assets/bilder/slottet.jpg";
 import hedstrombil2 from "../assets/bilder/hedstrombil2.jpg";
 import { Helmet } from "react-helmet";
 
@@ -121,12 +120,11 @@ const Om = () => {
             })),
           })}
         </script>
-
       </Helmet>
 
       <header
         style={{
-          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${navbar})`,
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("images/slottet.jpg")`,
         }}
         className="relative min-h-[60vh] w-full bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center"
       >
@@ -134,7 +132,7 @@ const Om = () => {
           Kul att du vill veta mer om oss!
         </h1>
       </header>
-
+      
       <section className="w-11/12 md:w-4/5 mx-auto text-center py-16 px-4">
         <div id="top" className="max-w-2xl mx-auto">
           <h1 className="text-[var(--rubrik-color)] text-2xl md:text-5xl font-semibold leading-tight">

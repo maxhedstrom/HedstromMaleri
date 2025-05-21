@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-import navbar from "../assets/bilder/fasad.jpg";
 import { Helmet } from "react-helmet";
 
 export default function Rot() {
@@ -108,7 +107,7 @@ export default function Rot() {
 
     <header
         style={{
-          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${navbar})`,
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("/images/fasad.jpg")`,
         }}
         className="relative min-h-[60vh] w-full bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center"
       >

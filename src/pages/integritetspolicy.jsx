@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { FaShieldAlt, FaEnvelope, FaLock, FaClock, FaCookieBite } from 'react-icons/fa';
-import navbar from "../assets/bilder/slottet.jpg";
 
 const Integritetspolicy = () => {
   useEffect(() => {
@@ -18,7 +17,7 @@ const Integritetspolicy = () => {
     <>
           <header
             style={{
-              backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${navbar})`,
+              backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("images/slottet.jpg")`,
             }}
             className="relative min-h-[60vh] w-full bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center"
           >

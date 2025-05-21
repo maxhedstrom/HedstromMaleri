@@ -5,7 +5,6 @@ import { Textarea } from "/src/components/ui/textarea";
 import { Card, CardContent } from "/src/components/ui/card";
 import { useLocation } from "react-router-dom";
 import { getUrl } from "../utils/api";
-import navbar from "../assets/bilder/grabakgrund.webp";
 import { Helmet } from "react-helmet";
 
 const fallbackKontakt = {
@@ -151,10 +150,9 @@ export default function ContactForm() {
         `}
         </script>
       </Helmet>
-
       <header
         style={{
-          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${navbar})`,
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("/images/grabakgrund.webp")`,
         }}
         className="relative min-h-[60vh] w-full bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center"
       >

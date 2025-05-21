@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import fallbackTimeline from "../data/fallbacktimeline";
 import altLogo from "/src/assets/bilder/altLogo.jpg";
 import { getUrl } from "../utils/api";
-import navbar from "../assets/bilder/projekt.jpg";
 
 const Projekt = () => {
   const [timeline, setTimeline] = useState([]);
@@ -84,7 +83,7 @@ const Projekt = () => {
 
       <header
         style={{
-          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${navbar})`,
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("/images/projekt.jpg")`,
         }}
         className="relative min-h-[60vh] w-full bg-no-repeat bg-top md:bg-center bg-cover flex items-center justify-center px-4 text-center"
       >

@@ -4,7 +4,6 @@ import "../styles/hem.css";
 import InfoCard from "/src/components/ui/infoCard";
 import fallBackTjanster from "../data/fallbacktjanster";
 import { getUrl } from "../utils/api";
-import navbar from "../assets/bilder/bakgrundsbil-tvamalare.jpg";
 
 function Tjanster() {
   const [tjanster, setTjanster] = useState([]);
@@ -75,10 +74,9 @@ function Tjanster() {
         />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
-
       <header
         style={{
-          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${navbar})`,
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("images/bakgrundsbil-tvamalare.jpg")`,
         }}
         className="relative min-h-[60vh] w-full bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center"
       >

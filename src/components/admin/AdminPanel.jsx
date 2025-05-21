@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, Outlet, NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
-import slottet from "../../assets/bilder/slottet.jpg";
 
 function AdminPanel() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -62,9 +61,10 @@ function AdminPanel() {
       <header
         className="relative min-h-[60vh] w-full bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${slottet})`,
-        }}
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("images/slottet.jpg")`,
+          }}
       >
+        
         <h1 className="text-white text-4xl font-bold drop-shadow-xl">
           Välkommen till Adminpanelen!
         </h1>

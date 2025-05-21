@@ -4,8 +4,6 @@ import axios from "axios";
 import ServiceCard from "/src/components/ui/ServiceCard";
 import fallbackhomeservices from "../data/fallbackhomeservices";
 import { getUrl } from "../utils/api";
-import hedstrombil from "../assets/bilder/hedstrombil.jpg";
-import slottet from "../assets/bilder/slottet.jpg";
 import kommun from "../assets/bilder/kommun-logo.png";
 import sorby from "../assets/bilder/sorby-logo.png";
 import uni from "../assets/bilder/universitetet-logo.png";
@@ -64,7 +62,7 @@ const Hem = () => {
       <header
         className="relative min-h-screen w-full bg-no-repeat bg-top md:bg-center bg-cover"
         style={{
-          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${hedstrombil})`,
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("images/hedstrombil.jpg")`,
         }}
       ></header>
 
@@ -114,7 +112,7 @@ const Hem = () => {
         <div className="flex flex-col md:flex-row justify-between">
           <div className="basis-[200%] rounded-[10px] mb-[30px] relative overflow-hidden">
             <img
-              src={slottet}
+              src= "images/slottet.jpg"
               alt="Örebro slott - närhet till Hedström Måleri AB"
               loading="lazy"
               className="w-full h-[60vh] object-center md:h-auto md:object-right object-cover"
