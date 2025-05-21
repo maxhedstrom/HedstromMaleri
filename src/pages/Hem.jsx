@@ -4,7 +4,12 @@ import ServiceCard from "/src/components/ui/ServiceCard";
 import axios from "axios";
 import fallbackhomeservices from "../data/fallbackhomeservices";
 import { getUrl } from "../utils/api";
-import slottet from "../assets/bilder/hedstrombil.jpg";
+import hedstrombil from "../assets/bilder/hedstrombil.jpg";
+import slottet from "../assets/bilder/slottet.jpg";
+import kommun from "../assets/bilder/kommun-logo.png";
+import sorby from "../assets/bilder/sorby-logo.png";
+import uni from "../assets/bilder/universitetet-logo.png";
+
 
 const Hem = () => {
   const [services, setServices] = useState([]);
@@ -29,7 +34,7 @@ const Hem = () => {
     <header
         className="relative min-h-screen w-full bg-[linear-gradient(rgba(4,9,30,0.2),rgba(4,9,30,0.7)),url('src/assets/bilder/hedstrombil.jpg')] bg-no-repeat bg-top md:bg-center bg-cover"
         style={{
-          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${slottet})`,
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${hedstrombil})`,
         }}
       >
       </header>
@@ -67,11 +72,11 @@ const Hem = () => {
           ))}
         </div>
 
-        {usingFallback && (
+        {/* {usingFallback && (
           <p className="text-sm text-yellow-600 mt-4">
             ⚠️ Visar reservtjänster – kunde inte hämta data från servern.
           </p>
-        )}
+        )} */}
       </section>
 
       {/* GEOGRAFI */}
@@ -86,7 +91,7 @@ const Hem = () => {
         <div className="flex flex-col md:flex-row justify-between">
           <div className="basis-[200%] rounded-[10px] mb-[30px] relative overflow-hidden">
             <img
-              src="src/assets/bilder/slottet.jpg"
+              src={slottet}
               alt="Slottet"
               className="w-full h-[60vh] object-center md:h-auto md:object-right object-cover"
             />
@@ -115,7 +120,7 @@ const Hem = () => {
           <div className="rounded-[10px] text-center">
             <a href="https://www.oru.se/">
               <img
-                src="src/assets/bilder/kommun-logo.png"
+                src={kommun} 
                 alt="Örebro Kommun"
                 className="w-full h-[200px] object-contain rounded-[10px]"
               />
@@ -125,7 +130,7 @@ const Hem = () => {
           <div className="rounded-[10px] text-center">
             <a href="https://www.oru.se/">
               <img
-                src="src/assets/bilder/sorby-logo.png"
+                src={sorby}
                 alt="Sörbyskolan"
                 className="w-full h-[200px] object-contain rounded-[10px]"
               />
@@ -135,7 +140,7 @@ const Hem = () => {
           <div className="rounded-[10px] text-center">
             <a href="https://www.oru.se/">
               <img
-                src="src/assets/bilder/universitetet-logo.png"
+                src={uni}
                 alt="Örebro Universitet"
                 className="w-full h-[200px] object-contain rounded-[10px]"
               />

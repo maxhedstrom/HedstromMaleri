@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import fallbackTimeline from "../data/fallbacktimeline";
 import altLogo from '/src/assets/bilder/altLogo.jpg';
 import { getUrl } from "../utils/api";
+import navbar from "../assets/bilder/projekt.jpg";
 
 const Projekt = () => {
   const [scrollHeight, setScrollHeight] = useState(0);
@@ -41,9 +42,18 @@ const Projekt = () => {
 
   return (
     <>
-      <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/antonOpeter.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
-        <h1 className="text-white text-4xl font-semibold text-center">Våra projekt</h1>
+    <header
+        style={{
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${navbar})`,
+        }}
+        className="relative min-h-[60vh] w-full bg-no-repeat bg-top md:bg-center bg-cover flex items-center justify-center px-4 text-center"
+      >
+        <h1 className="text-white text-3xl md:text-4xl font-semibold max-w-2xl">
+                    Våra projekt
+
+        </h1>
       </header>
+
 
       <section className="w-3/4 md:w-5/5 lg:w-8/9 mx-auto text-center pt-[100px]">
         <h1 className="text-[var(--rubrik-color)] text-4xl font-semibold text-center">

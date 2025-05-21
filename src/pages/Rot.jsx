@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import navbar from "../assets/bilder/fasad.jpg";
 
 export default function Rot() {
   //Logik för att hantera inmatning av kostnad och formatering till rotberäknaren, bryta upp i en egen komponent?
@@ -102,12 +103,19 @@ export default function Rot() {
 
   return (
     <>
-     <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/fasad.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center">
-        <div className="bg-[url('src/assets/bilder/ROTBILD.jpg')] "></div>
-        <h1 className="text-white text-4xl font-semibold text-center">
-          ROT <br /> Reparation, Ombyggnad och Tillbyggnad
+    <header
+        style={{
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${navbar})`,
+        }}
+        className="relative min-h-[60vh] w-full bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center"
+      >
+        <h1 className="text-white text-3xl md:text-4xl font-semibold max-w-2xl">
+                    ROT <br /> Reparation, Ombyggnad och Tillbyggnad
+
         </h1>
-     </header>
+      </header>
+
+
 
       {/* Huvudinnehåll med statisk information */}
       <main className="relative py-16 px-4 bg-gradient-to-r from-gray-50 to-gray-200">

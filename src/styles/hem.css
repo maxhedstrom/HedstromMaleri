@@ -3,6 +3,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Finger+Paint&family=Playwrite+IT+Moderna:wght@100..400&display=swap'); */
 /* === Grundläggande inställningar === */
 :root {
+  
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -15,6 +16,7 @@
 
 }
 
+
 /* === Typsnitt === */
 .tektur-unique {
   font-family: "Tektur", sans-serif;
@@ -22,4 +24,9 @@
   font-weight: 400; 
   font-style: normal;
   font-variation-settings: "wdth" 100; 
+}
+
+/* Förhindra horisontell scroll */
+body {
+  overflow-x: hidden;
 }

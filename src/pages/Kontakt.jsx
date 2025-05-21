@@ -5,6 +5,7 @@ import { Textarea } from "/src/components/ui/textarea";
 import { Card, CardContent } from "/src/components/ui/card";
 import { useLocation } from "react-router-dom";
 import { getUrl } from "../utils/api";
+import navbar from "../assets/bilder/grabakgrund.webp";
 
 const fallbackKontakt = {
   name: "Hedström Måleri AB",
@@ -117,9 +118,15 @@ export default function ContactForm() {
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      {/* Hero */}
-      <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/grabakgrund.webp')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
-        <h1 className="text-white text-4xl font-semibold text-center">Kontakta oss</h1>
+      <header
+        style={{
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${navbar})`,
+        }}
+        className="relative min-h-[60vh] w-full bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center"
+      >
+        <h1 className="text-white text-3xl md:text-4xl font-semibold max-w-2xl">
+          Kontakta oss
+        </h1>
       </header>
 
       <main className="flex flex-col lg:flex-row gap-8 p-6 max-w-6xl mx-auto">

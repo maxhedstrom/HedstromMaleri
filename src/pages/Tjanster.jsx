@@ -3,6 +3,7 @@ import "../styles/hem.css";
 import InfoCard from "/src/components/ui/infoCard";
 import fallBackTjanster from "../data/fallbacktjanster"; // Importera fallback
 import { getUrl } from "../utils/api";
+import navbar from "../assets/bilder/bakgrundsbil-tvamalare.jpg";
 
 function Tjanster() {
 	const [tjanster, setTjanster] = useState([]);
@@ -24,7 +25,7 @@ function Tjanster() {
 		};
 
 		fetchData();
-
+		
 		// Scroll till sektion om hash finns i URL:en
 		if (window.location.hash) {
 			const id = window.location.hash.substring(1);
@@ -37,11 +38,16 @@ function Tjanster() {
 
 	return (
 		<>
-			<header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/bakgrundsbil-tvamalare.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center">
-				<h1 className="text-white text-4xl font-semibold text-center">
-					Tjänster
-				</h1>
-			</header>
+			<header
+					style={{
+					  backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${navbar})`,
+					}}
+					className="relative min-h-[60vh] w-full bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center"
+				  >
+					<h1 className="text-white text-3xl md:text-4xl font-semibold max-w-2xl">
+						Tjänster
+					</h1>
+				  </header>
 
 			<section className="w-11/12 md:w-5/5 mx-auto text-center py-16 px-4">
 				<h1 className="text-[var(--rubrik-color)] text-3xl md:text-4xl font-semibold text-center">

@@ -3,6 +3,9 @@ import { FaSortAmountUpAlt } from "react-icons/fa";
 import InfoCard from "/src/components/ui/infoCard";
 import fallbackPersonal from "../data/fallbackpersonal";
 import { getUrl } from "../utils/api";
+import navbar from "../assets/bilder/slottet.jpg";
+import hedstrombil2 from "../assets/bilder/hedstrombil2.jpg";
+
 
 const Personal = ({ person }) => {
   const [expanded, setExpanded] = useState(false);
@@ -78,7 +81,12 @@ const Om = () => {
 
   return (
     <>
-      <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/slottet.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center">
+      <header
+        style={{
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(${navbar})`,
+        }}
+        className="relative min-h-[60vh] w-full bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center"
+      >
         <h1 className="text-white text-3xl md:text-4xl font-semibold max-w-2xl">
           Kul att du vill veta mer om oss!
         </h1>
@@ -100,7 +108,7 @@ const Om = () => {
       </section>
 
       <InfoCard
-        image="src/assets/bilder/hedstrombil2.jpg"
+        image={hedstrombil2}
         title="En väletablerad målerifirma"
         description="Hedström Måleri AB är ett familjeföretag med gedigen erfarenhet och ett starkt fokus på kundnöjdhet. Företaget grundades 2011 av Peter Hedström, som har över 35 års erfarenhet i branschen. Efter att ha arbetat på flera olika firmor valde han att starta sin egen verksamhet, med visionen att skapa ett företag där kvalitet, service och nära kundsamarbeten står i centrum.
         Idag drivs företaget av Peter Hedström tillsammans med Anton Hedström. Tillsammans kombinerar vi traditionellt hantverk med moderna metoder för att kunna erbjuda ett brett utbud av måleritjänster. Vi tar oss an allt från invändig och utvändig målning till tapetsering och specialanpassade uppdrag. På Hedström Måleri har vi ställning/liftutbildning och ID06.
