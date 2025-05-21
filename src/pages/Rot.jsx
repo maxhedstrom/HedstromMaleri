@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { Helmet } from "react-helmet";
+import RotCalculator from "src/components/RotCalculator"; // eller relativ sökväg beroende på din mappstruktur
 
 export default function Rot() {
   //Logik för att hantera inmatning av kostnad och formatering till rotberäknaren, bryta upp i en egen komponent?
@@ -126,6 +127,8 @@ export default function Rot() {
           </h2>
 
               {/* ROT-beräknare */}
+              <RotCalculator />
+
           <div className="mt-12 p-6 bg-red-50 rounded-xl shadow-md">
             <h3 className="text-[var(--detalj-color)] text-2xl font-semibold  text-center mb-4">
               ROT-Beräknare
