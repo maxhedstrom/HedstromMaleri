@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 function AdminPanel() {
@@ -61,7 +61,7 @@ function AdminPanel() {
       <header
         className="relative min-h-[60vh] w-full bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("images/slottet.jpg")`,
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("images/slottet.webp")`,
           }}
       >
         

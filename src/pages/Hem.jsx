@@ -114,7 +114,7 @@ const Hem = () => {
         <div className="flex flex-col md:flex-row justify-between">
           <div className="basis-[200%] rounded-[10px] mb-[30px] relative overflow-hidden">
             <img
-              src= "images/slottet.jpg"
+              src= "images/slottet.webp"
               alt="Örebro slott - närhet till Hedström Måleri AB"
               loading="lazy"
               className="w-full h-[60vh] object-center md:h-auto md:object-right object-cover"

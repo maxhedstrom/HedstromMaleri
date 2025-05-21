@@ -1,13 +1,17 @@
 import { useState, useRef, useEffect } from "react";
 
 export default function RotCalculator() {
+  //Logik för att hantera inmatning av kostnad och formatering till rotberäknaren
   const [cost, setCost] = useState("");
+  // rawCost kommer alltid att innehålla den formaterade strängen, t.ex. "30 000 kr"
   const [rawCost, setRawCost] = useState("");
   const inputRef = useRef(null);
 
   const formatCurrency = (value) => {
+    // Tar bort alla icke-siffror
     const numericValue = value.replace(/\D/g, "");
     if (!numericValue) return "";
+    // Formaterar med mellanslag var tredje siffra och lägger på " kr"
     return Number(numericValue).toLocaleString("sv-SE") + " kr";
   };
 
@@ -15,16 +19,19 @@ export default function RotCalculator() {
     const selectionStart = e.target.selectionStart;
     const currentValue = e.target.value;
 
+    // Räkna antalet siffror före markören i den nuvarande strängen
     const digitsBeforeCursor = currentValue.slice(0, selectionStart).replace(/\D/g, "").length;
     const unformatted = currentValue.replace(/\D/g, "");
     setCost(Number(unformatted));
 
+    // Skapa den formaterade strängen med " kr"
     let formatted = "";
     if (unformatted) {
       formatted = Number(unformatted).toLocaleString("sv-SE") + " kr";
     }
     setRawCost(formatted);
 
+    // Beräkna var markören ska hamna i den formaterade strängen
     let newCursorPos = 0;
     let digitCount = 0;
     for (let i = 0; i < formatted.length; i++) {
@@ -34,6 +41,8 @@ export default function RotCalculator() {
         break;
       }
     }
+
+    // Förhindra att markören hamnar i suffixet " kr"
     const numericPartEnd = formatted.length - 3;
     if (newCursorPos > numericPartEnd) newCursorPos = numericPartEnd;
 
@@ -48,6 +57,7 @@ export default function RotCalculator() {
     }
   };
 
+  // ROT-beräknare: ROT-avdraget ger 50% rabatt på arbetskostnaden.
   let savings;
   let message = "";
   if (cost > 100000) {
@@ -59,8 +69,21 @@ export default function RotCalculator() {
     savings = 0;
   }
 
-  const newTotal = cost - savings;
+  // !!!OBS!!! Koden nedan gäller för 30% ROT-avdrag, avkommentera koden nedan 1 JANUARI 2026! Ta bort koden ovan! SE ÄVEN ÖVER ALLA TEXTSTRÄNGAR OCH LÄNKAR!
+    //  let savings;
+    // let message = "";
+    // if (cost > 100000) {
+    //   savings = 30000;
+    //   message = "Taket för ROT-Avdrag går vid 50 000 kr inom ett år.";
+    // } else if (cost) {
+    //   savings = cost * 0.3;
+    // } else {
+    //   savings = 0;
+    // }
 
+  // Ny totalsumma = arbetskostnad - ROT-avdraget
+  const newTotal = cost - savings;
+  
   return (
     <div className="mt-12 p-6 bg-red-50 rounded-xl shadow-md">
       <h3 className="text-[var(--detalj-color)] text-2xl font-semibold text-center mb-4">
