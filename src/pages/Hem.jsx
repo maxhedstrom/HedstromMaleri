@@ -47,13 +47,13 @@ const Hem = () => {
             name: "Hedström Måleri AB",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "Exempelgatan 12",
+              streetAddress: "Engelbrektsgatan 34",
               addressLocality: "Örebro",
               addressRegion: "SE",
               postalCode: "70361"
             },
             url: "https://www.hedstrommaleri.se",
-            telephone: "+4619123456",
+            telephone: "+46736002047",
             description:
               "Målare i Örebro som erbjuder inomhusmålning, fasadmålning och tapetsering i hela Närke.",
             image: "https://www.hedstrommaleri.se/assets/hedstrombil.webp"
