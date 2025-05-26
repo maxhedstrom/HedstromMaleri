@@ -8,18 +8,34 @@ console.log('SMTP_USER  =', process.env.SMTP_USER);
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
-const fs = require('fs/promises');
-const path = require('path');
 const multer = require('multer');
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt');
 const rateLimit = require('express-rate-limit');
 const { body, validationResult } = require('express-validator');
 
+const fs = require('fs/promises');
+const path = require('path');
+
+console.log('===== DEBUG INFO =====');
+console.log('Server startar i katalog:', __dirname);
+
+const dataDir = path.join(__dirname, 'data');
+console.log('Förväntad data-mapp:', dataDir);
+
+// Kolla om data-mappen finns och visa dess innehåll
+fs.readdir(dataDir)
+  .then(files => {
+    console.log('Filer i data-mappen:', files);
+  })
+  .catch(err => {
+    console.error('Kunde inte läsa data-mappen:', err);
+  });
+console.log('======================');
+
 // Applikationsinställningar
 const app = express();
 const port = process.env.PORT || 5000;
-const dataDir = path.join(__dirname, 'data');
 const uploadDir = path.join(__dirname, 'public', 'uploads');
 
 // Lita på proxy (t.ex. Heroku, Nginx) för korrekt req.secure
@@ -76,11 +92,12 @@ const upload = multer({
 
 // Sökvärden för JSON-filer
 const filePaths = {
-  homeServices: path.join(dataDir, 'homeServices.json'),
+  homeServices: path.join(dataDir, 'homeservices.json'),
   personal: path.join(dataDir, 'personal.json'),
-  services: path.join(dataDir, 'services.json'),
+  // services: path.join(dataDir, 'services.json'),
   projekt: path.join(dataDir, 'projekt.json'),
   kontakt: path.join(dataDir, 'kontakt.json'),
+  admin: path.join(dataDir, 'adminpassword.json'),
 };
 
 // ==============================

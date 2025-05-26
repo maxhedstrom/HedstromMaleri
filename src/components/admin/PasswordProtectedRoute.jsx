@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import AdminPanel from "./AdminPanel";
 import { FaQuestionCircle } from "react-icons/fa";
-import { getUrl } from "@/utils/api";
+import { getUrl } from "../../utils/api";
 
 export default function PasswordProtectedRoute() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
