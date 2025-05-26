@@ -1,5 +1,7 @@
 // Ladda in miljövariabler 
-require('dotenv').config();
+require('dotenv').config(); // laddar .env
+require('dotenv').config({ path: '.env.local' }); // överskriver med .env.local
+
 console.log('CORS_ORIGIN =', process.env.CORS_ORIGIN);
 console.log('SMTP_USER  =', process.env.SMTP_USER);
 
@@ -25,14 +27,14 @@ const uploadDir = path.join(__dirname, 'public', 'uploads');
 app.set('trust proxy', 1);
 
 // Endast om NODE_ENV=production: omdirigera HTTP → HTTPS
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production' && process.env.FORCE_HTTPS === 'true') {
   app.use((req, res, next) => {
     if (req.secure) return next();
-    // Använd vanlig strängkonkatenering för https-redirect
     const redirectUrl = 'https://' + req.headers.host + req.originalUrl;
     return res.redirect(301, redirectUrl);
   });
 }
+
 
 // Säkerhetsheaders
 app.use(helmet());
