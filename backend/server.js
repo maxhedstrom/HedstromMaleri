@@ -1,5 +1,7 @@
 // Ladda in miljövariabler 
 require('dotenv').config();
+console.log('CORS_ORIGIN =', process.env.CORS_ORIGIN);
+console.log('SMTP_USER  =', process.env.SMTP_USER);
 
 // Importera nödvändiga moduler
 const express = require('express');
