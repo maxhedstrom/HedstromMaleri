@@ -1,6 +1,5 @@
 // Ladda in miljövariabler 
 require('dotenv').config(); // laddar .env
-require('dotenv').config({ path: '.env.local' }); // överskriver med .env.local
 
 console.log('CORS_ORIGIN =', process.env.CORS_ORIGIN);
 console.log('SMTP_USER  =', process.env.SMTP_USER);

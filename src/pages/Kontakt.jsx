@@ -141,7 +141,7 @@ export default function ContactForm() {
               "addressLocality": "Örebro",
               "addressCountry": "SE"
             },
-            "telephone": "073-600 20 47,
+            "telephone": "073-600 20 47"
             "email": "info@hedstrommaleri.se",
             "url": "https://www.hedstrommaleri.se",
             "areaServed": "Örebro",
