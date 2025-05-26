@@ -32,13 +32,21 @@ export default function AdminPersonal() {
 
     const formData = new FormData();
     formData.append("image", file);
-
+const res = await axios.post(
+  getUrl("/upload-image"),
+  formData,
+  { headers: { "Content-Type": "multipart/form-data" } }
+);
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/upload-image",
+   const res = await axios.post(
+        getUrl("/upload-image"),
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
-      );
+  );
+
+
+
+
       const updated = [...items];
       updated[index].image = res.data.url;
       setItems(updated);

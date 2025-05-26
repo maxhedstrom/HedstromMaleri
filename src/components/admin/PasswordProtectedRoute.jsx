@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import AdminPanel from "./AdminPanel";
 import { FaQuestionCircle } from "react-icons/fa";
+import { getUrl } from "@/utils/api";
 
 export default function PasswordProtectedRoute() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -10,7 +11,7 @@ export default function PasswordProtectedRoute() {
 
   const handleLogin = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/admin-login", {
+        const res = await fetch(getUrl("/admin"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password: input }),

@@ -1,5 +1,5 @@
 // src/components/admin/ListEditor.jsx
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 /**
  * En återanvändbar lista-editor med enhetlig design
