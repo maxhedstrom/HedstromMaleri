@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import RotCalculator from "/src/components/RotCalculator"; // eller relativ sökväg beroende på din mappstruktur
+import RotCalculator from "/src/components/RotCalculator"; 
 
 export default function Rot() {
 

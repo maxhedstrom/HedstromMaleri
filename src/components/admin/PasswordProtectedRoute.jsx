@@ -11,7 +11,7 @@ export default function PasswordProtectedRoute() {
 
   const handleLogin = async () => {
     try {
-        const res = await fetch(getUrl("/admin"), {
+        const res = await fetch(getUrl("/api/admin-login"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password: input }),
@@ -47,14 +47,19 @@ export default function PasswordProtectedRoute() {
   if (isAuthenticated) {
     return <AdminPanel />;
   }
-
   return (
     <>
-      <header className="relative min-h-[60vh] w-full bg-[linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url('src/assets/bilder/slottet.jpg')] bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center">
-        <h1 className="text-white text-3xl md:text-4xl font-semibold max-w-2xl drop-shadow-lg">
-          Välkommen till adminpanelen
+      <header
+        style={{
+          backgroundImage: `linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url("/images/slottet.webp")`,
+        }}
+        className="relative min-h-[60vh] w-full bg-no-repeat bg-center bg-cover flex items-center justify-center px-4 text-center"
+      >
+        <h1 className="text-white text-3xl md:text-4xl font-semibold max-w-2xl">
+          Välkommen till Adminpanelen
         </h1>
       </header>
+
       <div className="min-h-screen flex flex-col items-center bg-gray-100 relative pt-32">
         {/* Frågetecken-ikon */}
         <div className="absolute top-4 right-4 text-gray-500 cursor-pointer">

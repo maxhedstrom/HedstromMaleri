@@ -6,7 +6,7 @@ Detta är en hemsida byggd med React och Vite för måleriföretaget Hedström M
 
 - **Byggd med:** React + Vite  
 - **CSS:** Tailwind + vanlig CSS  
-- **Backend:** JSON-filer (ingen databas i nuläget)  
+- **Backend:** JSON-filer med node express
 - **Syfte:** Skapa en enkel och underhållsvänlig webbplats för en mindre verksamhet  
 
 ## Plugins och beroenden
