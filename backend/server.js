@@ -16,6 +16,11 @@ const { body, validationResult } = require('express-validator');
 
 const fs = require('fs/promises');
 const path = require('path');
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://hedstrommaleri.se'
+];
+
 
 console.log('===== DEBUG INFO =====');
 console.log('Server startar i katalog:', __dirname);
@@ -54,13 +59,18 @@ if (process.env.NODE_ENV === 'production' && process.env.FORCE_HTTPS === 'true')
 // Säkerhetsheaders
 app.use(helmet());
 
-// CORS: endast din frontend
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN || '*',
-    optionsSuccessStatus: 200
-  })
-);
+
+app.use(cors({
+  origin: function(origin, callback) {
+    // Tillåt om origin är undefined (t.ex. curl, Postman) eller finns i listan
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS-policy tillåter inte denna origin: ' + origin));
+    }
+  },
+  optionsSuccessStatus: 200
+}));
 
 // JSON-parser
 app.use(express.json());
