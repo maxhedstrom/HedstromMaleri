@@ -54,11 +54,8 @@ if (process.env.NODE_ENV === 'production' && process.env.FORCE_HTTPS === 'true')
     return res.redirect(301, redirectUrl);
   });
 }
-
-
 // Säkerhetsheaders
 app.use(helmet());
-
 
 app.use(cors({
   origin: function(origin, callback) {
@@ -244,7 +241,6 @@ app.post(
     }
   }
 );
-
 
 // ==============================
 // Admin-login
