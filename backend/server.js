@@ -104,7 +104,7 @@ const upload = multer({
 const filePaths = {
   homeServices: path.join(dataDir, 'homeservices.json'),
   personal: path.join(dataDir, 'personal.json'),
-  // services: path.join(dataDir, 'services.json'),
+  services: path.join(dataDir, 'services.json'),
   projekt: path.join(dataDir, 'projekt.json'),
   kontakt: path.join(dataDir, 'kontakt.json'),
   admin: path.join(dataDir, 'adminpassword.json'),
@@ -196,7 +196,6 @@ app.post('/api/upload-image', upload.single('image'), (req, res) => {
   const url = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
   res.json({ url });
 });
-
 // ==============================
 // Skicka e-post
 // ==============================
@@ -214,29 +213,38 @@ app.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+
     const { name, email, subject, message } = req.body;
+
     try {
       const transporter = nodemailer.createTransport({
-        service: process.env.MAIL_SERVICE || 'icloud',
+        host: 'smtp.mail.me.com',
+        port: 587,
+        secure: false,
         auth: {
           user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS
-        }
+          pass: process.env.SMTP_PASS,
+        },
       });
+
       const mailOptions = {
         from: process.env.MAIL_FROM,
         to: process.env.MAIL_TO,
         subject: `Kontaktförfrågan: ${subject}`,
-        text: `Namn: ${name}\nE-post: ${email}\n\nMeddelande:\n${message}`
+        text: `Namn: ${name}\nE-post: ${email}\n\nMeddelande:\n${message}`,
       };
+
       await transporter.sendMail(mailOptions);
+
       res.json({ success: true, message: 'E-post skickat!' });
+
     } catch (err) {
-      console.error('Fel vid skickande av e-post:', err);
-      res.status(500).json({ error: 'Misslyckades att skicka e-post.' });
+      console.error('Fel vid skickande av e-post:', err.toString(), err.stack);
+      res.status(500).json({ error: 'Misslyckades att skicka e-post.', detail: err.message });
     }
   }
 );
+
 
 // ==============================
 // Admin-login
